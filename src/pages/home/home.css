@@ -1,0 +1,15 @@
+.homeContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.iconstyle {
+  font-size: 28px !important;
+}
+
+@media (max-width: 700px) {
+  .hide-sm {
+    display: none;
+  }
+}

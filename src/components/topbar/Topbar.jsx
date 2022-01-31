@@ -1,0 +1,149 @@
+import './topbar.css';
+import React, { useRef } from 'react';
+import { Person, Chat, ExitToApp, Home, People } from '@material-ui/icons';
+import TimelineIcon from '@material-ui/icons/Timeline';
+import { NavLink } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+import Avatar from '@material-ui/core/Avatar';
+import { io } from 'socket.io-client';
+import FriendRequest from '../FriendRequest/FriendRequest';
+
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+
+const Topbar = () => {
+  const { user, dispatch } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const socket = React.useRef();
+
+  const [friendRequest, setFriendRequest] = useState([]);
+  useEffect(() => {
+    user && setFriendRequest([...user?.friendrequest]);
+  }, [user]);
+
+  useEffect(() => {
+    socket.current = io.connect(process.env.REACT_APP_End_Point);
+
+    socket.current.on('getFriendRequest', (data) => {
+      setFriendRequest((prev) => {
+        return [...prev, data.senderId];
+      });
+      dispatch({ type: 'FriendRequest', payload: friendRequest });
+    });
+  }, [dispatch, friendRequest]);
+  // console.log(user);
+  // console.log(user?.friendrequest.length);
+  useEffect(() => {
+    socket.current.emit('addUser', user._id);
+  });
+
+  const logout = () => {
+    try {
+      dispatch({ type: 'LOGOUT_SUCCESS', payload: null });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const [state, setState] = useState(false);
+  const [dropdownMenu, setdropdownMenu] = useState(false);
+  const inputRef = useRef();
+
+  const showFriendRequest = () => {
+    setState(!state);
+    setdropdownMenu(!dropdownMenu);
+
+    inputRef.current.focus();
+  };
+
+  return (
+    <>
+      <AppBar position="sticky" className="navbar_css" id="navbar">
+        <Toolbar>
+          <div className="topbarLeft hide-sm">
+            <NavLink to="/" style={{ textDecoration: 'none' }}>
+              <span className="logo">Postgram</span>
+            </NavLink>
+          </div>
+          <div className="topbarCenter">
+            <NavLink to="/" style={{ color: 'white', textDecoration: 'none' }}>
+              <span className="topbarNavLink">
+                <Home className="iconstyle" />
+              </span>
+            </NavLink>
+            <NavLink
+              to="/feeds"
+              style={{ color: 'white', textDecoration: 'none' }}
+            >
+              <span className="topbarNavLink">
+                <TimelineIcon className="iconstyle" />{' '}
+              </span>
+            </NavLink>
+
+            <NavLink
+              to="/community"
+              style={{ color: 'white', textDecoration: 'none' }}
+            >
+              <span className="topbarNavLink">
+                <People className="iconstyle" />{' '}
+              </span>
+            </NavLink>
+
+            <div className="topbarIconItem">
+              <NavLink to="/messenger">
+                <Chat className="iconstyle" style={{ color: 'white' }} />
+              </NavLink>
+
+              {/* <span className="topbarIconBadge">2</span> */}
+            </div>
+          </div>
+          <div className="topbarRight">
+            <div className="topbarIcons">
+              <div className="topbarIconItem">
+                <Tooltip title="Friend Request">
+                  <IconButton aria-label="delete" onClick={showFriendRequest}>
+                    <Person className="iconstyle" style={{ color: 'white' }} />
+                    <span className="topbarIconBadge">
+                      {friendRequest?.length}{' '}
+                    </span>
+                  </IconButton>
+                </Tooltip>
+              </div>
+              <div tabIndex="-1" ref={inputRef}>
+                {dropdownMenu && (
+                  <div className="displayFriendRequest">
+                    {friendRequest.length ? (
+                      friendRequest.map((u) => <FriendRequest key={u} id={u} />)
+                    ) : (
+                      <p className="norequest"> No Friend's Request 😋 </p>
+                    )}
+                  </div>
+                )}
+              </div>
+              <NavLink to={`/profile/${user.username}`}>
+                <Avatar
+                  alt={user.username}
+                  src={
+                    user.profilePicture
+                      ? user.profilePicture
+                      : PF + 'person/noAvatar.png'
+                  }
+                />
+              </NavLink>
+            </div>
+
+            <span className="logout">
+              <NavLink to="/login" onClick={logout}>
+                <span className="hide-sm">logout</span> <ExitToApp />
+              </NavLink>
+            </span>
+          </div>
+        </Toolbar>
+      </AppBar>
+    </>
+  );
+};
+
+export default Topbar;

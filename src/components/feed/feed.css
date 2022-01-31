@@ -1,0 +1,20 @@
+.feed {
+  flex: 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.feedWrapper {
+  box-sizing: border-box;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 30px;
+}
+@media (max-width: 800px) {
+  .feedWrapper {
+    margin: 0px;
+  }
+}

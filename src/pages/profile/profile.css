@@ -1,0 +1,244 @@
+/* .profile {
+
+} */
+
+.profileRightTop {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 20px !important;
+}
+
+.profileCover {
+  height: 380px !important;
+  position: relative;
+}
+
+.profileCoverImg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.profileCoverImg img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  background-size: auto;
+  background-position: center;
+
+  background-color: #e4f0f6;
+  border: none;
+  outline: none;
+}
+.profileCoverImg div {
+  width: 100%;
+  height: 360px;
+  background: white;
+  background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+  border-radius: 2rem;
+  backdrop-filter: blur(2rem);
+}
+.profileCoverImg button {
+  position: absolute;
+  right: 6%;
+  margin-top: 20px;
+  padding: 5px 5px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.profileCoverImg button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.profileCoverImg button label {
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+
+.profileCoverImg .MuiSvgIcon-root {
+  margin-left: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.profileUserImg {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 220px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.profileUserImg img {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  border: 3px solid #00a5f4;
+}
+.profileUserImg .uploadIcon {
+  position: absolute;
+  right: 0px;
+  top: 122px;
+  cursor: pointer;
+
+  height: 30px;
+  width: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profileUserImg div .MuiSvgIcon-root {
+  cursor: pointer;
+  font-size: 30px !important;
+  background-color: #e4e6eb;
+  border-radius: 50%;
+  padding: 3px;
+  padding-bottom: 0px;
+}
+
+.upload_progress {
+  position: absolute;
+}
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileInfoName {
+  font-size: 30px;
+  margin-top: 60px;
+  text-align: center;
+  width: 100%;
+  color: #0c163b;
+  font-weight: 600;
+  text-align: center;
+}
+
+.profileInfoDesc {
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.profileFollow {
+  margin-top: 10px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: #0c163b;
+}
+
+.followInfo th,
+td {
+  padding: 5px 10px;
+}
+.profileRightBottom {
+  display: flex;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.btn_function {
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.rightbarFollowButton {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 15px;
+  color: #0079d3 !important;
+  min-width: 24px;
+  box-sizing: border-box;
+  padding: 2px 15px !important;
+  border: 1px solid #092e4b;
+  border-radius: 20px !important;
+  background-color: rgba(128, 128, 128, 0.123) !important;
+}
+
+.rightbarFollowButton .MuiCircularProgress-root {
+  margin-left: 7px;
+}
+.rightbarFollowButton:hover {
+  outline: none;
+  background-color: #8ec6f11f !important;
+}
+
+@media (max-width: 800px) {
+  .profileCoverImg img {
+    object-fit: fill;
+  }
+  .profileRightTop {
+    padding: 0px !important;
+  }
+  .profileRightBottom {
+    flex-direction: column-reverse;
+  }
+  .profileCover {
+    height: 330px !important;
+  }
+
+  .profileCoverImg button {
+    margin-top: 10px;
+    padding: 3px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(30px);
+    color: #fff;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  .profileCoverImg {
+    margin: 0% !important;
+  }
+  .profileCoverImg img {
+    height: 280px;
+  }
+  .profileUserImg {
+    width: 150px;
+    height: 150px;
+    top: 170px;
+  }
+  .profileUserImg img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profileUserImg .uploadIcon {
+    position: absolut e;
+    right: -2%;
+    top: 60%;
+  }
+  .profileInfoName {
+    margin-top: 0px;
+  }
+}
