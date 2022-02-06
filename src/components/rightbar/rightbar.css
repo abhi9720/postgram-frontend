@@ -1,6 +1,7 @@
 * {
   -webkit-font-smoothing: antialiased;
 }
+
 .rightbar {
   overflow-y: scroll;
   flex: 3;
@@ -26,6 +27,7 @@
   font-weight: 300;
   font-size: 15px;
 }
+
 .rightbarAd {
   margin-top: 20px;
   position: relative;
@@ -33,6 +35,7 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
+
 .rightbarAd_img {
   width: 100%;
   border-radius: 10px;
@@ -41,6 +44,7 @@
   position: absolute;
   margin-top: -2px;
 }
+
 .rightbarAd_text {
   position: absolute;
   z-index: 10;
@@ -48,15 +52,18 @@
   color: white;
   padding: 0px 8px;
 }
+
 .rightbarTitle {
   margin-bottom: 20px;
 }
+
 .rightbarconnections {
   display: flex;
   font-size: 25px;
   height: fit-content;
   padding: 5px 4px;
 }
+
 .rightbarconnections button {
   display: inline-block;
   background-color: #dae0e6b9;
@@ -65,6 +72,7 @@
   text-transform: capitalize;
   font-weight: 600;
 }
+
 /* // .rightbarconnections div {
 // 	display: flex;
 // 	align-items: center;
@@ -101,6 +109,7 @@
   font-size: 1rem;
   cursor: pointer;
 }
+
 .rightbarTitle button:focus {
   border: 2px dashed rgba(25, 37, 25, 1);
 }
@@ -166,7 +175,7 @@
   flex-direction: column;
 }
 
-.rightbarFollowings > span {
+.rightbarFollowings>span {
   display: block;
   font-size: 20px;
   font-weight: 500;
@@ -179,6 +188,7 @@
   color: rgba(18, 12, 68, 0.822);
   margin: 5px 0px;
 }
+
 .rightbarFollowings_display {
   margin-top: 10px;
 }
@@ -213,6 +223,7 @@
   margin-top: 8px;
   color: #18135e;
 }
+
 .rightbarFollowing:hover {
   filter: brightness(115%) drop-shadow(-6px 6px 5px #cfb8b8);
   -webkit-filter: brightness(115%) drop-shadow(-6px 6px 5px #cfb8b8);
@@ -241,6 +252,7 @@
   .rightbar {
     display: none;
   }
+
   .rightbarFollowings,
   .rightbarconnections {
     display: none;

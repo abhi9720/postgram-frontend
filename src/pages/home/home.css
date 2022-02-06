@@ -13,3 +13,9 @@
     display: none;
   }
 }
+
+@media (min-width: 700px) {
+  .hide-lg {
+    display: none;
+  }
+}

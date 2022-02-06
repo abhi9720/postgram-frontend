@@ -22,8 +22,9 @@
   font-size: 34px;
   color: white;
   cursor: pointer;
-  
+
 }
+
 .topbarCenter {
   width: 100%;
   display: flex;
@@ -42,6 +43,7 @@
   box-sizing: border-box;
   padding: 0px 40px;
 }
+
 .topbarLink {
   margin-right: 10px;
   font-size: 14px;
@@ -94,10 +96,12 @@
   align-items: center;
   text-decoration: none;
 }
+
 .logout a:hover {
   color: #fff !important;
   text-decoration: none;
 }
+
 .logout a .MuiSvgIcon-root {
   margin-left: 4px;
 }
@@ -110,12 +114,12 @@
   min-width: 250px;
   max-width: 400px;
   padding: 10px 10px;
-  background: #141e30; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #243b55,
-    #141e30
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: #141e30;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right,
+      #243b55,
+      #141e30);
+  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #243b55, #4a6088);
 
   color: white;
@@ -142,10 +146,12 @@
   margin-bottom: 20px;
   align-self: center;
 }
+
 @keyframes animate {
   from {
     transform: scale(0.5);
   }
+
   to {
     transform: scale(1);
   }
@@ -155,24 +161,29 @@
   .topbarLeft {
     width: 0;
   }
+
   .topbarCenter {
     width: 60%;
     padding-left: 0px;
     margin-left: 0px;
     justify-content: space-between;
   }
+
   .topbarRight {
     width: 40%;
     padding: 0px;
     margin: 0px;
     justify-content: space-between;
   }
+
   .MuiSvgIcon-root {
     font-size: 12px;
   }
+
   .logout a .MuiSvgIcon-root {
     margin-left: 4px;
   }
+
   .MuiPaper-root {
     margin: 0;
     padding: 0;
@@ -180,5 +191,5 @@
 }
 
 .MuiToolbar-regular {
-  min-height: none !important ;
+  min-height: none !important;
 }

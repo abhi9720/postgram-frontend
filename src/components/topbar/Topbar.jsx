@@ -84,6 +84,7 @@ const Topbar = () => {
 
             <NavLink
               to="/community"
+              className="hide-lg"
               style={{ color: 'white', textDecoration: 'none' }}
             >
               <span className="topbarNavLink">
