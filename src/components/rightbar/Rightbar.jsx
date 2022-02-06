@@ -10,6 +10,7 @@ import Friends from "../friends/Friends";
 import { Button } from "@material-ui/core";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import axiosInstance from "../../utils/axiosConfig";
 export default function Rightbar({ user }) {
   // const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 

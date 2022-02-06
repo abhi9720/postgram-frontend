@@ -87,6 +87,7 @@ export default function Profile() {
     }
   };
 
+  console.log("Port : " + process.env.REACT_APP_End_Point);
   useEffect(() => {
     socket.current = io.connect(process.env.REACT_APP_End_Point);
     socket.current.emit("addUser", currentUser._id); // send request to server as user chnage and send my user id
