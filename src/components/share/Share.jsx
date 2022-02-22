@@ -1,9 +1,11 @@
+import React from 'react'
 import "./share.css";
 import { PermMedia, Cancel } from "@material-ui/icons";
 import { useContext, useRef, useState } from "react";
 import axiosInstance from "../../utils/axiosConfig";
+import axios from 'axios'
 import { AuthContext } from "../../context/AuthContext";
-import { Avatar, Fab, LinearProgress } from "@material-ui/core";
+import { Avatar, LinearProgress } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import { Link } from "react-router-dom";
@@ -15,7 +17,7 @@ const Share = () => {
   const desc = useRef();
   const [isposting, setIsPosting] = useState(false);
   const [file, setFile] = useState(null);
-  const [hide, setHide] = useState(true);
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     const newPost = {
@@ -25,7 +27,6 @@ const Share = () => {
     if (!file && desc.current.value.length === 0) {
       return;
     }
-
     setIsPosting(true);
     if (file) {
       const data = new FormData();
@@ -35,37 +36,73 @@ const Share = () => {
       data.append("upload_preset", "chatsocial");
       data.append("cloud_name", "abhi97");
 
-      try {
-        const res = await axiosInstance.post(
-          "https://api.cloudinary.com/v1_1/abhi97/image/upload",
-          data
-        );
+      axios.post(
+        "https://api.cloudinary.com/v1_1/abhi97/image/upload",
+        data
+      ).then(async (res) => {
         newPost.img = res.data.url;
+        console.log(res.data);
+        await axiosInstance.post("/post", newPost);
+        desc.current.value = "";
+      })
+        .catch(err => {
+          // show some message on err
+          console.log(err)
+          alert("Failed to post ")
+        })
+        .finally(r => {
+          // document.getElementById("cancelPost").click()
+          setIsPosting(false);
+          window.location.reload();
+        })
+
+
+      //   try {
+      //     const res = await axios.post(
+      //       "https://api.cloudinary.com/v1_1/abhi97/image/upload",
+      //       data
+      //     );
+
+      //     alert("new url  : " + res.data.url)
+
+      //   } catch (err) {
+      //     console.log(err);
+      //     document.getElementById("cancelPost").click()
+      //   }
+      // }
+
+      // try {
+      //   await axiosInstance.post("/post", newPost);
+      //   desc.current.value = "";
+      //   // window.location.reload();
+      // } catch (err) {
+      //   console.log(err);
+      // } finally {
+      //   setIsPosting(false);
+      // }
+    }
+    else {
+      try {
+        await axiosInstance.post("/post", newPost);
+        desc.current.value = "";
+
       } catch (err) {
         console.log(err);
+      } finally {
+        window.location.reload();
+        setIsPosting(false);
       }
     }
-
-    try {
-      await axiosInstance.post("/post", newPost);
-      desc.current.value = "";
-      window.location.reload();
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsPosting(false);
-    }
-  };
+  }
   return (
     <>
       <div className="share">
         <div className="shareWrapper">
           <div className="shareTop">
             <div
-              className="d-flex justify-content-between"
-              style={{ width: "100% " }}
-            >
-              <Link to={`/profile/${user.username}`}>
+              className="d-flex align-items-center"
+              style={{ width: "100% " }}>
+              <Link to={`/profile/${user.username}`} className="d-flex">
                 <Avatar
                   src={
                     user.profilePicture
@@ -75,9 +112,11 @@ const Share = () => {
                   alt=""
                   className="shareProfileImg"
                 />
-              </Link>
 
-              <Fab
+              </Link>
+              <span className='fs-5 fw-bold'>{user?.username}</span>
+
+              {/* <Fab
                 variant="extended"
                 color={hide ? "primary" : "default"}
                 aria-label="post"
@@ -88,17 +127,17 @@ const Share = () => {
                 }}
               >
                 Add Post
-              </Fab>
+              </Fab> */}
             </div>
 
-            {!hide && (
-              <TextareaAutosize
-                ref={desc}
-                type="text"
-                className="shareInput"
-                placeholder={"What's is in your mind " + user.username + " ?"}
-              />
-            )}
+
+            <TextareaAutosize
+              ref={desc}
+              type="text"
+              className="shareInput"
+              placeholder={"What's is in your mind " + user.username + " ?"}
+            />
+
           </div>
 
           {file && (
@@ -116,35 +155,35 @@ const Share = () => {
             </div>
           )}
           <form className="shareBottom" onSubmit={onSubmitHandler}>
-            {!hide && (
-              <>
-                <div className="shareOptions ml-lg-5">
-                  <label htmlFor="file" className="shareOption">
-                    <PermMedia htmlColor="tomato" className="shareIcon" />
-                    <span className="shareOptionText">Photo or vedio </span>
-                    <input
-                      type="file"
-                      id="file"
-                      accept=".png,.jpeg,.jpg"
-                      onChange={(e) => {
-                        setFile(e.target.files[0]);
-                      }}
-                      style={{ display: "none" }}
-                    />
-                  </label>
-                </div>
 
-                <Button
-                  variant="contained"
-                  className="shareButton"
-                  color="primary"
-                  type="submit"
-                  endIcon={<SendIcon />}
-                >
-                  Post
-                </Button>
-              </>
-            )}
+            <>
+              <div className="shareOptions">
+                <label htmlFor="file" className="shareOption">
+                  <PermMedia htmlColor="tomato" className="shareIcon" />
+                  <span className="shareOptionText">Photo or vedio </span>
+                  <input
+                    type="file"
+                    id="file"
+                    accept=".png,.jpeg,.jpg"
+                    onChange={(e) => {
+                      setFile(e.target.files[0]);
+                    }}
+                    style={{ display: "none" }}
+                  />
+                </label>
+              </div>
+
+              <Button
+                variant="contained"
+                className="shareButton"
+                color="primary"
+                type="submit"
+                endIcon={<SendIcon />}
+              >
+                Post
+              </Button>
+            </>
+
           </form>
 
           <div className="update_status">

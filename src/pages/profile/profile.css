@@ -1,54 +1,82 @@
-/* .profile {
+.profile {
 
-} */
+  margin-top: 40px !important;
+  background-color: white;
+
+  border: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 20px rgb(8 21 66 / 5%);
+  box-shadow: 0 0 20px rgb(8 21 66 / 5%);
+}
+
+.shadowbg {
+  background-color: white;
+  margin-bottom: 30px;
+  border: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 20px rgb(8 21 66 / 5%);
+  box-shadow: 0 0 20px rgb(8 21 66 / 5%);
+}
 
 .profileRightTop {
   display: flex;
   flex-direction: column;
-  padding: 0px 20px !important;
+  padding: 0px !important;
+
 }
 
 .profileCover {
-  height: 380px !important;
+  height: calc(100vh - 260px) !important;
   position: relative;
+
 }
 
 .profileCoverImg {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  margin-top: 20px;
+  height: fit-content;
+  height: 70%;
   box-sizing: border-box;
 }
 
 .profileCoverImg img {
   width: 100%;
-  height: 360px;
+  height: 100%;
   object-fit: cover;
   background-size: auto;
   background-position: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 
   background-color: #e4f0f6;
   border: none;
   outline: none;
 }
+
 .profileCoverImg div {
   width: 100%;
-  height: 360px;
+  height: 100%;
   background: white;
   background: linear-gradient(to right top, #65dfc9, #6cdbeb);
-  border-radius: 2rem;
+  /* border-radius: 2rem; */
   backdrop-filter: blur(2rem);
 }
+
 .profileCoverImg button {
   position: absolute;
-  right: 6%;
+  right: 1%;
   margin-top: 20px;
   padding: 5px 5px;
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+
   backdrop-filter: blur(30px);
   color: #fff;
   font-weight: 700;
@@ -57,9 +85,11 @@
   cursor: pointer;
   text-transform: uppercase;
 }
+
 .profileCoverImg button:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
+
 .profileCoverImg button label {
   cursor: pointer;
   margin-bottom: 0px;
@@ -70,41 +100,54 @@
   cursor: pointer;
   opacity: 0.7;
 }
+
 .profileUserImg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0%;
+  margin: auto;
   width: 190px;
   height: 190px;
   border-radius: 50%;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: 220px;
+  height: 200px;
+  width: 200px;
+
   display: flex;
-  flex-direction: column-reverse;
+  justify-content: center;
+
+
 }
+
+.profileUserImageCover {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+}
+
 .profileUserImg img {
-  width: 190px;
-  height: 190px;
+  width: 170px;
+  height: 170px;
   border-radius: 50%;
   object-fit: cover;
 
   -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
   box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-  border: 3px solid #00a5f4;
+  border: 4px solid #fff;
 }
+
 .profileUserImg .uploadIcon {
   position: absolute;
-  right: 0px;
-  top: 122px;
+  top: 60%;
+  right: 3%;
   cursor: pointer;
-
-  height: 30px;
-  width: 30px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
+
 .profileUserImg div .MuiSvgIcon-root {
   cursor: pointer;
   font-size: 30px !important;
@@ -116,7 +159,10 @@
 
 .upload_progress {
   position: absolute;
+  top: 2px;
+  left: 2px;
 }
+
 .profileInfo {
   display: flex;
   flex-direction: column;
@@ -125,12 +171,12 @@
 }
 
 .profileInfoName {
-  font-size: 30px;
-  margin-top: 60px;
+
+
   text-align: center;
   width: 100%;
   color: #0c163b;
-  font-weight: 600;
+  font-weight: 400;
   text-align: center;
 }
 
@@ -140,8 +186,7 @@
 }
 
 .profileFollow {
-  margin-top: 10px;
-  align-self: center;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -150,21 +195,28 @@
   color: #0c163b;
 }
 
-.followInfo th,
-td {
-  padding: 5px 10px;
+
+
+.btn_function {
+
+  width: 40%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
+
+.btn_function div {
+  display: inline-block;
+  margin-left: 30px;
+}
+
 .profileRightBottom {
   display: flex;
   padding: 0 !important;
   margin: 0 !important;
 }
 
-.btn_function {
-  margin-left: 20px;
-  display: flex;
-  justify-content: space-evenly;
-}
+
 
 .rightbarFollowButton {
   display: flex;
@@ -176,7 +228,7 @@ td {
   min-width: 24px;
   box-sizing: border-box;
   padding: 2px 15px !important;
-  border: 1px solid #092e4b;
+
   border-radius: 20px !important;
   background-color: rgba(128, 128, 128, 0.123) !important;
 }
@@ -184,6 +236,7 @@ td {
 .rightbarFollowButton .MuiCircularProgress-root {
   margin-left: 7px;
 }
+
 .rightbarFollowButton:hover {
   outline: none;
   background-color: #8ec6f11f !important;
@@ -193,22 +246,56 @@ td {
   .profileCoverImg img {
     object-fit: fill;
   }
+
+  .profileFollow {
+    flex-direction: column;
+    padding-bottom: 30px;
+  }
+
+  .followInfo {
+    width: 100%;
+  }
+
+  .btn_function {
+    width: inherit !important;
+    justify-content: space-evenly;
+
+  }
+
   .profileRightTop {
     padding: 0px !important;
   }
+
   .profileRightBottom {
     flex-direction: column-reverse;
   }
+
   .profileCover {
-    height: 330px !important;
+    height: calc(100vh - 370px) !important;
   }
+
+
+
+  .profileUserImg {
+    width: 150px;
+    height: 150px;
+    top: 170px;
+    top: 60%;
+  }
+
+  .profileUserImg img {
+    width: 150px;
+    height: 150px;
+  }
+
+
 
   .profileCoverImg button {
     margin-top: 10px;
     padding: 3px;
     border-radius: 15px;
     background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+
     backdrop-filter: blur(30px);
     color: #fff;
     font-weight: 700;
@@ -217,28 +304,66 @@ td {
     cursor: pointer;
     text-transform: uppercase;
   }
+
   .profileCoverImg {
     margin: 0% !important;
   }
+
   .profileCoverImg img {
-    height: 280px;
-  }
-  .profileUserImg {
-    width: 150px;
-    height: 150px;
-    top: 170px;
-  }
-  .profileUserImg img {
-    width: 150px;
-    height: 150px;
+    height: 70%px;
   }
 
   .profileUserImg .uploadIcon {
-    position: absolut e;
-    right: -2%;
+    position: absolute;
     top: 60%;
+    right: 0%;
+    cursor: pointer;
   }
+
   .profileInfoName {
     margin-top: 0px;
+
   }
+
+  .divider {
+    width: 100% !important;
+    background-color: #e2e8f0;
+    height: 1px;
+    margin-bottom: 20px;
+  }
+}
+
+.uploadCoverBtn {
+  display: inline-block;
+  font-size: 0.75rem;
+
+  letter-spacing: 0;
+  font-weight: 700;
+
+  color: #007FFF;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #0072E5;
+  font-weight: 700;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  padding: 3px 8px;
+
+  background-color: #F0F7FF;
+  border: 1px solid;
+
+  border-color: #E0E3E7;
+  border-radius: 10px;
+  transition-property: all;
+  transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  color: #0072E5;
+  font-weight: 500;
 }

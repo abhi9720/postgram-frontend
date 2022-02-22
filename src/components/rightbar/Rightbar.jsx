@@ -2,34 +2,93 @@ import React, { useEffect } from "react";
 import "./rightbar.css";
 // import { Users } from '../../dummyData';
 // import Online from '../online/Online';
-import { useContext, useRef, useState } from "react";
-import axiaxiosInstanceos from "../../utils/axiosConfig";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
-import { AuthContext } from "../../context/AuthContext";
+import { useState } from "react";
+
+
+// import { AuthContext } from "../../context/AuthContext";
 import Friends from "../friends/Friends";
 import { Button } from "@material-ui/core";
-import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+
 import axiosInstance from "../../utils/axiosConfig";
+import { Link } from "react-router-dom";
+import CloseFriend from "../closefriend/CloseFriend";
+const u = {
+  _id: '19103056',
+  username: "Abhishek Tiwari",
+  profilePicture: ""
+}
 export default function Rightbar({ user }) {
   // const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  const { user: currentUser } = useContext(AuthContext);
+  // const { user: currentUser } = useContext(AuthContext);
 
   const HomeRightbar = () => {
     return (
       <>
-        <div className="birthdayContainer">
-          <img className="birthdayImg" src={"assets/gift.png"} alt="" />
-          <span className="birthdayText">
-            <b>Abhishek and chaitanya</b> and <b>3 other friends</b> have a
-            birhday today.
-          </span>
+        <div className="homeright">
+          <p className="fs-4">Suggestions For You</p>
+
+          <Link
+            className="friend_name"
+
+            to={"/profile/abhi"}
+            style={{ textDecoration: "none" }}
+
+          >
+            <CloseFriend key={u._id} user={u} />
+          </Link>
+          <Link
+            className="friend_name"
+
+            to={"/profile/abhi"}
+            style={{ textDecoration: "none" }}
+
+          >
+            <CloseFriend key={u._id} user={u} />
+          </Link>
+
+
+
+          <Link
+            className="friend_name"
+
+            to={"/profile/abhi"}
+            style={{ textDecoration: "none" }}
+
+          >
+            <CloseFriend key={u._id} user={u} />
+          </Link>
+
+          <Link
+            className="friend_name"
+
+            to={"/profile/abhi"}
+            style={{ textDecoration: "none" }}
+
+          >
+            <CloseFriend key={u._id} user={u} />
+          </Link>
+          <Link
+            className="friend_name"
+
+            to={"/profile/abhi"}
+            style={{ textDecoration: "none" }}
+
+          >
+            <CloseFriend key={u._id} user={u} />
+          </Link>
+          <Link
+            className="friend_name"
+
+            to={"/profile/abhi"}
+            style={{ textDecoration: "none" }}
+
+          >
+            <CloseFriend key={u._id} user={u} />
+          </Link>
+
         </div>
-        <div className="rightbarAd">
-          <p className="rightbarAd_text">Ad</p>
-          <img className="rightbarAd_img" src="assets/ad.png" alt="" />
-        </div>
+
       </>
     );
   };
@@ -49,24 +108,24 @@ export default function Rightbar({ user }) {
       };
       getFriends();
     }, [user]);
-    const [isedit, setIsEdit] = useState(false);
-    const info = useRef({ ...user });
+    // const [isedit, setIsEdit] = useState(false);
+    // const info = useRef({ ...user });
 
-    const saveInfo = async () => {
-      setIsEdit(!isedit);
-      if (isedit) {
-        try {
-          await axiosInstance.put(`/user/${info.current._id}`, info.current);
-        } catch (err) {
-          console.log(err);
-        }
-      }
-    };
+    // const saveInfo = async () => {
+    //   setIsEdit(!isedit);
+    //   if (isedit) {
+    //     try {
+    //       await axiosInstance.put(`/user/${info.current._id}`, info.current);
+    //     } catch (err) {
+    //       console.log(err);
+    //     }
+    //   }
+    // };
 
     const [text, setText] = useState(" Friends");
-    const inputEvent = (event) => {
-      info.current[event.target.id] = event.target.innerText;
-    };
+    // const inputEvent = (event) => {
+    //   info.current[event.target.id] = event.target.innerText;
+    // };
 
     const fetchFriend = () => {
       setText(" Friends");
@@ -85,7 +144,7 @@ export default function Rightbar({ user }) {
 
     return (
       <div className="profile_status">
-        <h4
+        {/* <h4
           className="rightbarTitle"
           style={
             user.username !== currentUser.username
@@ -103,8 +162,8 @@ export default function Rightbar({ user }) {
           ) : (
             ""
           )}
-        </h4>
-        <div className="rightbarInfo">
+        </h4> */}
+        {/* <div className="rightbarInfo">
           <div key="city" className="rightbarInfoItem">
             <span className="rightbarInfoKey">
               {" "}
@@ -144,6 +203,7 @@ export default function Rightbar({ user }) {
               <FavoriteIcon />
             </span>
             <span
+              type="range"
               className="rightbarInfoValue"
               name="relationships"
               id="relationships"
@@ -159,7 +219,7 @@ export default function Rightbar({ user }) {
                   : "N/A"}
             </span>
           </div>
-        </div>
+        </div> */}
 
         {/* // users friend  */}
 
@@ -186,14 +246,23 @@ export default function Rightbar({ user }) {
     );
   };
   return (
-    <div className="rightbar">
-      <div className="rightbarWrapper" style={user ? { flex: 4 } : { flex: 2 }}>
-        {user ? (
-          <ProfileRightbar key={user._id} user={user} />
-        ) : (
-          <HomeRightbar />
-        )}
-      </div>
-    </div>
+    <>
+
+      {user ? (
+        <div className="rightbar">
+          <div className="rightbarWrapper">
+            <ProfileRightbar key={user._id} user={user} />
+          </div>
+        </div>
+      ) : (
+        <div className="rightbar hide-sm">
+          <div className="rightbarWrapper hide-sm">
+            <HomeRightbar />
+          </div>
+
+        </div>
+      )}
+
+    </>
   );
 }

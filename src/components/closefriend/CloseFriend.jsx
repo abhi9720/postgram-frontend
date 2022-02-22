@@ -1,3 +1,4 @@
+import React from 'react'
 import "./closefriend.css";
 import Avatar from "@material-ui/core/Avatar";
 const CloseFriend = ({ user }) => {
@@ -9,17 +10,17 @@ const CloseFriend = ({ user }) => {
           src={
             user.profilePicture.startsWith("https")
               ? user.profilePicture.replace(
-                  "/upload",
-                  "/upload/w_1000,h_1000,c_thumb,g_faces"
-                )
+                "/upload",
+                "/upload/w_1000,h_1000,c_thumb,g_faces"
+              )
               : PF + "person/noAvatar.png"
           }
           alt=""
           className="sidebarFriendImg"
         >
-          {user.username[0].toUpperCase()}
+          {user.username ? user.username[0].toUpperCase() : "Abhi"}
         </Avatar>
-        <span className="sidebarFriendName">{user.username}</span>
+        <span className="sidebarFriendName">{user.username || 'Abhi'}</span>
       </li>
     </>
   );

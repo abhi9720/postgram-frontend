@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
+
+.navbar-brand-logo {
+  font-family: 'Redressed', cursive !important;
+  font-weight: 700;
+  color: #141e30 !important;
+  font-size: xx-large;
+
+}
+
+.customnav {
+  max-width: 100vw;
+  z-index: 8;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 4px 40px rgb(0 0 0 / 7%);
+  box-shadow: 0px 4px 40px rgb(0 0 0 / 7%);
+}
+
+
 .navbar_css {
   background-color: #3834b0 !important;
   padding-top: 0px;
@@ -34,12 +53,13 @@
   padding: 0px 20px;
 }
 
+
+
 .topbarRight {
-  width: 30%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: white;
+
   box-sizing: border-box;
   padding: 0px 40px;
 }
@@ -64,19 +84,23 @@
 }
 
 .topbarIconBadge {
-  width: 15px;
-  height: 15px;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  height: fit-content;
+  width: fit-content;
+  padding: 0px 4px;
+
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
   background-color: red;
   border-radius: 50%;
   color: #fff;
 
-  position: absolute;
-  top: 6px;
-  right: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
+
+
 }
 
 .topbarImg {
@@ -87,10 +111,14 @@
   cursor: pointer;
 }
 
+
+
+.displayFriendRequest {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+}
+
 .logout a {
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,39 +134,33 @@
   margin-left: 4px;
 }
 
+
+
 .displayFriendRequest {
-  position: absolute;
+  position: fixed;
   right: 18%;
-  top: 105%;
+  top: 10%;
   z-index: 1;
-  min-width: 250px;
-  max-width: 400px;
   padding: 10px 10px;
-  background: #141e30;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right,
-      #243b55,
-      #141e30);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #243b55, #4a6088);
-
-  color: white;
   display: flex;
-
   overflow-y: scroll;
-
   flex-direction: column;
   border-radius: 8px;
-
-  -webkit-box-shadow: 0px 10px 39px 10px rgba(62, 66, 66, 0.22);
-  -moz-box-shadow: 0px 10px 39px 10px rgba(62, 66, 66, 0.22);
-  box-shadow: 0px 10px 39px 10px rgba(62, 66, 66, 0.22);
-  z-index: 1000;
-
+  z-index: 100;
   cursor: pointer;
   animation: animate 0.3s;
+  min-width: 250px;
+  max-width: 400px;
   min-height: 150px;
   max-height: 400px;
+  background-color: #fff;
+
+}
+
+@media(max-width:800px) {
+  .displayFriendRequest {
+    top: 16%;
+  }
 }
 
 .norequest {
@@ -170,7 +192,7 @@
   }
 
   .topbarRight {
-    width: 40%;
+    /* border: 1px solid red; */
     padding: 0px;
     margin: 0px;
     justify-content: space-between;
@@ -190,6 +212,6 @@
   }
 }
 
-.MuiToolbar-regular {
+/* .MuiToolbar-regular {
   min-height: none !important;
-}
+} */

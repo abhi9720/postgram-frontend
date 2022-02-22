@@ -1,3 +1,4 @@
+import React from 'react'
 import "./message.css";
 import { format } from "timeago.js";
 const Message = ({ Message, own, img }) => {

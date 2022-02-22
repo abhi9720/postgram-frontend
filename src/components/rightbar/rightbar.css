@@ -1,26 +1,27 @@
-* {
-  -webkit-font-smoothing: antialiased;
-}
-
 .rightbar {
   overflow-y: scroll;
-  flex: 3;
-  font-family: "Mulish", sans-serif;
+  width: 100%;
+  flex: calc(1 / 3);
+
 }
 
 .rightbarWrapper {
-  padding: 20px 20px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .birthdayContainer {
-  display: flex;
-  align-items: center;
+  border: 1px solid #0067b8;
+  position: relative;
 }
 
 .birthdayImg {
   width: 40px;
   height: 40px;
+  top: 10px;
   margin-right: 10px;
+  position: absolute;
 }
 
 .birthdayText {
@@ -29,8 +30,7 @@
 }
 
 .rightbarAd {
-  margin-top: 20px;
-  position: relative;
+  margin-top: 30px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -39,10 +39,8 @@
 .rightbarAd_img {
   width: 100%;
   border-radius: 10px;
-  margin: 30px 0;
   max-width: calc(100vh / 2);
-  position: absolute;
-  margin-top: -2px;
+
 }
 
 .rightbarAd_text {
@@ -62,6 +60,7 @@
   font-size: 25px;
   height: fit-content;
   padding: 5px 4px;
+
 }
 
 .rightbarconnections button {
@@ -151,28 +150,24 @@
 
 .rightbarInfoValue {
   font-weight: 300;
-
-  max-width: 350px;
-  max-height: 40px;
+  height: fit-content;
   overflow: hidden;
   font-size: 18px;
 }
 
 .rightbarInfoValue:focus-within {
-  box-sizing: border-box;
-  outline: none;
-  border: 1px solid #f85618;
-  font-weight: 400;
-  background-color: #f9f9fb;
-  padding: 0px 3px;
-  color: rgba(18, 12, 68, 0.822);
-  text-indent: 4px;
-  letter-spacing: 0.4px;
+  padding: 0.4rem 0.6rem;
+  background: #fafafa;
+  border: 1px solid #dbdbdb;
+  font-family: "Fira Sans", sans-serif;
+  font-size: 1rem;
+  border-radius: 4px
 }
 
 .rightbarFollowings {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 .rightbarFollowings>span {
@@ -199,7 +194,6 @@
   margin-bottom: 5px;
   margin-right: 5px;
   cursor: pointer;
-  background: #f9f9fb;
   border-radius: 6px;
   border: 1px solid transparent;
   width: 128px;
@@ -208,6 +202,9 @@
   cursor: pointer;
   padding-top: 5px;
   box-sizing: border-box;
+  background-color: white;
+
+
 }
 
 .rightbarFollowingImg {
@@ -220,7 +217,7 @@
 
 .rightbarFollowingName {
   align-self: center;
-  margin-top: 8px;
+
   color: #18135e;
 }
 
@@ -241,7 +238,7 @@
   outline: none;
   background-color: rgba(202, 199, 199, 0.144);
   font-size: 18px;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 .profile_status {
@@ -249,12 +246,10 @@
 }
 
 @media (max-width: 800px) {
-  .rightbar {
+  .homeright {
     display: none;
   }
 
-  .rightbarFollowings,
-  .rightbarconnections {
-    display: none;
-  }
+
+
 }

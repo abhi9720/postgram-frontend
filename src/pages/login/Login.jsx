@@ -11,6 +11,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { MutatingDots } from 'react-loader-spinner'
 
 const Login = () => {
   const [field, setField] = useState({
@@ -77,81 +78,97 @@ const Login = () => {
 
   return (
     <>
-      <div className="login">
-        <div className="loginWrapper">
-          <div className="loginLeft">
-            <h3 className="loginLogo">Postgram</h3>
-            <span className="loginDesc">
-              Connect with friends and the world around you on
-              postgram-social.herokuapp.com
-            </span>
-          </div>
-          <div className="loginRight">
-            <form className="loginBox" onSubmit={handleClick}>
-              <TextField
-                id="filled-email-input"
-                label="Email"
-                type="email"
-                name="email"
-                variant="filled"
-                onChange={inputEvent}
-                value={field.email}
-                validators={["required", "isEmail"]}
-              />
 
-              <TextField
-                id="filled-password-input"
-                label="Password"
-                variant="filled"
-                required
-                name="password"
-                type={values.showPassword ? "text" : "password"}
-                onChange={inputEvent}
-                value={field.password}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={handleClickShowPassword}
-                        // onMouseDown={handleMouseDownPassword}
-                      >
-                        {values.showPassword ? (
-                          <Visibility />
-                        ) : (
-                          <VisibilityOff />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
+      {
+        isFetching ?
+          <div class="d-flex vh-100 align-items-center justify-content-center">
+            {/* <ReactLoading type={'bars'} color="#00e676" /> */}
+            <MutatingDots height="100"
+              width="100"
+              color='#ff5733'
+              ariaLabel='loading' />
 
-              <button
-                type="submit"
-                className="loginButton"
-                disabled={isFetching}
-              >
-                {isFetching ? (
-                  <CircularProgress color="primary" size="24px" />
-                ) : (
-                  "Log In"
-                )}
-              </button>
-              {/* <span className="loginForget">Forgot Password</span> */}
-            </form>
-            <span className="registerNew">
-              Don't have an account?
-              <Link
-                to="/register"
-                style={{ textDecoration: "none" }}
-                className="loginRegisterButton"
-              >
-                Sign Up
-              </Link>
-            </span>
           </div>
-        </div>
-      </div>
+          :
+          <div className="login">
+            <div className="loginWrapper">
+              <div className="loginLeft">
+                <h3 className="loginLogo">Postgram</h3>
+                <span className="loginDesc">
+                  Connect with friends and the world around you on
+                  postgram-social.herokuapp.com
+                </span>
+              </div>
+              <div className="loginRight">
+                <form className="loginBox" onSubmit={handleClick}>
+                  <TextField
+                    id="filled-email-input"
+                    label="Email"
+                    type="email"
+                    name="email"
+                    variant="filled"
+                    onChange={inputEvent}
+                    value={field.email}
+                    validators={["required", "isEmail"]}
+                  />
+
+                  <TextField
+                    id="filled-password-input"
+                    label="Password"
+                    variant="filled"
+                    required
+                    name="password"
+                    type={values.showPassword ? "text" : "password"}
+                    onChange={inputEvent}
+                    value={field.password}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            onClick={handleClickShowPassword}
+                          // onMouseDown={handleMouseDownPassword}
+                          >
+                            {values.showPassword ? (
+                              <Visibility />
+                            ) : (
+                              <VisibilityOff />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+
+                  <button
+                    type="submit"
+                    className="loginButton"
+                    disabled={isFetching}
+                  >
+                    {isFetching ? (
+                      <CircularProgress color="primary" size="24px" />
+                    ) : (
+                      "Log In"
+                    )}
+                  </button>
+                  {/* <span className="loginForget">Forgot Password</span> */}
+                </form>
+                <span className="registerNew">
+                  Don't have an account?
+                  <Link
+                    to="/register"
+                    style={{ textDecoration: "none" }}
+                    className="loginRegisterButton"
+                  >
+                    Sign Up
+                  </Link>
+                </span>
+              </div>
+            </div>
+          </div>
+
+      }
+
+
     </>
   );
 };

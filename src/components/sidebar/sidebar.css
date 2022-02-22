@@ -1,24 +1,4 @@
-.sidebar {
-  flex: 3;
-  height: calc(100vh - 60px);
-  overflow-y: scroll;
-  position: sticky;
-  top: 60px;
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgb(179, 179, 179);
-}
-
-.left_container {
+/* .left_container {
   display: flex;
   flex-direction: column;
   min-width: 90px;
@@ -28,6 +8,11 @@
   position: sticky;
   top: 60px;
 
+} */
+
+.sidebar {
+
+  min-width: 400px !important;
 }
 
 .hide_show {
@@ -48,24 +33,23 @@
 }
 
 .sidebarWrapper {
-  padding: 5px 10px;
+
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
-.search_bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  border-bottom: 2px solid #1976d2;
-  margin-bottom: 20px;
-}
+
 
 .searchContainer {
+  padding: 0px 4px;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #efefef;
+  border-radius: 8px;
+  border: 1px solid transparent;
 }
 
 .searchContainer input {
@@ -75,32 +59,38 @@
   border: none;
   outline: none;
   letter-spacing: 0.3px;
-  width: 90%;
+  width: 100%;
+  background: #efefef;
 }
 
 .searchContainer .MuiSvgIcon-root {
-  opacity: 0.6;
-  color: rgb(22, 22, 224) !important;
+  opacity: 1;
+  color: #757373 !important;
+  font-weight: 800;
+  font-size: 35px;
+}
+
+.searchContainer:focus-within {
+  border: 1px solid #185adb;
+  background-color: white;
+}
+
+.searchContainer input:focus {
+  background-color: white;
 }
 
 .searchDisplay {
-  position: absolute;
-  width: 90%;
-  min-height: 200px;
-  max-height: 400px;
-  margin-top: 0px;
-
-  display: none;
+  width: 100%;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
   overflow-y: auto;
 
-
   z-index: 100000;
   background: #fff;
   box-shadow: 0 4px 10px rgb(0 0 0 / 8%);
   border-radius: 8px;
+  overflow-y: scroll;
 }
 
 @keyframes animate {
@@ -177,6 +167,25 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  position: fixed;
+  min-height: 400px;
+  max-height: 400px;
+  width: 21%;
+  top: 70px;
+
+
+
+}
+
+@media(max-width:1000px) {
+  .sidebarFriendList {
+    width: 80%;
+    right: 10px;
+  }
+
+  .sidebar {
+    min-width: 285px !important;
+  }
 }
 
 .searchedUser {
@@ -189,7 +198,6 @@
   align-self: center;
   box-sizing: border-box;
   padding-top: 40px;
-
   line-height: 30px;
   font-weight: 400;
   opacity: 1;

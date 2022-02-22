@@ -8,11 +8,11 @@ import { AuthContext } from "../../context/AuthContext";
 
 import Conversation from "../../components/conversation/Conversation";
 import axiosInstance from "../../utils/axiosConfig";
-import { Avatar, Button, CircularProgress, Fab, IconButton } from "@material-ui/core";
+import { Avatar, Button, CircularProgress } from "@material-ui/core";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import Message from "../../components/message/Message";
 
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Chat, Home } from "@material-ui/icons";
 
 const Messenger = () => {
@@ -24,11 +24,12 @@ const Messenger = () => {
   const [otherSide, setotherSide] = useState(null);
   const [send, setSend] = useState(false);
   const socket = React.useRef();
-  const scrollRef = useRef();
+  const messagesEndRef = useRef(null)
+
   const [messages, setMessages] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
-  const [search, SetSearch] = useState("");
+  // const [search, SetSearch] = useState("");
   const [hide, showSidebar] = useState(true);
 
   useEffect(() => {
@@ -119,8 +120,13 @@ const Messenger = () => {
     getMessages();
   }, [currentChat]);
 
+
+
+  const scrollToBottom = () => messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+
+
   useEffect(() => {
-    scrollRef?.current?.scrollIntoView({ behavior: "smooth" });
+    scrollToBottom()
   }, [messages]);
 
   useEffect(() => {
@@ -138,9 +144,9 @@ const Messenger = () => {
     }
   }, [currentUser, currentChat]);
 
-  useEffect(() => {
-    SetSearch();
-  }, [SetSearch]);
+  // useEffect(() => {
+  //   SetSearch();
+  // }, [SetSearch]);
 
   const sidebarHandler = () => {
     showSidebar(!hide);
@@ -255,7 +261,7 @@ const Messenger = () => {
 
                 <div className="chat_body">
                   {messages.map((m) => (
-                    <div key={m._id} ref={scrollRef}>
+                    <div key={m._id} ref={messagesEndRef}>
                       <Message
                         Message={m}
                         own={m.sender === currentUser._id ? true : false}

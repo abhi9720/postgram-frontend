@@ -1,7 +1,7 @@
 import './topbar.css';
 import React, { useRef } from 'react';
-import { Person, Chat, ExitToApp, Home, People } from '@material-ui/icons';
-import TimelineIcon from '@material-ui/icons/Timeline';
+import { Chat, ExitToAppOutlined, CancelOutlined, AddBoxOutlined, HomeSharp, PersonOutlined } from '@material-ui/icons';
+import Share from "../share/Share";
 import { NavLink } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
@@ -10,9 +10,11 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Avatar from '@material-ui/core/Avatar';
 import { io } from 'socket.io-client';
 import FriendRequest from '../FriendRequest/FriendRequest';
+// import { Fab } from '@material-ui/core';
+import Sidebar from '../sidebar/Sidebar';
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+
+
 
 const Topbar = () => {
   const { user, dispatch } = useContext(AuthContext);
@@ -60,89 +62,302 @@ const Topbar = () => {
 
   return (
     <>
-      <AppBar position="sticky" className="navbar_css" id="navbar">
-        <Toolbar>
-          <div className="topbarLeft hide-sm">
-            <NavLink to="/" style={{ textDecoration: 'none' }}>
-              <span className="logo">Postgram</span>
-            </NavLink>
-          </div>
-          <div className="topbarCenter">
-            <NavLink to="/" style={{ color: 'white', textDecoration: 'none' }}>
-              <span className="topbarNavLink">
-                <Home className="iconstyle" />
-              </span>
-            </NavLink>
-            <NavLink
-              to="/feeds"
-              style={{ color: 'white', textDecoration: 'none' }}
-            >
-              <span className="topbarNavLink">
-                <TimelineIcon className="iconstyle" />{' '}
-              </span>
-            </NavLink>
 
-            <NavLink
-              to="/community"
-              className="hide-lg"
-              style={{ color: 'white', textDecoration: 'none' }}
-            >
-              <span className="topbarNavLink">
-                <People className="iconstyle" />{' '}
-              </span>
-            </NavLink>
 
-            <div className="topbarIconItem">
-              <NavLink to="/messenger">
-                <Chat className="iconstyle" style={{ color: 'white' }} />
+
+      {/* Navbar*/}
+      <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top p-0 customnav">
+        <div className="container">
+          <div className="container-fluid d-flex justify-content-between align-items-center">
+            {/* Left elements */}
+            <div className="d-flex">
+              {/* Brand */}
+              <NavLink className="navbar-brand me-2 mb-1" to="/">
+                <span className='navbar-brand-logo' loading="lazy" style={{ marginTop: '2px' }}>
+                  Postgram
+                </span>
               </NavLink>
 
-              {/* <span className="topbarIconBadge">2</span> */}
+
             </div>
-          </div>
-          <div className="topbarRight">
-            <div className="topbarIcons">
-              <div className="topbarIconItem">
-                <Tooltip title="Friend Request">
-                  <IconButton aria-label="delete" onClick={showFriendRequest}>
-                    <Person className="iconstyle" style={{ color: 'white' }} />
-                    <span className="topbarIconBadge">
-                      {friendRequest?.length}{' '}
-                    </span>
+            {/* Left elements */}
+
+
+            {/* Center elements */}
+            <ul className="navbar-nav flex-row w-auto" >
+
+              <Sidebar />
+
+            </ul>
+            {/* Center elements */}
+
+
+            {/* Right elements */}
+            <ul className="avbar-nav flex-row justify-content-around m-0 d-none d-md-flex">
+
+
+              <li className='nav-item  active'>
+                <NavLink to="/">
+                  <span className="topbarNavLink">
+                    <IconButton>
+                      <HomeSharp className="iconstyle" />
+                    </IconButton>
+                  </span>
+                </NavLink>
+              </li>
+              <li className='nav-item me-3 me-lg-1 active'>
+                <NavLink to="/messenger">
+                  <span className="topbarNavLink">
+                    <IconButton>
+                      <Chat className="iconstyle" />
+                    </IconButton>
+                  </span>
+                </NavLink>
+
+              </li>
+
+              <li className='nav-item'>
+                <span className="topbarNavLink">
+
+                  <IconButton data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+                    {/* <i className="fas fa-plus-square iconstyle"></i>
+                     */}
+                    <AddBoxOutlined className='iconstyle' />
                   </IconButton>
-                </Tooltip>
-              </div>
-              <div tabIndex="-1" ref={inputRef}>
-                {dropdownMenu && (
-                  <div className="displayFriendRequest">
-                    {friendRequest.length ? (
-                      friendRequest.map((u) => <FriendRequest key={u} id={u} />)
-                    ) : (
-                      <p className="norequest"> No Friend's Request 😋 </p>
-                    )}
-                  </div>
-                )}
-              </div>
-              <NavLink to={`/profile/${user.username}`}>
-                <Avatar
-                  alt={user.username}
-                  src={
-                    user.profilePicture
-                      ? user.profilePicture
-                      : PF + 'person/noAvatar.png'
-                  }
-                />
-              </NavLink>
-            </div>
+                </span>
+              </li>
 
-            <span className="logout">
-              <NavLink to="/login" onClick={logout}>
-                <span className="hide-sm">logout</span> <ExitToApp />
-              </NavLink>
-            </span>
+              {/* <li className='nav-item me-3 me-lg-1 active'>
+                <NavLink
+                  to="/community"
+                  className=""
+                
+                >
+                  <span className="topbarNavLink">
+                    <IconButton>
+                      <People className="iconstyle" />{' '}
+                    </IconButton>
+                  </span>
+                </NavLink>
+              </li> */}
+
+
+              <li className='nav-item  active'>
+                <div className="topbarIconItem">
+                  <Tooltip title="Friend Request">
+                    <IconButton aria-label="delete" onClick={showFriendRequest}>
+                      <PersonOutlined className="iconstyle" />
+                      <div className="topbarIconBadge">
+                        {friendRequest?.length}
+                      </div>
+                    </IconButton>
+                  </Tooltip>
+                </div>
+              </li>
+
+              <li style={{ marginTop: "1px" }}>
+                <NavLink to={`/profile/${user?.username}`}>
+
+                  <Avatar
+                    alt={user.username}
+                    src={
+                      user.profilePicture
+                        ? user.profilePicture
+                        : PF + 'person/noAvatar.png'
+                    }
+                  />
+
+                </NavLink>
+              </li>
+
+              <li className='nav-item me-3 me-lg-1 active'>
+
+                <div className="topbarRight" >
+                  <div className="topbarIcons">
+
+                    <div className='card requestcard' tabIndex="-1" ref={inputRef}>
+                      {dropdownMenu && (
+                        <div className="displayFriendRequest">
+                          {friendRequest.length ? (
+                            friendRequest.map((u) => <FriendRequest key={u} id={u} />)
+                          ) : (
+                            <p className="norequest"> No Friend's Request </p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                  </div>
+
+
+                </div>
+              </li>
+
+
+              <li className="logout me-auto">
+                <span className="topbarNavLink">
+                  <NavLink to="/login" onClick={logout}>
+                    <IconButton>
+                      <ExitToAppOutlined className='iconstyle' />
+                    </IconButton>
+                  </NavLink>
+                </span>
+              </li>
+            </ul>
+            {/* Right elements */}
           </div>
-        </Toolbar>
-      </AppBar>
+        </div>
+      </nav>
+      {/* Navbar */}
+
+
+      {/* ------------------------------------------------------------------------------------------------- */}
+
+      {/* // nvabar for smaller screen */}
+      <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-bottom p-0 m-0 d-block d-md-none d-lg-none">
+        <div className="container">
+          <div className="container-fluid justify-content-between">
+            {/* Right elements */}
+            <ul className="navbar-nav flex-row justify-content-around w-100 m-0">
+
+
+              {/* home button */}
+              <li className='nav-item'>
+                <NavLink to="/">
+                  <span className="topbarNavLink">
+                    <IconButton>
+                      <HomeSharp className="iconstyle" />
+                    </IconButton>
+                  </span>
+                </NavLink>
+              </li>
+
+              {/* chat icon */}
+              <li className='nav-item'>
+                <NavLink to="/messenger">
+                  <span className="topbarNavLink">
+                    <IconButton>
+                      <Chat className="iconstyle" />
+                    </IconButton>
+                  </span>
+                </NavLink>
+
+              </li>
+
+              {/* add post */}
+              <li className='nav-item'>
+                <span className="topbarNavLink" >
+
+                  <IconButton data-mdb-toggle="modal" data-mdb-target="#exampleModal" variant="contained" color="secondary">
+                    {/* <i className="fas fa-plus-square iconstyle"></i>
+       */}
+                    <AddBoxOutlined className='iconstyle' color="primary" />
+                  </IconButton>
+                </span>
+              </li>
+
+
+
+
+              {/* friend request icon */}
+              <li className='nav-item'>
+                <div className="topbarIconItem">
+                  <Tooltip title="Friend Request">
+                    {/* onClick={showFriendRequest} */}
+                    <IconButton type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" >
+                      <PersonOutlined className="iconstyle" />
+                      <div className="topbarIconBadge">
+                        {friendRequest?.length}
+                      </div>
+                    </IconButton>
+                  </Tooltip>
+                </div>
+              </li>
+
+              <li style={{ marginTop: "5px" }}>
+                <NavLink to={`/profile/${user.username}`}>
+
+                  <Avatar
+                    alt={user.username}
+                    src={
+                      user.profilePicture
+                        ? user.profilePicture
+                        : PF + 'person/noAvatar.png'
+                    }
+                  />
+
+                </NavLink>
+              </li>
+
+
+
+
+
+
+              <li className="logout d-none">
+                <span className="topbarNavLink">
+                  <NavLink to="/login" onClick={logout}>
+                    <IconButton>
+                      <ExitToAppOutlined className='iconstyle' />
+                    </IconButton>
+                  </NavLink>
+                </span>
+              </li>
+            </ul>
+            {/* Right elements */}
+          </div>
+        </div>
+      </nav>
+
+
+      {/* // add post */}
+      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">Add Post</h5>
+              <IconButton id="cancelPost" size="small" data-mdb-dismiss="modal" aria-label="Close" >
+                <CancelOutlined />
+              </IconButton>
+            </div>
+            {/* 
+            <div className="modal-body">...</div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
+              <button type="button" className="btn btn-primary">Save changes</button>
+            
+            
+            
+            
+            </div> */}
+
+
+            <Share />
+
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Connection Requests</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          {friendRequest.length ? (
+            friendRequest.map((u) => <FriendRequest key={u} id={u} />)
+          ) : (
+            <p className="norequest"> No Friend's Request </p>
+          )}
+        </div>
+      </div>
     </>
   );
 };

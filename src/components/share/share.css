@@ -8,7 +8,7 @@
   position: static;
   width: 100%;
   margin-bottom: 40px;
-  
+
 }
 
 .shareWrapper {
@@ -32,10 +32,10 @@
 }
 
 .shareInput {
-  border: 1px solid transparent;
+
   width: 98%;
   max-height: 250px;
-  min-height: 80px;
+  min-height: 70px;
 
   overflow-y: auto;
   resize: vertical;
@@ -49,19 +49,21 @@
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  font-weight: 500;  
-  box-shadow: 0 1.2px 3.6px rgb(0 0 0 / 10%), 0 6.4px 14.4px rgb(0 0 0 / 13%);
-  color:#09736c;
+  font-weight: 500;
+  color: #09736c;
 }
+
 .shareInput:focus {
-  background-color: rgba(240, 248, 255, 0.842);
+
   outline: none;
   border: 1px solid blue;
 }
+
 .shareInput::placeholder {
   font-size: 16px;
   font-family: "Mulish", sans-serif;
 }
+
 .shareHr {
   margin: 20px;
 }
@@ -76,6 +78,7 @@
   display: flex;
   margin-left: 20px;
 }
+
 .shareOption {
   display: flex;
   align-items: center;
@@ -109,13 +112,14 @@
   max-height: 380px;
   object-fit: contain;
 }
+
 .shareCancelImg {
   position: absolute;
   top: 0;
   right: 20px;
   cursor: pointer;
   opacity: 0.9;
-  color: white !important;
+  color: #019ef8 !important;
   font-size: 30px !important;
 }
 

@@ -2,30 +2,56 @@ const AuthReducer = (state, action) => {
 	switch (action.type) {
 		case 'LOGIN_START':
 			return {
+				...state,
 				user: null,
 				isFetching: true,
 				error: false,
+				token: null,
+				isAuthenticated: false
 			};
 		case 'LOGIN_SUCCESS':
+		case 'REGISTER_SUCCESS':
+			localStorage.setItem("token", action.payload);
 			return {
+				...state,
+				token: action.payload,
+				isAuthenticated: true,
+				isFetching: false,
+				error: false,
+			};
+		case 'LOADING_USER':
+			return {
+				...state,
+				isFetching: true,
+			};
+		case 'USER_LOADED':
+
+			return {
+				...state,
 				user: action.payload,
+				isAuthenticated: true,
 				isFetching: false,
 				error: false,
 			};
 		case 'LOGIN_FAILURE':
+			localStorage.removeItem("token");
 			return {
+				...state,
+				token: null,
 				user: null,
 				isFetching: false,
 				error: true,
 			};
 		case 'LOGOUT_SUCCESS':
+			localStorage.removeItem("token");
 			return {
-				user: action.payload,
+				user: null,
+				isAuthenticated: false,
+
 				isFetching: false,
 				error: false,
 			};
 		case 'FOLLOW':
-			
 			return {
 				...state,
 				user: {
@@ -54,14 +80,14 @@ const AuthReducer = (state, action) => {
 				error: false,
 			};
 		case 'AcceptFriendRequest':
-			
+
 			return {
 				user: action.payload,
 				isFetching: false,
 				error: false,
 			};
 		case 'RejectFriendRequest':
-			
+
 			return {
 				user: action.payload,
 				isFetching: false,
@@ -74,7 +100,7 @@ const AuthReducer = (state, action) => {
 				error: false,
 			};
 		case 'pendingRequest':
-			
+
 			return {
 				...state,
 				user: {

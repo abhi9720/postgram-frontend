@@ -12,7 +12,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
-const Post = ({ post }) => {
+const Post = ({ post, isprofile }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLike, setisLike] = useState(false);
   const [user, setUser] = useState({});
@@ -68,7 +68,7 @@ const Post = ({ post }) => {
 
   return (
     <>
-      <div className="post">
+      <div className="post" style={isprofile ? { width: '40%', margin: "30px", flex: '1 1 auto' } : {}}>
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">
@@ -99,7 +99,7 @@ const Post = ({ post }) => {
                   aria-haspopup="true"
                   onClick={handleClick}
                 >
-                  <MoreVert className="" />
+                  <MoreVert />
                 </Button>
                 <Menu
                   id="postdropdown"

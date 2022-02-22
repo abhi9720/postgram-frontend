@@ -1,21 +1,45 @@
 .homeContainer {
   display: flex;
-  justify-content: center;
-  margin-top: 5px;
+  margin-top: 5rem;
+
+}
+
+body {
+  background-color: #f6f6f6 !important;
+}
+
+
+* {
+  overflow-x: hidden !important;
 }
 
 .iconstyle {
-  font-size: 28px !important;
+  font-size: 1.5rem;
+  color: #262626;
 }
 
 @media (max-width: 700px) {
   .hide-sm {
     display: none;
   }
+
+
 }
 
 @media (min-width: 700px) {
   .hide-lg {
-    display: none;
+    display: none !important;
+  }
+}
+
+@media(max-width:700px) {
+
+  .container,
+  .container-fluid {
+    width: 100%;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
+    margin-right: auto;
+    margin-left: auto;
   }
 }

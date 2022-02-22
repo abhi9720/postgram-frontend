@@ -1,13 +1,25 @@
 .feed {
-  flex: 6;
+
   display: flex;
+  flex: calc(2 / 3);
   flex-direction: column;
+}
+
+.postList {
+
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
+
+
 }
 
 .feedWrapper {
   box-sizing: border-box;
+  padding: 10px 30px;
+
 }
 
 .loading {
@@ -18,5 +30,12 @@
 @media (max-width: 800px) {
   .feedWrapper {
     margin: 0px;
+    padding: 0px;
   }
+
+  .feed {
+    flex: 1;
+  }
+
+
 }

@@ -5,6 +5,8 @@ import { AuthContextProvider } from "./context/AuthContext";
 import { transitions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import { QueryClient, QueryClientProvider } from "react-query";
+// import * as mdb from 'mdb-ui-kit';
+
 const options = {
   // you can also just use 'bottom center'
   timeout: 4000,
@@ -27,3 +29,4 @@ ReactDOM.render(
   </AlertProvider>,
   document.getElementById("root")
 );
+

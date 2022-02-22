@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 import CancelIcon from "@material-ui/icons/Cancel";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseFriend from "../closefriend/CloseFriend";
-import { Button, Fab } from "@material-ui/core";
-import ContentLoader from "react-content-loader";
+import { Button } from "@material-ui/core";
+// import ContentLoader from "react-content-loader";
 
 const Sidebar = () => {
   const [allUsers, setAllUsers] = useState([]);
@@ -17,9 +17,9 @@ const Sidebar = () => {
   const [search, setSearch] = useState("");
 
   const [searched, setSearched] = useState([]);
-  const [fetching, setfetching] = useState(false);
+  // const [fetching, setfetching] = useState(false);
 
-  const [hide, setHide] = useState(true);
+  // const [hide, setHide] = useState(true);
 
   // const searchResult = (search) => {
   // 	setSearched(allUsers.filter((u) => u.username.toLowerCase().startsWith(search.toLowerCase())));
@@ -29,17 +29,17 @@ const Sidebar = () => {
     setSearched(
       allUsers.filter((u) =>
         u.username.toLowerCase().startsWith(search.toLowerCase())
-      )
+      ).slice(0, 4)
     );
   }, [search, allUsers]);
 
   useEffect(() => {
     const getAllUsers = async () => {
       try {
-        setfetching(true);
+        // setfetching(true);
         const userList = await axiosInstance.get("/user/all");
         setAllUsers(userList.data);
-        setfetching(false);
+        // setfetching(false);
       } catch (err) {
         console.log(err);
       }
@@ -51,51 +51,52 @@ const Sidebar = () => {
     setSearch("");
   };
 
-  const Loader = () => {
-    return (
-      <div>
-        <ContentLoader
-          speed={2}
-          width={183}
-          height={60}
-          viewBox="0 0 143 60"
-          backgroundColor="#ddd9d9"
-          foregroundColor="#bebbbb"
-        >
-          <rect x="48" y="8" rx="3" ry="3" width="120" height="8" />
-          <rect x="48" y="26" rx="3" ry="3" width="52" height="8" />
+  // const Loader = () => {
+  //   return (
+  //     <div>
+  //       <ContentLoader
+  //         speed={2}
+  //         width={183}
+  //         height={60}
+  //         viewBox="0 0 143 60"
+  //         backgroundColor="#ddd9d9"
+  //         foregroundColor="#bebbbb"
+  //       >
+  //         <rect x="48" y="8" rx="3" ry="3" width="120" height="8" />
+  //         <rect x="48" y="26" rx="3" ry="3" width="52" height="8" />
 
-          <circle cx="20" cy="20" r="20" />
-        </ContentLoader>
-      </div>
-    );
-  };
-  useEffect(() => {
-    if (window.screen.width <= 850) {
-      setHide(false);
-    }
-  }, [setHide]);
+  //         <circle cx="20" cy="20" r="20" />
+  //       </ContentLoader>
+  //     </div>
+  //   );
+  // };
+  // useEffect(() => {
+  //   if (window.screen.width <= 850) {
+  //     setHide(false);
+  //   }
+  // }, [setHide]);
 
   return (
-    <div className="sidebar">
+    <div className="sidebar d-flex input-group w-100">
       <div className="sidebarWrapper">
         <div className="searchContainer">
-          <span className="search_bar">
-            <SearchIcon className="iconstyle" />
-            <input
-              type="search"
-              name="search_txt"
-              id="search_input"
-              placeholder="Search friend ... "
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-              }}
-            />
-          </span>
+
+          <SearchIcon className="iconstyle searchIcons" />
+
+          <input
+            type="search"
+            name="search_txt"
+            id=""
+            placeholder="Search friend ... "
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
+
         </div>
 
-        <div className="sidebarFriendList">
+        <div className="sidebarFriendList" style={{ display: search.length ? "flex" : "none" }}>
           <div
             className="searchDisplay"
             style={{ display: search.length ? "flex" : "none" }}
@@ -111,7 +112,7 @@ const Sidebar = () => {
                 (u) =>
                   u._id !== user._id && (
                     <Link
-                      className="friend_name"
+                      className="friend_name d-block"
                       key={u._id}
                       to={"/profile/" + u.username}
                       style={{ textDecoration: "none" }}
@@ -122,11 +123,11 @@ const Sidebar = () => {
                   )
               )
             ) : (
-              <span className="No_match">Not Match 🙄 </span>
+              <span className="No_match mb-5">No Match  </span>
             )}
           </div>
 
-          <div className="user_list">
+          {/* <div className="user_list">
             {fetching ? (
               <>
                 <Loader />
@@ -154,7 +155,7 @@ const Sidebar = () => {
                 )}
               </>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

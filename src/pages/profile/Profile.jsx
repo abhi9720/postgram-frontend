@@ -1,6 +1,10 @@
 import "./profile.css";
 import Topbar from "../../components/topbar/Topbar";
-import Sidebar from "../../components/sidebar/Sidebar";
+import DynamicFeedSharpIcon from '@material-ui/icons/DynamicFeedSharp';
+
+
+import PersonPinIcon from '@material-ui/icons/PersonPin';
+
 import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar";
 import React, { useContext, useEffect, useState } from "react";
@@ -9,7 +13,7 @@ import { Instagram } from "react-content-loader";
 import axiosInstance from "../../utils/axiosConfig";
 import { useParams } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
-import { CircularProgress, Button } from "@material-ui/core";
+import { CircularProgress, Button, Tabs, Tab, IconButton, Box } from "@material-ui/core";
 import { PhotoCamera, Done, TextsmsOutlined } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
@@ -57,6 +61,14 @@ export default function Profile() {
     setIsFriend(currentUser.friends.includes(user?._id));
     setIsFriendRequestSent(currentUser.pendingRequest.includes(user?._id));
   }, [currentUser, user]);
+
+
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    console.log(newValue);
+  };
 
   // follow if not following
   const handleFollow = async () => {
@@ -201,221 +213,276 @@ export default function Profile() {
     <>
       <Topbar />
 
-      <div className="profile">
-        <div className="d-flex flex-column">
-          {status === "loading" ? (
-            <div>
-              <Instagram color="#f11946" width="1200px" height="600px" />
-            </div>
-          ) : status === "error" ? (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                maxHeight: "90vh",
-                flexDirection: "column",
-                marginTop: "100px",
-              }}
-            >
-              <h4>
-                ERROR SOME INTERNAL ERROR OCCUR <br />
-                <br /> CHECK YOUR INTERNET CONNECTIONS
-              </h4>
-              <Button
-                variant="contained"
-                color="secondary"
-                size="large"
-                style={{ position: "absolute", top: "50%" }}
-                onClick={() => window.location.reload()}
-              >
-                RELOAD PAGE
-              </Button>
-            </div>
-          ) : (
-            <>
-              <div className="profileRightTop">
-                <div className="profileCover">
-                  <div className="profileCoverImg">
-                    {user.coverpicture ? (
-                      <img src={user.coverpicture} alt="" />
-                    ) : (
-                      <div> </div>
-                    )}
-                    {user.username === currentUser.username && (
-                      <button>
-                        {upatingCoverPhoto ? (
-                          <CircularProgress />
-                        ) : (
-                          <label
-                            className="focus:outline-none px-2 py-2 hover:bg-gray-50 font-semibold rounded-lg bg-dark"
-                            htmlFor="coverPhoto"
-                          >
-                            <PhotoCamera />
-                            <span className="hide-sm">
-                              {" "}
-                              Update cover phtoto{" "}
-                            </span>
-                            <input
-                              type="file"
-                              id="coverPhoto"
-                              accept=".png,.jpeg,.jpg"
-                              onChange={(e) => {
-                                setCoverpicture(e.target.files[0]);
-                              }}
-                              style={{ display: "none" }}
-                            />
-                          </label>
-                        )}
-                      </button>
-                    )}
-                  </div>
-                  <div className="profileUserImg">
-                    <img
-                      src={
-                        user.profilePicture
-                          ? user.profilePicture.replace(
-                            "/upload",
-                            "/upload/w_1000,h_1000,c_thumb,g_faces"
-                          )
-                          : "../assets/person/noAvatar.png"
-                      }
-                      alt=""
-                    />
-
-                    {user.username === currentUser.username && (
-                      <>
-                        <div className={"uploadIcon"}>
-                          {upatingProfilePhoto ? (
-                            <CircularProgress className="upload_progress" />
-                          ) : (
-                            ""
-                          )}
-                          <label
-                            htmlFor="profilePhoto"
-                            disabled={upatingProfilePhoto}
-                          >
-                            <PhotoCamera style={{ fontSize: 59 }} />
-
-                            <input
-                              type="file"
-                              id="profilePhoto"
-                              accept=".png,.jpeg,.jpg"
-                              onChange={(e) => {
-                                setProfilePhoto(e.target.files[0]);
-                              }}
-                              style={{ display: "none" }}
-                            />
-                          </label>
-                        </div>
-                      </>
-                    )}
-                  </div>
+      <div className="container-fluid mt-5">
+        <div className="row justify-content-center">
+          <div className="profile col-sm-12 col-md-9 p-0">
+            <div className="d-flex flex-column">
+              {status === "loading" ? (
+                <div>
+                  <Instagram color="#f11946" width="1200px" height="600px" />
                 </div>
-                <div className="profileInfo">
-                  <h4 className="profileInfoName">{user.username} </h4>
-                  {/* <span className="profileInfoDesc">{user.description}</span> */}
-                </div>
-                <div className="profileFollow">
-                  <div className="followInfo">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Post</th>
-                          <th>followers</th>
-                          <th>followings</th>
-                        </tr>
-                        <tr>
-                          <td> {0} </td>
-                          <td>{user?.followers?.length}</td>
-                          <td> {user?.followings?.length} </td>
-                        </tr>
-                      </thead>
-                    </table>
-                  </div>
-
-                  <div
-                    className="btn_function"
-                    style={
-                      user.username !== currentUser.username
-                        ? { width: "340px" }
-                        : { width: "0px" }
-                    }
+              ) : status === "error" ? (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    maxHeight: "90vh",
+                    flexDirection: "column",
+                    marginTop: "100px",
+                  }}
+                >
+                  <h4>
+                    ERROR SOME INTERNAL ERROR OCCUR <br />
+                    <br /> CHECK YOUR INTERNET CONNECTIONS
+                  </h4>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    size="large"
+                    style={{ position: "absolute", top: "50%" }}
+                    onClick={() => window.location.reload()}
                   >
-                    <Link
-                      to="/messenger"
-                      style={
-                        user.username !== currentUser.username
-                          ? { display: "inline" }
-                          : { display: "none" }
-                      }
-                    >
-                      <Button variant="contained" color="secondary">
-                        <TextsmsOutlined className="iconstyle" />
-                      </Button>
-                    </Link>
-
-                    {user.username !== currentUser.username && (
-                      <>
-                        {currentUser.friendrequest.includes(user._id) ? (
-                          <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={AcceptRequest}
-                          >
-                            Accept request
-                          </Button>
-                        ) : isFriend ? (
-                          <Button variant="contained" onClick={unFriend}>
-                            Unfriend
-                            {isloading1 && (
-                              <CircularProgress color="primary" size="20px" />
-                            )}
-                          </Button>
-                        ) : (
-                          <Button
-                            variant="contained"
-                            onClick={addFriend}
-                            disabled={isFriendRequestSent}
-                          >
-                            {isFriendRequestSent ? (
-                              <>
-                                Request Sent <Done />
-                              </>
-                            ) : (
-                              "Add Friends"
-                            )}
-                            {isloading1 && (
-                              <CircularProgress color="primary" size="20px" />
-                            )}
-                          </Button>
-                        )}
-                      </>
-                    )}
-                    {user.username !== currentUser.username && (
-                      <Button
-                        className="rightbarFollowButton"
-                        onClick={handleFollow}
-                      >
-                        {followed ? "Unfollow" : "Follow"}
-                        {isloading ? (
-                          <CircularProgress color="primary" size="20px" />
-                        ) : (
-                          ""
-                        )}
-                      </Button>
-                    )}
-                  </div>
+                    RELOAD PAGE
+                  </Button>
                 </div>
-              </div>
-              <div className="profileRightBottom">
-                <Feed username={user.username} />
-                <Rightbar user={user} />
-              </div>
-            </>
-          )}
+              ) : (
+                <>
+                  <div className="profileRightTop">
+                    <div className="profileCover">
+                      <div className="profileCoverImg">
+                        {user.coverpicture ? (
+                          <img src={user.coverpicture} alt="" />
+                        ) : (
+                          <div> </div>
+                        )}
+                        {user.username === currentUser.username && (
+                          <Button>
+                            {upatingCoverPhoto ? (
+                              <CircularProgress />
+                            ) : (
+                              <label
+                                className="uploadCoverBtn"
+                                htmlFor="coverPhoto"
+                              >
+                                <PhotoCamera />
+                                <span className="hide-sm">
+                                  {" "}
+                                  Update cover phtoto{" "}
+                                </span>
+                                <input
+                                  type="file"
+                                  id="coverPhoto"
+                                  accept=".png,.jpeg,.jpg"
+                                  onChange={(e) => {
+                                    setCoverpicture(e.target.files[0]);
+                                  }}
+                                  style={{ display: "none" }}
+                                />
+                              </label>
+                            )}
+                          </Button>
+                        )}
+                      </div>
+                      <div className="profileUserImg">
+
+                        <div className="profileUserImageCover">
+                          <img
+                            src={
+                              user.profilePicture
+                                ? user.profilePicture.replace(
+                                  "/upload",
+                                  "/upload/w_1000,h_1000,c_thumb,g_faces"
+                                )
+                                : "../assets/person/noAvatar.png"
+                            }
+                            alt=""
+                          />
+
+                          {user.username === currentUser.username && (
+                            <>
+                              <div className="uploadIcon">
+                                {upatingProfilePhoto ? (
+                                  <CircularProgress className="upload_progress" />
+                                ) : (
+                                  ""
+                                )}
+                                <label
+                                  htmlFor="profilePhoto"
+                                  disabled={upatingProfilePhoto}
+                                >
+                                  <IconButton className="p-2" color="default" aria-label="upload picture" component="span">
+                                    <PhotoCamera />
+                                  </IconButton>
+                                  <input
+                                    type="file"
+                                    id="profilePhoto"
+                                    accept=".png,.jpeg,.jpg"
+                                    onChange={(e) => {
+                                      setProfilePhoto(e.target.files[0]);
+                                    }}
+                                    style={{ display: "none" }}
+                                  />
+                                </label>
+                              </div>
+                            </>
+                          )}
+                        </div>
+
+                      </div>
+                    </div>
+                    <div className="profileInfo">
+                      <h4 className="profileInfoName fs-1">{user.username} </h4>
+                      {/* <span className="profileInfoDesc">{user.description}</span> */}
+                    </div>
+                    <div className="profileFollow">
+
+
+                      <div className="followInfo">
+                        <table class="table table-borderless p-0 m-0">
+                          <thead>
+                            <tr>
+                              <th>Post</th>
+                              <th>followers</th>
+                              <th>followings</th>
+                            </tr>
+                            <tr>
+                              <td> {0} </td>
+                              <td>{user?.followers?.length}</td>
+                              <td> {user?.followings?.length} </td>
+                            </tr>
+                          </thead>
+                        </table>
+                      </div>
+                      <div class="divider"></div>
+                      <div className="btn_function"
+                        style={
+                          user.username !== currentUser.username
+                            ? { display: "inline-block" }
+                            : { display: "none" }
+                        }
+                      >
+                        <Link
+                          to="/messenger"
+                          style={
+                            user.username !== currentUser.username
+                              ? { display: "inline-block" }
+                              : { display: "none" }
+                          }
+                        >
+                          <Button variant="contained" color="secondary">
+                            <TextsmsOutlined className="iconstyle" />
+                          </Button>
+                        </Link>
+
+                        {user.username !== currentUser.username && (
+                          <div>
+                            {currentUser.friendrequest.includes(user._id) ? (
+                              <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={AcceptRequest}
+                              >
+                                Accept request
+                              </Button>
+                            ) : isFriend ? (
+                              <Button variant="contained" onClick={unFriend}>
+                                Unfriend
+                                {isloading1 && (
+                                  <CircularProgress color="primary" size="20px" />
+                                )}
+                              </Button>
+                            ) : (
+                              <Button
+                                variant="contained"
+                                onClick={addFriend}
+                                disabled={isFriendRequestSent}
+                              >
+                                {isFriendRequestSent ? (
+                                  <>
+                                    Request Sent <Done />
+                                  </>
+                                ) : (
+                                  "Add Friends"
+                                )}
+                                {isloading1 && (
+                                  <CircularProgress color="primary" size="20px" />
+                                )}
+                              </Button>
+                            )}
+                          </div>
+                        )}
+                        {user.username !== currentUser.username && (
+                          <div>
+
+                            <Button
+                              className="rightbarFollowButton"
+                              onClick={handleFollow}
+                            >
+                              {followed ? "Unfollow" : "Follow"}
+                              {isloading ? (
+                                <CircularProgress color="primary" size="20px" />
+                              ) : (
+                                ""
+                              )}
+                            </Button>
+                          </div>
+
+                        )}
+
+
+                      </div>
+
+
+                    </div>
+                  </div>
+
+
+
+                </>
+              )}
+            </div>
+          </div>
         </div>
+
       </div>
+
+      <div className="container shadowbg mt-5 ">
+        <div className="row d-flex justify-content-center">
+
+
+
+
+          <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
+
+
+            <Tabs className="tabspannel" value={value} onChange={handleChange} aria-label="icon tabs example" centered>
+              <Tab className="tab1 w-100" icon={<DynamicFeedSharpIcon />} aria-label="phone" label="Post" />
+              <Tab className="tab2 w-100" icon={<PersonPinIcon />} aria-label="favorite" label="connections" />
+            </Tabs>
+
+            {
+              value === 0 ?
+                <Feed username={user.username} profile={true} />
+                :
+                <Rightbar user={user} />
+            }
+
+
+
+          </Box>
+
+
+        </div>
+
+
+
+
+
+
+
+      </div>
+
     </>
   );
 }

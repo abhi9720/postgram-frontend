@@ -1,5 +1,9 @@
+
+import React from 'react'
+
 import "./feed.css";
-import Share from "../share/Share";
+
+
 import Post from "../post/Post";
 import { useContext, useEffect, useState } from "react";
 
@@ -19,7 +23,7 @@ const Loader = () => {
   );
 };
 
-const Feed = ({ username }) => {
+const Feed = ({ username, profile }) => {
   const [posts, setPosts] = useState([]);
   const { user } = useContext(AuthContext);
   const [fetching, setfetching] = useState(false);
@@ -43,9 +47,9 @@ const Feed = ({ username }) => {
   }, [username, user._id]);
 
   return (
-    <div className="feed">
+    <div className="feed" >
       <div className="feedWrapper">
-        {username ? username === user?.username ? <Share /> : "" : <Share />}
+        {/* {username ? username === user?.username ? <Share /> : "" : <Share />} */}
 
         {fetching ? (
           <>
@@ -61,12 +65,9 @@ const Feed = ({ username }) => {
             <Loader />
           </>
         ) : (
-          <div
-            className="postList"
-            style={username ? { padding: "0px 10px" } : { padding: "0px" }}
-          >
+          <div className="postList" style={profile ? { flexDirection: "row" } : { flexDirection: "column" }}>
             {posts.map((p) => (
-              <Post key={p._id} post={p} />
+              <Post key={p._id} post={p} isprofile={profile || false} />
             ))}
           </div>
         )}
