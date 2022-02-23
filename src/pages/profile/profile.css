@@ -75,9 +75,6 @@
   margin-top: 20px;
   padding: 5px 5px;
   border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.1);
-
-  backdrop-filter: blur(30px);
   color: #fff;
   font-weight: 700;
   font-size: 14px;
@@ -86,9 +83,7 @@
   text-transform: uppercase;
 }
 
-.profileCoverImg button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
+.profileCoverImg button:hover {}
 
 .profileCoverImg button label {
   cursor: pointer;
@@ -280,7 +275,7 @@
     width: 150px;
     height: 150px;
     top: 170px;
-    top: 60%;
+    top: 40%;
   }
 
   .profileUserImg img {
@@ -294,9 +289,9 @@
     margin-top: 10px;
     padding: 3px;
     border-radius: 15px;
-    background-color: rgba(255, 255, 255, 0.1);
 
-    backdrop-filter: blur(30px);
+
+
     color: #fff;
     font-weight: 700;
 
@@ -362,7 +357,7 @@
   border-color: #E0E3E7;
   border-radius: 10px;
   transition-property: all;
-  transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+
   transition-duration: 150ms;
   color: #0072E5;
   font-weight: 500;

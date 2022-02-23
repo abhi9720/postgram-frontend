@@ -242,7 +242,7 @@ export default function Rightbar({ user }) {
             ))}
 
 
-            {friends.length == 0 &&
+            {friends.length === 0 &&
               <p className='py-5'>
                 First One to Connect with Him
               </p>

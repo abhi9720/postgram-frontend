@@ -69,7 +69,7 @@ const Feed = ({ username, profile }) => {
             {posts.map((p) => (
               <Post key={p._id} post={p} isprofile={profile || false} />
             ))}
-            {posts.length == 0 &&
+            {posts.length === 0 &&
               <p className='display-6 mt-5'>
                 No Post Yet
               </p>
