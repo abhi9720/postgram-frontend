@@ -7,6 +7,15 @@
   align-items: center;
 }
 
+.removedecoration {
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.postgramlogo {
+  height: 70px;
+}
+
 .loginWrapper {
   width: 70%;
   display: flex;
@@ -29,6 +38,7 @@
 
   /* -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68); */
 }
+
 .loginDesc {
   font-size: 24px;
   padding-right: 10px;
@@ -56,11 +66,13 @@
   font-size: 18px;
   padding-left: 20px;
 }
+
 .loginInput:focus {
   outline: none;
   border: 1px solid #1775ee;
   background-color: #fff;
 }
+
 .loginButton:disabled {
   cursor: not-allowed;
 }
@@ -76,6 +88,7 @@
   transition: 0.2s ease-in-out;
   cursor: pointer;
 }
+
 .loginButton:hover {
   color: #1775ee;
   border: 1px solid #1775ee;
@@ -110,8 +123,9 @@
 @media (max-width: 780px) {
   .loginWrapper {
     flex-direction: column;
-    width: 80%;
+    width: 95%;
   }
+
   .loginDesc {
     font-size: 12px;
     margin-bottom: 20px;

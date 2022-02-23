@@ -10,7 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-
+import { NavLink } from 'react-router-dom';
 const Login = () => {
   const [field, setField] = useState({
     username: "",
@@ -97,17 +97,26 @@ const Login = () => {
 
   return (
     <>
-      <div className="register">
-        <div className="registerWrapper">
+      <div className="register vh-100">
+        <nav class="navbar fixed-top navbar-light removedecoration">
+          <div class="container-fluid">
+            <NavLink class="navbar-brand" to="/">
+              <img className="postgramlogo" src="http://localhost:3000/assets/Postgram_LOGIN.png" alt="" />
+
+
+            </NavLink>
+          </div>
+        </nav>
+        <div className="registerWrapper mt-5">
           <div className="registerLeft">
-            <h3 className="registerLogo">Postgram</h3>
+            <h3 className="registerLogo hide-sm">Postgram</h3>
             <span className="registerDesc">
               Connect with friends and the world around you on
               postgram-social.herokuapp.com
             </span>
           </div>
-          <div className="registerRight">
-            <form className="registerBox" onSubmit={handleSubmit}>
+          <div className="registerRight" style={{ borderRadius: "25px" }}>
+            <form className="registerBox card-body" onSubmit={handleSubmit}>
               <TextField
                 type="text"
                 id="filled-basic"

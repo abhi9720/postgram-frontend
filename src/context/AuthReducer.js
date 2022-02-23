@@ -1,6 +1,7 @@
 const AuthReducer = (state, action) => {
 	switch (action.type) {
 		case 'LOGIN_START':
+
 			return {
 				...state,
 				user: null,
@@ -11,10 +12,11 @@ const AuthReducer = (state, action) => {
 			};
 		case 'LOGIN_SUCCESS':
 		case 'REGISTER_SUCCESS':
-			localStorage.setItem("token", action.payload);
+			localStorage.setItem("token", action.payload.token);
 			return {
 				...state,
-				token: action.payload,
+				user: action.payload.user,
+				token: action.payload.token,
 				isAuthenticated: true,
 				isFetching: false,
 				error: false,
@@ -25,7 +27,6 @@ const AuthReducer = (state, action) => {
 				isFetching: true,
 			};
 		case 'USER_LOADED':
-
 			return {
 				...state,
 				user: action.payload,
@@ -34,6 +35,8 @@ const AuthReducer = (state, action) => {
 				error: false,
 			};
 		case 'LOGIN_FAILURE':
+		case 'AUTH_ERROR':
+
 			localStorage.removeItem("token");
 			return {
 				...state,
@@ -41,6 +44,7 @@ const AuthReducer = (state, action) => {
 				user: null,
 				isFetching: false,
 				error: true,
+				isAuthenticated: false,
 			};
 		case 'LOGOUT_SUCCESS':
 			localStorage.removeItem("token");

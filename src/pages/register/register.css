@@ -1,111 +1,125 @@
 .register {
-	width: 100vw;
-	height: 100vh;
-	background-color: #f3f1ee;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f3f1ee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .registerWrapper {
-	width: 70%;
+    width: 70%;
 
-	display: flex;
+    display: flex;
 }
 
 .registerLeft,
 .registerRight {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .registerLogo {
-	font-size: 50px;
-	font-weight: 800;
-	color: #075353;
-	margin-bottom: 10px;
-	text-shadow: rgba(236, 236, 236, 0.4) 0px 54px 149px;
+    font-size: 50px;
+    font-weight: 800;
+    color: #075353;
+    margin-bottom: 10px;
+    text-shadow: rgba(236, 236, 236, 0.4) 0px 54px 149px;
 
 }
+
 .registerDesc {
-	font-size: 24px;
-	padding-right: 10px;
-	color: #05343a;
-	font-weight: 600;
-	font-style: normal;
+    font-size: 24px;
+    padding-right: 10px;
+    color: #05343a;
+    font-weight: 600;
+    font-style: normal;
 }
 
 .registerBox {
-	height: 400px;
-	padding: 20px;
-	background-color: white;
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	text-shadow: rgba(236, 236, 236, 0.4) 0px 54px 149px;
+    height: 400px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-shadow: rgba(236, 236, 236, 0.4) 0px 54px 149px;
 }
 
 .registerInput {
-	height: 50px;
-	border-radius: 10px;
-	border: 1px solid gray;
-	font-size: 18px;
-	padding-left: 20px;
-	background-color: #fff;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    font-size: 18px;
+    padding-left: 20px;
+    background-color: #fff;
 }
+
 .registerInput:focus {
-	outline: none;
-	border: 1px solid #1775ee;
+    outline: none;
+    border: 1px solid #1775ee;
 }
 
 .registerButton:disabled {
-	cursor: not-allowed;
+    cursor: not-allowed;
+}
+
+
+.removedecoration {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.postgramlogo {
+    height: 70px;
 }
 
 .registerButton {
-	height: 50px;
-	border-radius: 10px;
-	border: none;	
-	background-color: #2e51b5;
-	color: white;
-	font-size: 20px;
-	font-weight: 500;
-	transition: 0.2s ease-in-out;
-	cursor: pointer;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: #2e51b5;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
 }
+
 .registerButton:hover {
-	color: #1775ee;
-	border: 1px solid #1775ee;
-	background-color: #1774ee23;
+    color: #1775ee;
+    border: 1px solid #1775ee;
+    background-color: #1774ee23;
 }
 
 .registerForget {
-	text-align: center;
-	color: #1775ee;
-	cursor: pointer;
+    text-align: center;
+    color: #1775ee;
+    cursor: pointer;
 }
 
 .registerAccount {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .registerRegisterButton {
-	margin-left: 12px;
+    margin-left: 12px;
 }
 
 @media (max-width: 780px) {
-	.registerWrapper {
-		flex-direction: column;
-		width: 80%;
-	}
-	.registerDesc {
-		font-size: 12px;
-		margin-bottom: 20px;
-	}
+    .registerWrapper {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .registerDesc {
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
 }

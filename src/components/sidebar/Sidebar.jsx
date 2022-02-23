@@ -13,7 +13,7 @@ import { Button } from "@material-ui/core";
 
 const Sidebar = () => {
   const [allUsers, setAllUsers] = useState([]);
-  const { user } = useContext(AuthContext);
+  const { state } = useContext(AuthContext);
   const [search, setSearch] = useState("");
 
   const [searched, setSearched] = useState([]);
@@ -110,7 +110,7 @@ const Sidebar = () => {
             {searched.length ? (
               searched.map(
                 (u) =>
-                  u._id !== user._id && (
+                  u._id !== state.user._id && (
                     <Link
                       className="friend_name d-block"
                       key={u._id}

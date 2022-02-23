@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 import { Chat, Home } from "@material-ui/icons";
 
 const Messenger = () => {
-  const { user: currentUser } = useContext(AuthContext);
+  const { state } = useContext(AuthContext);
 
   const [newMessage, setNewMessage] = useState();
   const [conversations, setConversations] = useState([]);
@@ -35,7 +35,7 @@ const Messenger = () => {
   useEffect(() => {
     socket.current = io.connect(process.env.REACT_APP_End_Point);
 
-    socket.current.emit("addUser", currentUser._id);
+    socket.current.emit("addUser", state.user._id);
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
@@ -43,7 +43,7 @@ const Messenger = () => {
         createdAt: Date.now(),
       });
     });
-  }, [currentUser]); // i  am removing id from here
+  }, [state.user]); // i  am removing id from here
 
   useEffect(() => {
     arrivalMessage &&
@@ -56,20 +56,20 @@ const Messenger = () => {
     socket.current.on("getUsers", (users) => {
       // getting latest user
       setOnlineUsers(
-        currentUser.friends.filter((f) => users.some((u) => u.userId === f))
+        state.user.friends.filter((f) => users.some((u) => u.userId === f))
       );
     });
-  }, [currentUser]); // as user change it send request to server
+  }, [state.user]); // as user change it send request to server
 
   const submitHandler = async (e) => {
     e.preventDefault();
     if (!newMessage.length) {
       return;
     }
-    // const receiverId = currentChat.members.find((member) => member !== currentUser._id);
+    // const receiverId = currentChat.members.find((member) => member !== state.user._id);
 
     socket.current.emit("sendMessage", {
-      senderId: currentUser._id,
+      senderId: state.user._id,
       receiverId: otherSide?._id,
       text: newMessage,
     });
@@ -77,7 +77,7 @@ const Messenger = () => {
     // adding message in database
 
     const addNewMessage = {
-      sender: currentUser._id,
+      sender: state.user._id,
       text: newMessage,
       conversationId: currentChat._id,
     };
@@ -98,14 +98,14 @@ const Messenger = () => {
   useEffect(() => {
     const getConversation = async () => {
       try {
-        const res = await axiosInstance.get(`/conversation/${currentUser._id}`);
+        const res = await axiosInstance.get(`/conversation/${state.user._id}`);
         setConversations(res.data);
       } catch (err) {
         console.log(err);
       }
     };
     getConversation();
-  }, [currentUser]);
+  }, [state.user]);
 
   useEffect(() => {
     const getMessages = async () => {
@@ -131,7 +131,7 @@ const Messenger = () => {
 
   useEffect(() => {
     const getUser = async () => {
-      const friendId = currentChat.members.find((m) => m !== currentUser._id);
+      const friendId = currentChat.members.find((m) => m !== state.user._id);
       try {
         const res = await axiosInstance("/user?userId=" + friendId);
         setotherSide(res.data);
@@ -142,7 +142,7 @@ const Messenger = () => {
     if (currentChat) {
       getUser();
     }
-  }, [currentUser, currentChat]);
+  }, [state.user, currentChat]);
 
   // useEffect(() => {
   //   SetSearch();
@@ -214,7 +214,7 @@ const Messenger = () => {
                     <Conversation
                       key={data._id}
                       conversation={data}
-                      currentuser={currentUser}
+                      currentuser={state.user}
                       Online={onlineUsers}
                     />
                   </div>
@@ -264,10 +264,10 @@ const Messenger = () => {
                     <div key={m._id} ref={messagesEndRef}>
                       <Message
                         Message={m}
-                        own={m.sender === currentUser._id ? true : false}
+                        own={m.sender === state.user._id ? true : false}
                         img={
-                          m.sender === currentUser._id
-                            ? currentUser.profilePicture
+                          m.sender === state.user._id
+                            ? state.user.profilePicture
                             : otherSide?.profilePicture
                         }
                       />

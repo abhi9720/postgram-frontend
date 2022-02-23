@@ -25,10 +25,10 @@ export default function Profile() {
     const res = await axiosInstance.get(`/user/?username=${username}`);
     setUser(res.data);
   });
-  const { user: currentUser, dispatch } = useContext(AuthContext);
+  const { state, dispatch } = useContext(AuthContext);
 
   const [followed, setFollowed] = useState(
-    currentUser.followings.includes(user._id)
+    state.user?.followings.includes(user?._id)
   );
   // const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
@@ -57,10 +57,10 @@ export default function Profile() {
 
   useEffect(() => {
     // if there is no user in that it cause error so we use ? here
-    setFollowed(currentUser.followings.includes(user?._id));
-    setIsFriend(currentUser.friends.includes(user?._id));
-    setIsFriendRequestSent(currentUser.pendingRequest.includes(user?._id));
-  }, [currentUser, user]);
+    setFollowed(state.user?.followings.includes(user?._id));
+    setIsFriend(state.user?.friends.includes(user?._id));
+    setIsFriendRequestSent(state.user?.pendingRequest.includes(user?._id));
+  }, [state.user, user]);
 
 
   const [value, setValue] = React.useState(0);
@@ -77,7 +77,7 @@ export default function Profile() {
         setIsloading(true);
         // setFollowers(followers - 1);
         const res = await axiosInstance.put(`/user/${user._id}/unfollow`, {
-          userId: currentUser._id,
+          userId: state.user?._id,
         });
         dispatch({ type: "UNFOLLOW", payload: user._id });
 
@@ -86,7 +86,7 @@ export default function Profile() {
         setIsloading(true);
 
         const res = await axiosInstance.put(`/user/${user._id}/follow`, {
-          userId: currentUser._id,
+          userId: state.user?._id,
         });
         dispatch({ type: "FOLLOW", payload: user._id });
 
@@ -102,23 +102,23 @@ export default function Profile() {
   console.log("Port : " + process.env.REACT_APP_End_Point);
   useEffect(() => {
     socket.current = io.connect(process.env.REACT_APP_End_Point);
-    socket.current.emit("addUser", currentUser._id); // send request to server as user chnage and send my user id
+    socket.current.emit("addUser", state.user?._id); // send request to server as user chnage and send my user id
     // so it add this userid and socket in user array
-  }, [currentUser]);
+  }, [state.user]);
 
   const addFriend = async () => {
     try {
       setIsloading1(true);
 
       await axiosInstance.put(`/user/${user._id}/addNewFriends`, {
-        userId: currentUser._id,
+        userId: state.user?._id,
       });
       setIsFriendRequestSent(true);
       dispatch({ type: "pendingRequest", payload: user?._id });
     } catch (err) { }
 
     socket.current.emit("sendFriendRequest", {
-      senderId: currentUser?._id,
+      senderId: state.user?._id,
       receiverId: user?._id,
     });
 
@@ -129,9 +129,9 @@ export default function Profile() {
       setIsloading1(true);
 
       const res = await axiosInstance.put(`/user/${user._id}/unfriend`, {
-        userId: currentUser._id,
+        userId: state.user?._id,
       });
-      await axiosInstance.delete(`/conversation/delete/${user._id}/${currentUser._id}`);
+      await axiosInstance.delete(`/conversation/delete/${user._id}/${state.user?._id}`);
 
       setIsFriend(false);
       dispatch({ type: "UNFRIEND", payload: res.data });
@@ -198,12 +198,12 @@ export default function Profile() {
     // and  currentuser is who got friend request(will accept or reject )
 
     const res = await axiosInstance.put(`/user/${user._id}/acceptFriendRequest`, {
-      userId: currentUser._id,
+      userId: state.user?._id,
     });
 
     await axiosInstance.post("/conversation/", {
       senderId: user._id,
-      receiverId: currentUser._id,
+      receiverId: state.user?._id,
     });
 
     dispatch({ type: "AcceptFriendRequest", payload: res.data });
@@ -219,28 +219,18 @@ export default function Profile() {
             <div className="d-flex flex-column">
               {status === "loading" ? (
                 <div>
-                  <Instagram color="#f11946" width="1200px" height="600px" />
+                  <Instagram color="#f11946" width="100%" height="400px" className="mb-5" />
                 </div>
               ) : status === "error" ? (
                 <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    maxHeight: "90vh",
-                    flexDirection: "column",
-                    marginTop: "100px",
-                  }}
-                >
+                  className="d-flex justify-content-center align-items-center flex-column py-5"                  >
                   <h4>
                     ERROR SOME INTERNAL ERROR OCCUR <br />
                     <br /> CHECK YOUR INTERNET CONNECTIONS
                   </h4>
                   <Button
-                    variant="contained"
+                    variant="contained" disableElevation
                     color="secondary"
-                    size="large"
-                    style={{ position: "absolute", top: "50%" }}
                     onClick={() => window.location.reload()}
                   >
                     RELOAD PAGE
@@ -256,7 +246,7 @@ export default function Profile() {
                         ) : (
                           <div> </div>
                         )}
-                        {user.username === currentUser.username && (
+                        {user.username === state.user?.username && (
                           <Button>
                             {upatingCoverPhoto ? (
                               <CircularProgress />
@@ -299,7 +289,7 @@ export default function Profile() {
                             alt=""
                           />
 
-                          {user.username === currentUser.username && (
+                          {user.username === state.user?.username && (
                             <>
                               <div className="uploadIcon">
                                 {upatingProfilePhoto ? (
@@ -357,7 +347,7 @@ export default function Profile() {
                       <div class="divider"></div>
                       <div className="btn_function"
                         style={
-                          user.username !== currentUser.username
+                          user.username !== state.user?.username
                             ? { display: "inline-block" }
                             : { display: "none" }
                         }
@@ -365,19 +355,19 @@ export default function Profile() {
                         <Link
                           to="/messenger"
                           style={
-                            user.username !== currentUser.username
+                            user.username !== state.user?.username
                               ? { display: "inline-block" }
                               : { display: "none" }
                           }
                         >
                           <Button variant="contained" color="secondary">
-                            <TextsmsOutlined className="iconstyle" />
+                            <TextsmsOutlined color="info" className="" />
                           </Button>
                         </Link>
 
-                        {user.username !== currentUser.username && (
+                        {user.username !== state.user?.username && (
                           <div>
-                            {currentUser.friendrequest.includes(user._id) ? (
+                            {state.user?.friendrequest.includes(user._id) ? (
                               <Button
                                 variant="contained"
                                 color="primary"
@@ -389,7 +379,7 @@ export default function Profile() {
                               <Button variant="contained" onClick={unFriend}>
                                 Unfriend
                                 {isloading1 && (
-                                  <CircularProgress color="primary" size="20px" />
+                                  <CircularProgress color="primary" size="10px" />
                                 )}
                               </Button>
                             ) : (
@@ -406,13 +396,13 @@ export default function Profile() {
                                   "Add Friends"
                                 )}
                                 {isloading1 && (
-                                  <CircularProgress color="primary" size="20px" />
+                                  <CircularProgress color="primary" size="10px" />
                                 )}
                               </Button>
                             )}
                           </div>
                         )}
-                        {user.username !== currentUser.username && (
+                        {user.username !== state.user?.username && (
                           <div>
 
                             <Button
@@ -421,7 +411,7 @@ export default function Profile() {
                             >
                               {followed ? "Unfollow" : "Follow"}
                               {isloading ? (
-                                <CircularProgress color="primary" size="20px" />
+                                <CircularProgress color="primary" size="10px" />
                               ) : (
                                 ""
                               )}
@@ -446,42 +436,42 @@ export default function Profile() {
         </div>
 
       </div>
+      {
+        (status !== "error" && status !== "loading") &&
+        <div className="container-fluid mt-5" style={{ backgroundColor: "transparent" }}>
+          <div className="row   justify-content-center">
 
-      <div className="container shadowbg mt-5 ">
-        <div className="row d-flex justify-content-center">
-
-
-
-
-          <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
-
-
-            <Tabs className="tabspannel" value={value} onChange={handleChange} aria-label="icon tabs example" centered>
-              <Tab className="tab1 w-100" icon={<DynamicFeedSharpIcon />} aria-label="phone" label="Post" />
-              <Tab className="tab2 w-100" icon={<PersonPinIcon />} aria-label="favorite" label="connections" />
-            </Tabs>
-
-            {
-              value === 0 ?
-                <Feed username={user.username} profile={true} />
-                :
-                <Rightbar user={user} />
-            }
+            <div className="profile col-sm-12 col-md-9 p-0 ">
+              <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
 
 
+                <Tabs className="tabspannel " value={value} onChange={handleChange} aria-label="icon tabs example" centered
+                  indicatorColor="secondary"
+                  textColor="inherit"
+                  variant="fullWidth"
 
-          </Box>
+                >
+                  <Tab className="tab1 w-50" icon={<DynamicFeedSharpIcon />} aria-label="phone" label="Post" />
+                  <Tab className="tab2 w-50" icon={<PersonPinIcon />} aria-label="favorite" label="connections" />
+                </Tabs>
+
+                {
+                  value === 0 ?
+                    <Feed username={user.username} profile={true} />
+                    :
+                    <Rightbar user={user} profile={true} />
+                }
+
+              </Box>
+
+            </div>
 
 
+
+          </div>
         </div>
+      }
 
-
-
-
-
-
-
-      </div>
 
     </>
   );

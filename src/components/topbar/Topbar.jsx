@@ -17,14 +17,14 @@ import Sidebar from '../sidebar/Sidebar';
 
 
 const Topbar = () => {
-  const { user, dispatch } = useContext(AuthContext);
+  const { state, dispatch } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const socket = React.useRef();
 
   const [friendRequest, setFriendRequest] = useState([]);
   useEffect(() => {
-    user && setFriendRequest([...user?.friendrequest]);
-  }, [user]);
+    state.user && setFriendRequest([...state.user?.friendrequest]);
+  }, [state.user]);
 
   useEffect(() => {
     socket.current = io.connect(process.env.REACT_APP_End_Point);
@@ -36,10 +36,10 @@ const Topbar = () => {
       dispatch({ type: 'FriendRequest', payload: friendRequest });
     });
   }, [dispatch, friendRequest]);
-  // console.log(user);
-  // console.log(user?.friendrequest.length);
+  // console.log(state.user);
+  // console.log(state.user?.friendrequest.length);
   useEffect(() => {
-    socket.current.emit('addUser', user._id);
+    socket.current.emit('addUser', state.user._id);
   });
 
   const logout = () => {
@@ -49,12 +49,12 @@ const Topbar = () => {
       console.log(err);
     }
   };
-  const [state, setState] = useState(false);
+  const [showfriendReq, setshowfriendReq] = useState(false);
   const [dropdownMenu, setdropdownMenu] = useState(false);
   const inputRef = useRef();
 
   const showFriendRequest = () => {
-    setState(!state);
+    setshowfriendReq(!showfriendReq);
     setdropdownMenu(!dropdownMenu);
 
     inputRef.current.focus();
@@ -66,16 +66,15 @@ const Topbar = () => {
 
 
       {/* Navbar*/}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top p-0 customnav">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top    customnav">
         <div className="container">
           <div className="container-fluid d-flex justify-content-between align-items-center">
             {/* Left elements */}
             <div className="d-flex">
               {/* Brand */}
-              <NavLink className="navbar-brand me-2 mb-1" to="/">
-                <span className='navbar-brand-logo' loading="lazy" style={{ marginTop: '2px' }}>
-                  Postgram
-                </span>
+              <NavLink className="navbar-brand m-0" to="/">
+                <img className="logolg d-none d-md-block" src="http://localhost:3000/assets/Logo/logo_text-cropped.svg" alt="" />
+                <img className="logosm d-block d-md-none d-lg-none" src="http://localhost:3000/assets/Logo/Postgram.png" alt="" />
               </NavLink>
 
 
@@ -84,7 +83,7 @@ const Topbar = () => {
 
 
             {/* Center elements */}
-            <ul className="navbar-nav flex-row w-auto" >
+            <ul className="navbar-nav flex-row w-sm-100" >
 
               <Sidebar />
 
@@ -156,13 +155,13 @@ const Topbar = () => {
               </li>
 
               <li style={{ marginTop: "1px" }}>
-                <NavLink to={`/profile/${user?.username}`}>
+                <NavLink to={`/profile/${state.user?.username}`}>
 
                   <Avatar
-                    alt={user.username}
+                    alt={state.user.username}
                     src={
-                      user.profilePicture
-                        ? user.profilePicture
+                      state.user.profilePicture
+                        ? state.user.profilePicture
                         : PF + 'person/noAvatar.png'
                     }
                   />
@@ -275,13 +274,13 @@ const Topbar = () => {
               </li>
 
               <li style={{ marginTop: "5px" }}>
-                <NavLink to={`/profile/${user.username}`}>
+                <NavLink to={`/profile/${state.user.username}`}>
 
                   <Avatar
-                    alt={user.username}
+                    alt={state.user.username}
                     src={
-                      user.profilePicture
-                        ? user.profilePicture
+                      state.user.profilePicture
+                        ? state.user.profilePicture
                         : PF + 'person/noAvatar.png'
                     }
                   />

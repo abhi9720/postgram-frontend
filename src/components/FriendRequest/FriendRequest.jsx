@@ -11,7 +11,7 @@ const FriendRequest = ({ id }) => {
   const [loading, setIsloading] = useState(false);
 
   const [user, setuser] = useState(null);
-  const { user: currentUser, dispatch } = useContext(AuthContext);
+  const { state, dispatch } = useContext(AuthContext);
   useEffect(() => {
     const getuser = async () => {
       const res = await axiosInstance.get("/user/?userId=" + id);
@@ -29,19 +29,19 @@ const FriendRequest = ({ id }) => {
     // and  currentuser is whi got friend request(will accept or reject )
 
     const res = await axiosInstance.put(`/user/${user?._id}/acceptFriendRequest`, {
-      userId: currentUser._id,
+      userId: state.user._id,
     });
 
     await axiosInstance.post("/conversation/", {
       senderId: user._id,
-      receiverId: currentUser._id,
+      receiverId: state.user._id,
     });
 
     dispatch({ type: "AcceptFriendRequest", payload: res.data });
   };
   const rejectFriendRequest = async () => {
     const res = await axiosInstance.put(`/user/${user._id}/rejectrequest`, {
-      userId: currentUser._id,
+      userId: state.user._id,
     });
 
     dispatch({ type: "RejectFriendRequest", payload: res.data });

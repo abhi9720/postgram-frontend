@@ -15,8 +15,8 @@ import Community from "./pages/Community/Community.jsx";
 import setAuthToken from "./utils/setAuthToken";
 
 const App = () => {
-  const { isAuthenticated, dispatch } = useContext(AuthContext);
-  console.log("isAuth : " + isAuthenticated);
+  const { state, dispatch } = useContext(AuthContext);
+  console.log("isAuth : " + state.isAuthenticated);
   console.log(useContext(AuthContext))
   // const alert = useAlert();
   if (localStorage.token) {
@@ -72,7 +72,7 @@ const App = () => {
     loadUser()
     // eslint-disable-next-line
   }, []);
-  console.log("isAuthenticated : " + isAuthenticated);
+  console.log("state.isAuthenticated : " + state.isAuthenticated);
 
   return (
     <>
@@ -80,26 +80,26 @@ const App = () => {
 
         <Switch>
           <Route exact path="/">
-            {isAuthenticated ? <Home /> : <Login />}
+            {state.isAuthenticated ? <Home /> : <Login />}
           </Route>
           <Route exact path="/feeds">
-            {isAuthenticated ? <TimeLine /> : <Login />}
+            {state.isAuthenticated ? <TimeLine /> : <Login />}
           </Route>
           <Route exact path="/login">
-            {isAuthenticated ? <Redirect to="/" /> : <Login />}
+            {state.isAuthenticated ? <Redirect to="/" /> : <Login />}
           </Route>
           <Route exact path="/register">
-            {isAuthenticated ? <Redirect to="/" /> : <Register />}
+            {state.isAuthenticated ? <Redirect to="/" /> : <Register />}
           </Route>
           <Route exact path="/messenger">
-            {isAuthenticated ? <Messenger /> : <Login />}
+            {state.isAuthenticated ? <Messenger /> : <Login />}
           </Route>
           <Route exact path="/profile/:username">
-            {isAuthenticated ? <Profile /> : <Login />}
+            {state.isAuthenticated ? <Profile /> : <Login />}
           </Route>
 
           <Route exact path="/community" className="show_sm">
-            {isAuthenticated ? <Community /> : <Login />}
+            {state.isAuthenticated ? <Community /> : <Login />}
           </Route>
 
           <Route path="*">

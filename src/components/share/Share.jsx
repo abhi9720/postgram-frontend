@@ -13,7 +13,7 @@ import SendIcon from "@material-ui/icons/Send";
 
 const Share = () => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const { user } = useContext(AuthContext);
+  const { state } = useContext(AuthContext);
   const desc = useRef();
   const [isposting, setIsPosting] = useState(false);
   const [file, setFile] = useState(null);
@@ -21,7 +21,7 @@ const Share = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     const newPost = {
-      userId: user._id,
+      userId: state.user._id,
       description: desc.current.value,
     };
     if (!file && desc.current.value.length === 0) {
@@ -102,11 +102,11 @@ const Share = () => {
             <div
               className="d-flex align-items-center"
               style={{ width: "100% " }}>
-              <Link to={`/profile/${user.username}`} className="d-flex">
+              <Link to={`/profile/${state.user.username}`} className="d-flex">
                 <Avatar
                   src={
-                    user.profilePicture
-                      ? user.profilePicture
+                    state.user.profilePicture
+                      ? state.user.profilePicture
                       : PF + "person/noAvatar.png"
                   }
                   alt=""
@@ -114,7 +114,7 @@ const Share = () => {
                 />
 
               </Link>
-              <span className='fs-5 fw-bold'>{user?.username}</span>
+              <span className='fs-5 fw-bold'>{state.user?.username}</span>
 
               {/* <Fab
                 variant="extended"
@@ -135,7 +135,7 @@ const Share = () => {
               ref={desc}
               type="text"
               className="shareInput"
-              placeholder={"What's is in your mind " + user.username + " ?"}
+              placeholder={"What's is in your mind " + state.user.username + " ?"}
             />
 
           </div>

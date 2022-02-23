@@ -25,14 +25,14 @@ const Loader = () => {
 
 const Feed = ({ username, profile }) => {
   const [posts, setPosts] = useState([]);
-  const { user } = useContext(AuthContext);
+  const { state } = useContext(AuthContext);
   const [fetching, setfetching] = useState(false);
   useEffect(() => {
     const fetchPosts = async () => {
       setfetching(true);
       const res = username
         ? await axiosInstance.get("/post/profile/" + username)
-        : await axiosInstance.get("/post/timeline/" + user?._id);
+        : await axiosInstance.get("/post/timeline/" + state.user?._id);
 
       setPosts(
         res.data.sort((p1, p2) => {
@@ -44,12 +44,12 @@ const Feed = ({ username, profile }) => {
     };
 
     fetchPosts();
-  }, [username, user._id]);
+  }, [username, state.user._id]);
 
   return (
     <div className="feed" >
       <div className="feedWrapper">
-        {/* {username ? username === user?.username ? <Share /> : "" : <Share />} */}
+        {/* {username ? username === state.user?.username ? <Share /> : "" : <Share />} */}
 
         {fetching ? (
           <>
@@ -69,6 +69,11 @@ const Feed = ({ username, profile }) => {
             {posts.map((p) => (
               <Post key={p._id} post={p} isprofile={profile || false} />
             ))}
+            {posts.length == 0 &&
+              <p className='display-6 mt-5'>
+                No Post Yet
+              </p>
+            }
           </div>
         )}
       </div>

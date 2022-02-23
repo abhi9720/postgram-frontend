@@ -16,17 +16,17 @@ const Post = ({ post, isprofile }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLike, setisLike] = useState(false);
   const [user, setUser] = useState({});
-  const { user: currentUser } = useContext(AuthContext);
+  const { state } = useContext(AuthContext);
 
   useEffect(() => {
-    setisLike(post.likes.includes(currentUser._id));
-  }, [currentUser._id, post.likes]);
+    setisLike(post.likes.includes(state.user._id));
+  }, [state.user._id, post.likes]);
 
   const likeHandler = async () => {
     setLike(isLike ? like - 1 : like + 1);
     setisLike(!isLike);
     try {
-      await axiosInstance.put(`/post/${post._id}/like`, { userId: currentUser._id });
+      await axiosInstance.put(`/post/${post._id}/like`, { userId: state.user._id });
     } catch (err) {
       console.log(err);
     }
@@ -52,7 +52,7 @@ const Post = ({ post, isprofile }) => {
     }
     if (e.currentTarget.id === 'deletePost') {
       try {
-        const id = currentUser._id;
+        const id = state.user._id;
         await axiosInstance.delete(`/post/${post._id}`, {
           data: { userId: id },
         });
@@ -91,7 +91,7 @@ const Post = ({ post, isprofile }) => {
               </Link>
               <span className="postDate">{format(post.createdAt)}</span>
             </div>
-            {post.userId === currentUser._id ? (
+            {post.userId === state.user._id ? (
               <div className="postTopRight">
                 <Button
                   id="menubtn"

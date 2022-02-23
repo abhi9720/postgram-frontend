@@ -143,7 +143,7 @@ export default function Rightbar({ user }) {
     };
 
     return (
-      <div className="profile_status">
+      <div className={'profile_status' + (user ? ' mx-2' : '')} >
         {/* <h4
           className="rightbarTitle"
           style={
@@ -235,11 +235,20 @@ export default function Rightbar({ user }) {
           </Button>
         </div>
         <div className="rightbarFollowings">
-          <span> {"User" + text + "  ( " + friends?.length + " ) "}</span>
+          <span > {"User" + text + "  ( " + friends?.length + " ) "}</span>
           <div className="rightbarFollowings_display">
             {friends?.map((id) => (
               <Friends key={id} userId={id} />
             ))}
+
+
+            {friends.length == 0 &&
+              <p className='py-5'>
+                First One to Connect with Him
+              </p>
+            }
+
+
           </div>
         </div>
       </div>

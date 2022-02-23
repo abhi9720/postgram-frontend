@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import "./login.css";
 import React from "react";
-
+import { NavLink } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import { CircularProgress, TextField } from "@material-ui/core";
-import { useAlert, positions } from "react-alert";
+// import { useAlert } from "react-alert";
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -33,45 +33,17 @@ const Login = () => {
     });
   };
 
-  const { isFetching, dispatch } = useContext(AuthContext);
-  const alert = useAlert();
+  const { state, dispatch } = useContext(AuthContext);
+  // const alert = useAlert();
   const handleClick = async (e) => {
     e.preventDefault();
-    console.log({ email: field.email, password: field.password });
-    const res = await loginCall(
+
+    await loginCall(
       { email: field.email, password: field.password },
       dispatch
     );
-    if (res === 200) {
-      alert.success(
-        <div
-          style={{
-            color: "white",
-            padding: "5px 5px",
-          }}
-        >
-          Login Successfull
-        </div>,
-        { position: positions.BOTTOM_RIGHT }
-      );
-    } else {
-      alert.error(
-        <div
-          style={{
-            color: "red",
-          }}
-        >
-          Invalid Email or password
-        </div>,
-        {
-          position: positions.TOP_RIGHT,
-          containerStyle: {
-            backgroundColor: "white",
-          },
-        }
-      );
-    }
   };
+
   const handleClickShowPassword = () => {
     setValues({ showPassword: !values.showPassword });
   };
@@ -80,7 +52,7 @@ const Login = () => {
     <>
 
       {
-        isFetching ?
+        state.isFetching ?
           <div class="d-flex vh-100 align-items-center justify-content-center">
             {/* <ReactLoading type={'bars'} color="#00e676" /> */}
             <MutatingDots height="100"
@@ -90,10 +62,20 @@ const Login = () => {
 
           </div>
           :
-          <div className="login">
+          <div className="login vh-100">
+            <nav class="navbar fixed-top navbar-light removedecoration">
+              <div class="container-fluid">
+                <NavLink class="navbar-brand" to="/">
+                  <img className="postgramlogo" src="http://localhost:3000/assets/Postgram_LOGIN.png" alt="" />
+
+
+                </NavLink>
+              </div>
+            </nav>
+
             <div className="loginWrapper">
               <div className="loginLeft">
-                <h3 className="loginLogo">Postgram</h3>
+                <h3 className="loginLogo hide-sm">Postgram</h3>
                 <span className="loginDesc">
                   Connect with friends and the world around you on
                   postgram-social.herokuapp.com
@@ -142,9 +124,9 @@ const Login = () => {
                   <button
                     type="submit"
                     className="loginButton"
-                    disabled={isFetching}
+                    disabled={state.isFetching}
                   >
-                    {isFetching ? (
+                    {state.isFetching ? (
                       <CircularProgress color="primary" size="24px" />
                     ) : (
                       "Log In"

@@ -30,13 +30,6 @@ export const loginCall = async (userCredential, dispatch) => {
     console.log(res)
     console.log(res.data);
     dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-    window.location.reload();
-    // const user = await axiosInstance.get("/auth");
-    // dispatch({
-    //   type: "USER_LOADED",
-    //   payload: user.data,
-    // });
-
   } catch (err) {
     console.log(err);
 
