@@ -98,9 +98,9 @@ const Login = () => {
   return (
     <>
       <div className="register vh-100">
-        <nav class="navbar fixed-top navbar-light removedecoration">
-          <div class="container-fluid">
-            <NavLink class="navbar-brand" to="/">
+        <nav className="navbar fixed-top navbar-light removedecoration">
+          <div className="container-fluid">
+            <NavLink className="navbar-brand" to="/">
               <img className="postgramlogo" src="http://localhost:3000/assets/Postgram_LOGIN.png" alt="" />
 
 

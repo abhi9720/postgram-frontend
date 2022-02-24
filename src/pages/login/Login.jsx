@@ -53,7 +53,7 @@ const Login = () => {
 
       {
         state.isFetching ?
-          <div class="d-flex vh-100 align-items-center justify-content-center">
+          <div className="d-flex vh-100 align-items-center justify-content-center">
             {/* <ReactLoading type={'bars'} color="#00e676" /> */}
             <MutatingDots height="100"
               width="100"
@@ -63,9 +63,9 @@ const Login = () => {
           </div>
           :
           <div className="login vh-100">
-            <nav class="navbar fixed-top navbar-light removedecoration">
-              <div class="container-fluid">
-                <NavLink class="navbar-brand" to="/">
+            <nav className="navbar fixed-top navbar-light removedecoration">
+              <div className="container-fluid">
+                <NavLink className="navbar-brand" to="/">
                   <img className="postgramlogo" src="http://localhost:3000/assets/Postgram_LOGIN.png" alt="" />
 
 

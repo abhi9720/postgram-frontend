@@ -329,7 +329,7 @@ export default function Profile() {
 
 
                       <div className="followInfo">
-                        <table class="table table-borderless p-0 m-0">
+                        <table className="table table-borderless p-0 m-0">
                           <thead>
                             <tr>
                               <th>Post</th>
@@ -344,7 +344,7 @@ export default function Profile() {
                           </thead>
                         </table>
                       </div>
-                      <div class="divider"></div>
+                      <div className="divider"></div>
                       <div className="btn_function"
                         style={
                           user.username !== state.user?.username
