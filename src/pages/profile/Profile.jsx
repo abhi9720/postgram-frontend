@@ -440,7 +440,7 @@ export default function Profile() {
       </div>
       {
         (status !== "error" && status !== "loading") &&
-        <div className="container-fluid" style={{ backgroundColor: "transparent" }}>
+        <div className="container-fluid mb-5" style={{ backgroundColor: "transparent" }}>
           <div className="row   justify-content-center">
 
             <div className="profile col-sm-12 col-md-9 p-0 ">
