@@ -19,6 +19,7 @@ const Login = () => {
     confirmPassword: "",
   });
   const status = React.useRef(false);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const history = useHistory();
   const [loading, setloading] = useState(false);
@@ -101,7 +102,7 @@ const Login = () => {
         <nav className="navbar fixed-top navbar-light removedecoration">
           <div className="container-fluid">
             <NavLink className="navbar-brand" to="/">
-              <img className="postgramlogo" src="http://localhost:3000/assets/Postgram_LOGIN.png" alt="" />
+              <img className="postgramlogo" src={PF + "assets/Postgram_LOGIN.png"} alt="" />
 
 
             </NavLink>

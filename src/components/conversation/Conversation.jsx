@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import './conversation.css';
 import ContentLoader from 'react-content-loader';
 
-export default function Conversation({ conversation, currentuser, Online }) {
+export default function Conversation({ conversation, currentuser, Online, ChatOpen }) {
   const [user, setUser] = useState(null);
   const [loading, setIsloading] = useState(false);
 
@@ -36,6 +36,7 @@ export default function Conversation({ conversation, currentuser, Online }) {
         setIsloading(true);
         const res = await axiosInstance('/user?userId=' + friendId);
         setUser(res.data);
+
       } catch (err) {
         console.log(err);
       } finally {
@@ -45,13 +46,14 @@ export default function Conversation({ conversation, currentuser, Online }) {
     getUser();
   }, [currentuser, conversation]);
 
+  console.log(ChatOpen)
   return (
     <>
       {loading ? (
         <Loader />
       ) : (
         <>
-          <div className="conversation">
+          <div className={(ChatOpen?._id === user?._id) ? "conversation activeconversation" : "conversation"} >
             <div className="ConversationUser">
               <img
                 className="conversationImg"

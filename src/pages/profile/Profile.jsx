@@ -322,7 +322,8 @@ export default function Profile() {
                       </div>
                     </div>
                     <div className="profileInfo">
-                      <h4 className="profileInfoName fs-1">{user.username} </h4>
+                      <p className="profileInfoName fs-3 mb-1">{user?.username} </p>
+                      {console.log(user)}
                       {/* <span className="profileInfoDesc">{user.description}</span> */}
                     </div>
                     <div className="profileFollow">
@@ -332,19 +333,20 @@ export default function Profile() {
                         <table className="table table-borderless p-0 m-0">
                           <thead>
                             <tr>
-                              <th>Post</th>
+                              <th>Friends</th>
                               <th>followers</th>
                               <th>followings</th>
                             </tr>
                             <tr>
-                              <td> {0} </td>
+                              <td>{user?.friends?.length}</td>
                               <td>{user?.followers?.length}</td>
                               <td> {user?.followings?.length} </td>
                             </tr>
                           </thead>
                         </table>
                       </div>
-                      <div className="divider"></div>
+                      {user.username !== state.user?.username && <div className="divider"></div>}
+
                       <div className="btn_function"
                         style={
                           user.username !== state.user?.username
@@ -438,7 +440,7 @@ export default function Profile() {
       </div>
       {
         (status !== "error" && status !== "loading") &&
-        <div className="container-fluid mt-5" style={{ backgroundColor: "transparent" }}>
+        <div className="container-fluid" style={{ backgroundColor: "transparent" }}>
           <div className="row   justify-content-center">
 
             <div className="profile col-sm-12 col-md-9 p-0 ">

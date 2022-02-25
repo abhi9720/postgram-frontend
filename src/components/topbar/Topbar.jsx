@@ -66,15 +66,15 @@ const Topbar = () => {
 
 
       {/* Navbar*/}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top    customnav">
+      <nav className="navbar navbar-expand-lg navbar-light fixed-top" style={{ backgroundColor: '#fff' }}>
         <div className="container">
           <div className="container-fluid d-flex justify-content-between align-items-center">
             {/* Left elements */}
-            <div className="d-flex">
+            <div className="d-flex align-items-center">
               {/* Brand */}
               <NavLink className="navbar-brand m-0" to="/">
-                <img className="logolg d-none d-md-block" src="http://localhost:3000/assets/Logo/logo_text-cropped.svg" alt="" />
-                <img className="logosm d-block d-md-none d-lg-none" src="http://localhost:3000/assets/Logo/Postgram.png" alt="" />
+                <img className="logolg d-none d-md-block" src={PF + "assets/Logo/logo_text-cropped.svg"} alt="" />
+                <img className="logosm d-block d-md-none d-lg-none" src={PF + "assets/Logo/Postgram.png"} alt="" />
               </NavLink>
 
 
@@ -83,7 +83,7 @@ const Topbar = () => {
 
 
             {/* Center elements */}
-            <ul className="navbar-nav flex-row w-sm-100" >
+            <ul className="navbar-nav flex-row w-sm-90" >
 
               <Sidebar />
 
@@ -92,7 +92,7 @@ const Topbar = () => {
 
 
             {/* Right elements */}
-            <ul className="avbar-nav flex-row justify-content-around m-0 d-none d-md-flex">
+            <ul className="navbar-nav flex-row justify-content-around m-0 d-none d-md-flex">
 
 
               <li className='nav-item  active'>
@@ -156,7 +156,6 @@ const Topbar = () => {
 
               <li style={{ marginTop: "1px" }}>
                 <NavLink to={`/profile/${state.user?.username}`}>
-
                   <Avatar
                     alt={state.user.username}
                     src={
@@ -210,10 +209,11 @@ const Topbar = () => {
       {/* Navbar */}
 
 
+
       {/* ------------------------------------------------------------------------------------------------- */}
 
       {/* // nvabar for smaller screen */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-bottom p-0 m-0 d-block d-md-none d-lg-none">
+      <nav className="navbar navbar-expand-lg navbar-light fixed-bottom p-0 m-0 d-block d-md-none d-lg-none customnav">
         <div className="container">
           <div className="container-fluid justify-content-between">
             {/* Right elements */}
@@ -244,13 +244,13 @@ const Topbar = () => {
               </li>
 
               {/* add post */}
-              <li className='nav-item'>
-                <span className="topbarNavLink" >
+              <li className='nav-item bnmainbtn'>
+                <span className="topbarNavLink">
 
-                  <IconButton data-mdb-toggle="modal" data-mdb-target="#exampleModal" variant="contained" color="secondary">
+                  <IconButton color="primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal" variant="contained">
                     {/* <i className="fas fa-plus-square iconstyle"></i>
        */}
-                    <AddBoxOutlined className='iconstyle' color="primary" />
+                    <AddBoxOutlined style={{ color: "##0072E5" }} fontSize="medium" />
                   </IconButton>
                 </span>
               </li>

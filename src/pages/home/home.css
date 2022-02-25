@@ -1,3 +1,72 @@
+* {
+  box-sizing: border-box;
+
+}
+
+
+
+:root {
+  --main-background-color: #0a2540;
+  --main-text-color: #ffffff;
+  --color-primary: #214fe0;
+  --color-dark: #1d1f20;
+  --color-light: #f4f4f4;
+  --color-shade: #bbb;
+  --lock-stroke: 2.5px;
+  --royal-gra: #627597 !important;
+  --light: #FAFAFF;
+  --dark: #30343f;
+  --darkLight: #636b83;
+  --mayerPurple: #614685;
+  --darkBlue: #1E2749;
+  --darkBlueLighter: #25315b;
+  --yellow: #FED766;
+  --gray: #8892b0;
+  --blueGray: #545677;
+  --lightGray: #D1D1D1;
+  --clearlinkBlue: #1990ff;
+  --blue-text: #0a2540;
+
+
+
+  --color-workflow-card-connector-inactive: #040d21;
+
+  --color-workflow-card-header-shadow: #1b1f230a;
+
+  --color-calendar-halloween-graph-day-L1-bg: #631c03;
+  --color-calendar-halloween-graph-day-L2-bg: #bd561d;
+  --color-calendar-halloween-graph-day-L3-bg: #fa7a18;
+  --color-calendar-halloween-graph-day-L4-bg: #fddf68;
+  --color-calendar-graph-day-bg: var(--color-scale-gray-8);
+  --color-calendar-graph-day-border: #1b1f230f;
+  --color-calendar-graph-day-L1-bg: #0e4429;
+  --color-calendar-graph-day-L2-bg: #006d32;
+  --color-calendar-graph-day-L3-bg: #26a641;
+  --color-calendar-graph-day-L4-bg: #39d353;
+  --color-calendar-graph-day-L1-border: #ffffff0d;
+  --color-calendar-graph-day-L2-border: #ffffff0d;
+  --color-calendar-graph-day-L3-border: #ffffff0d;
+  --color-calendar-graph-day-L4-border: #ffffff0d;
+  --coolers-green-pale: #80b918;
+
+
+  --background-primary: #2d3748;
+  --background-secondary: #1a212d;
+  --action-primary: #728197;
+  --action-secondary: #2d3748;
+  --foreground-primary: #edf2f7;
+  --foreground-secondary: #ccd6e0;
+  --foreground-tertiary: #a0aec0;
+  --accent: #667fea;
+
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  text-size-adjust: 100%;
+}
+
 .homeContainer {
   display: flex;
   margin-top: 5rem;
@@ -34,7 +103,7 @@ body {
 @media(max-width:700px) {
   .homeContainer {
     display: flex;
-    margin-top: 6rem;
+    margin-top: 4.5rem;
   }
 
   .container,
@@ -44,5 +113,61 @@ body {
     padding-left: 4px !important;
     margin-right: auto;
     margin-left: auto;
+  }
+}
+
+
+
+.homeContainer::-webkit-scrollbar {
+  width: 18px;
+
+}
+
+.homeContainer::-webkit-scrollbar-track {
+  background: hsl(0, 0%, 90%);
+}
+
+.homeContainer::-webkit-scrollbar-thumb,
+.homeContainer::-webkit-scrollbar-thumb:hover {
+  border-radius: 20px;
+  border: solid 6px transparent;
+  background-clip: content-box
+}
+
+.homeContainer::-webkit-scrollbar-thumb {
+  background-color: var(--accent) !important;
+  border-radius: 20px;
+
+}
+
+.homeContainer::-webkit-scrollbar-button,
+.homeContainer::-webkit-scrollbar-corner {
+  cursor: pointer;
+  display: none
+}
+
+.homeContainer::-webkit-scrollbar-button,
+.homeContainer::-webkit-scrollbar-corner {
+  background: red
+}
+
+.homeContainer::-webkit-scrollbar-arrow-color {
+  color: white
+}
+
+
+
+@media screen and (max-width: 800px) {
+  .homeContainer::-webkit-scrollbar {
+    width: 0
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+
+  html,
+  body {
+    overflow-x: hidden
   }
 }

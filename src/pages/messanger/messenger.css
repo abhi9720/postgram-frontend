@@ -1,6 +1,6 @@
 /* width */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 0px;
 }
 
 /* Track */
@@ -17,9 +17,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(85, 85, 85, 0.801);
 }
+
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 0px;
 }
 
 /* Track */
@@ -36,11 +37,26 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(85, 85, 85, 0.801);
 }
+
 .messenger {
   height: calc(100vh - 58px);
   display: flex;
   justify-content: center;
   background-color: #f3f1ee;
+}
+
+.navbar_css {
+  box-shadow: none !important;
+  border-bottom: 1px solid #efefef;
+  background-color: #fff !important;
+
+}
+
+
+
+
+.logo {
+  color: #20247b;
 }
 
 .chatMenuWrapper {
@@ -63,9 +79,11 @@
 
   border-bottom: 1px solid #17a2b8;
 }
+
 .chatMenuInput .MuiSvgIcon-root {
   opacity: 0.7;
 }
+
 .chatMenuInput input {
   font-size: 20px;
   padding: 10px;
@@ -74,14 +92,15 @@
   letter-spacing: 0.3px;
   outline: none;
 }
+
 .chatMenuInput input:focus {
   outline: none !important;
   border: none !important;
 }
+
 /* .chatMenuInput:focus-within {
   border: 2px solid rgba(60, 60, 224, 0.596);
  */
-
 .user {
   flex: 1;
   padding: 10px;
@@ -96,12 +115,13 @@
 } */
 
 .chatBoxWrapper {
-  padding-top: 2px;
+
   height: 99%;
   display: flex;
   flex-direction: column;
   background-color: #fff;
 }
+
 .no_conversation {
   height: 99%;
   display: flex;
@@ -111,16 +131,19 @@
   text-align: center;
   background-color: white;
 }
+
 .no_conversation img {
   width: 40%;
   height: 40%;
 }
+
 .no_conversation span {
   font-size: 55px;
   font-weight: 600;
   color: gray;
   opacity: 0.3;
 }
+
 .chat-room-name {
   margin: 0px;
 }
@@ -140,27 +163,28 @@
   color: white;
   padding: 6px;
 }
+
 .chat_header a {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 
 .chat_headerInfo {
   flex: 1;
   padding-left: 20px;
-  
+
 }
+
 .otherside_username {
   color: #fff !important;
-  font-weight: 900;
-  font-size: 22px;
+  font-weight: 400;
+  font-size: 20px;
   cursor: pointer;
-  
+
 }
-.chat_headerInfo > p {
-  color: gray;
-}
+
 
 .chat_body {
   flex: 1;
@@ -175,6 +199,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .chat_footer {
   display: flex;
   align-items: center;
@@ -190,12 +215,12 @@
   background-color: white;
 }
 
-.chat_footer > form {
+.chat_footer>form {
   flex: 1;
   display: flex;
 }
 
-.chat_footer > form > input {
+.chat_footer>form>input {
   flex: 1;
   border-radius: 30px;
   border: none;
@@ -203,10 +228,10 @@
   outline: none;
   font-size: 16px;
   padding-left: 5px;
-  
+
 }
 
-.chat_footer > form > button {
+.chat_footer>form>button {
   display: none;
 }
 
@@ -240,9 +265,10 @@
 }
 
 @media (max-width: 830px) {
-  .messagerNav{
+  .messagerNav {
     display: none !important;
   }
+
   .chat {
     height: 99.78vh;
   }
@@ -250,51 +276,80 @@
   .chat_body .message {
     max-width: 70%;
   }
+
   .chat_body {
     padding: 20px 5px;
   }
+
   .message.own {
     align-items: flex-end;
     margin-left: 30% !important;
   }
+
   .chatBoxWrapper {
     padding: 0px;
     height: 100%;
   }
+
   .chat_footer {
     transition: all 0.3s ease-in-out;
     margin: 0px 4px;
   }
+
   .chat_footer:focus-within {
     border: 1px solid #20247b;
   }
+
   .chat_icon {
     display: block;
   }
+
   .messenger {
     height: 100vh;
   }
+
   /* .chatMenuWrapper{
     height: ;
   } */
 }
+
 .sidebar_flex0 {
   flex: 0.25;
 }
+
 .chatbox_flex {
   flex: 0.74;
 }
+
 /* .chatMenu {
   flex: 0.25 !important;
 } */
 /* .chat {
   flex: 0.74;
 } */
+
+
+div.MuiCard-root {
+  position: absolute !important;
+  top: 30% !important;
+  left: 26% !important;
+}
+
+.emojipannelclose {
+  width: 100%;
+  border-radius: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
 @media (max-width: 830px) {
   .sidebar_flex0 {
     flex: 0;
     display: none;
   }
+
   .sidebar_flex1 {
     flex: 1;
     display: block;
@@ -310,5 +365,11 @@
   .chatbox_flexsmall {
     flex: 0;
     display: none;
+  }
+
+  div.MuiCard-root {
+    position: absolute !important;
+    top: 28% !important;
+    left: 5% !important;
   }
 }

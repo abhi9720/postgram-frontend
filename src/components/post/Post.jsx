@@ -8,10 +8,11 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 
 import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+
+
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import { Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
 const Post = ({ post, isprofile }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLike, setisLike] = useState(false);
@@ -68,7 +69,7 @@ const Post = ({ post, isprofile }) => {
 
   return (
     <>
-      <div className="post" style={isprofile ? { width: '40%', margin: "30px", flex: '1 1 auto' } : {}}>
+      <div className="post" style={isprofile ? { width: '40%', margin: "20px", flex: '1 1 auto' } : {}}>
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">
@@ -86,10 +87,12 @@ const Post = ({ post, isprofile }) => {
                   className="postProfileImg"
                 />
               </Link>
-              <Link to={`/profile/${user.username}`} className="d-flex">
-                <span className="postUserName">{user.username}</span>
-              </Link>
-              <span className="postDate">{format(post.createdAt)}</span>
+              <div className="Post_user">
+                <Link to={`/profile/${user.username}`} className="d-flex">
+                  <span className="postUserName">{user.username}</span>
+                </Link>
+                <span className="postDate">{format(post.createdAt)}</span>
+              </div>
             </div>
             {post.userId === state.user._id ? (
               <div className="postTopRight">
@@ -101,7 +104,30 @@ const Post = ({ post, isprofile }) => {
                 >
                   <MoreVert />
                 </Button>
-                <Menu
+
+
+                <Dialog
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">
+                    Want to delete Post ?
+                  </DialogTitle>
+                  <DialogContent>
+
+                  </DialogContent>
+                  <DialogActions>
+                    <Button id="deletePost" className="bg-danger text-white" onClick={handleClose}>Delete</Button>
+                    <Button id="cancel" onClick={handleClose} autoFocus>
+                      Cancel
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+
+
+                {/* <Menu
                   id="postdropdown"
                   anchorEl={anchorEl}
                   open={Boolean(anchorEl)}
@@ -110,7 +136,7 @@ const Post = ({ post, isprofile }) => {
                   <MenuItem id="deletePost" onClick={handleClose}>
                     Delete
                   </MenuItem>
-                </Menu>
+                </Menu> */}
               </div>
             ) : (
               ''

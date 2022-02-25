@@ -1,19 +1,20 @@
 import "./messenger.css";
 import MessengerNavbar from "./MessengerNavbar";
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+
+import Picker from 'emoji-picker-react';
 import { io } from "socket.io-client";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 import Conversation from "../../components/conversation/Conversation";
 import axiosInstance from "../../utils/axiosConfig";
-import { Avatar, Button, CircularProgress } from "@material-ui/core";
+import { Avatar, Button, Card, CardContent, CircularProgress, IconButton } from "@material-ui/core";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import Message from "../../components/message/Message";
 
-import { Link } from "react-router-dom";
-import { Chat, Home } from "@material-ui/icons";
+import { Link, NavLink } from "react-router-dom";
+import { Chat, Home, Close } from "@material-ui/icons";
 
 const Messenger = () => {
   const { state } = useContext(AuthContext);
@@ -157,6 +158,19 @@ const Messenger = () => {
 
   useEffect(() => { }, [hide]);
 
+
+
+
+  const [chosenEmoji, setChosenEmoji] = useState(null);
+  const [showEmojiPannel, setshowEmojiPannel] = useState(null);
+
+
+  const onEmojiClick = (event, emojiObject) => {
+    setChosenEmoji(emojiObject);
+
+    setNewMessage((newMessage || '') + chosenEmoji.emoji)
+  };
+
   return (
     <>
       <MessengerNavbar />
@@ -165,13 +179,17 @@ const Messenger = () => {
 
 
         <div className="chat_icon">
-          <Button color="primary"  >
-            <Home
-              variant="extended"
-              onClick={() =>
-                window.location.href = "/"
-              } />
-
+          <Button   >
+            <NavLink
+              to="/"
+              role="button"
+            >
+              <Home
+                variant="extended"
+                onClick={() =>
+                  window.location.href = "/"
+                } />
+            </NavLink>
           </Button>
 
           <Button
@@ -209,13 +227,13 @@ const Messenger = () => {
                       if (window.screen.width <= 850) {
                         sidebarHandler();
                       }
-                    }}
-                  >
+                    }}>
                     <Conversation
                       key={data._id}
                       conversation={data}
                       currentuser={state.user}
                       Online={onlineUsers}
+                      ChatOpen={otherSide}
                     />
                   </div>
                 );
@@ -225,25 +243,24 @@ const Messenger = () => {
         </div>
 
         <div
-          className={hide ? "chat chatbox_flex" : "chat chatbox_flexsmall"}
-        >
+          className={hide ? "chat chatbox_flex" : "chat chatbox_flexsmall"}>
           <div className="chatBoxWrapper">
             {currentChat ? (
               <>
                 <div className="chat_header">
-                  <div>
-                    <Link
-                      className="otherside_username"
-                      to={"/profile/" + otherSide?.username}
-                    >
-                      <Avatar src={otherSide?.profilePicture} />
-                      <div className="chat_headerInfo">
-                        <h5 className="chat-room-name">
-                          {otherSide?.username}
-                        </h5>
-                      </div>
-                    </Link>
-                  </div>
+
+                  <Link
+                    className="otherside_username"
+                    to={"/profile/" + otherSide?.username}
+                  >
+                    <Avatar src={otherSide?.profilePicture} />
+                    <div className="chat_headerInfo">
+                      <p className="chat-room-name">
+                        {otherSide?.username}
+                      </p>
+                    </div>
+                  </Link>
+
                 </div>
 
                 {/* <Avatar src={otherSide?.profilePicture} />
@@ -276,12 +293,19 @@ const Messenger = () => {
                 </div>
                 <div className="messageSender">
                   <div className="chat_footer">
-                    <InsertEmoticonIcon />
+                    <IconButton onClick={() => setshowEmojiPannel(!showEmojiPannel)}>
+                      <InsertEmoticonIcon />
+                    </IconButton>
                     <form onSubmit={submitHandler}>
                       <input
                         type="text"
+
                         placeholder="Type a message"
-                        onChange={(e) => setNewMessage(e.target.value)}
+                        onChange={(e) => {
+                          setNewMessage(e.target.value)
+
+                        }}
+                        onFocus={() => setshowEmojiPannel(null)}
                         value={newMessage}
                       />
                       <button type="submit">Send a Message</button>
@@ -309,7 +333,30 @@ const Messenger = () => {
             )}
           </div>
         </div>
+        {
+          showEmojiPannel &&
+
+          <Card className="p-0 m-0">
+
+            <CardContent className="p-0 m-0">
+              <div className="emojipannelclose">
+                <IconButton onClick={() => setshowEmojiPannel(!showEmojiPannel)} aria-label="close" component="span">
+                  <Close size="small" />
+                </IconButton>
+              </div>
+
+              <Picker
+                preload={true}
+                onEmojiClick={onEmojiClick} />
+            </CardContent>
+          </Card>
+
+        }
       </div>
+
+
+
+
     </>
   );
 };

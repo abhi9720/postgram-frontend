@@ -5,15 +5,23 @@
   cursor: pointer;
   border-bottom: 1px solid rgba(220, 233, 238, 0.473);
   padding-left: 10px;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) 0.2s;
 }
+
 .conversation:hover {
   background-color: rgba(119, 136, 153, 0.164);
+}
+
+.activeconversation {
+  background-color: rgba(119, 136, 153, 0.164);
+
 }
 
 .ConversationUser {
   margin-right: 10px;
   position: relative;
 }
+
 .conversationImg {
   width: 40px;
   height: 40px;
@@ -26,9 +34,10 @@
 .conversationName {
   font-weight: 500;
   font-size: 18px;
-  --tw-text-opacity: 1!important;
-  color: rgb(7 83 83/var(--tw-text-opacity))!important;
+  --tw-text-opacity: 1 !important;
+  color: rgb(7 83 83/var(--tw-text-opacity)) !important;
 }
+
 .rightbarOnline {
   width: 15px;
   height: 15px;

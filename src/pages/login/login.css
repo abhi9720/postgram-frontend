@@ -1,6 +1,5 @@
 .login {
-  width: 100vw;
-  height: 100vh;
+
   background-color: #f3f1ee;
   display: flex;
   justify-content: center;
@@ -130,4 +129,13 @@
     font-size: 12px;
     margin-bottom: 20px;
   }
+}
+
+.MuiInputLabel-animated {
+  transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+
+}
+
+.login * {
+  overflow-y: hidden;
 }

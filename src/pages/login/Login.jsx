@@ -19,6 +19,9 @@ const Login = () => {
     password: "",
   });
 
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+
   const [values, setValues] = React.useState({
     showPassword: false,
   });
@@ -66,7 +69,7 @@ const Login = () => {
             <nav className="navbar fixed-top navbar-light removedecoration">
               <div className="container-fluid">
                 <NavLink className="navbar-brand" to="/">
-                  <img className="postgramlogo" src="http://localhost:3000/assets/Postgram_LOGIN.png" alt="" />
+                  <img className="postgramlogo" src={PF + "assets/Postgram_LOGIN.png"} alt="" />
 
 
                 </NavLink>
@@ -85,6 +88,7 @@ const Login = () => {
                 <form className="loginBox" onSubmit={handleClick}>
                   <TextField
                     id="filled-email-input"
+
                     label="Email"
                     type="email"
                     name="email"
