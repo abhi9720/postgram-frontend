@@ -52,6 +52,7 @@ export default function ChatOnline({
         >
           <div className="chatOnlineImgContainer">
             <img
+              loading="lazy"
               className="chatOnlineImg"
               src={
                 o?.profilePicture

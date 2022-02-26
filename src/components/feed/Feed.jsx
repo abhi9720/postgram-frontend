@@ -32,7 +32,7 @@ const Feed = ({ username, profile }) => {
       setfetching(true);
       const res = username
         ? await axiosInstance.get("/post/profile/" + username)
-        : await axiosInstance.get("/post/timeline/" + state.user?._id);
+        : await axiosInstance.get("/post/timeline/" + state?.user?._id);
 
       setPosts(
         res.data.sort((p1, p2) => {

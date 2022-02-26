@@ -250,7 +250,7 @@ const Topbar = () => {
                   <IconButton color="primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal" variant="contained">
                     {/* <i className="fas fa-plus-square iconstyle"></i>
        */}
-                    <AddBoxOutlined style={{ color: "##0072E5" }} fontSize="medium" />
+                    <AddBoxOutlined style={{ color: "#0072E5" }} />
                   </IconButton>
                 </span>
               </li>

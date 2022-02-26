@@ -20,6 +20,7 @@ const Friends = ({ userId }) => {
       >
         <div className="rightbarFollowing">
           <img
+            loading="lazy"
             src={
               user?.profilePicture
                 ? user?.profilePicture

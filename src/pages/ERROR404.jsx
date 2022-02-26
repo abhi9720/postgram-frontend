@@ -14,7 +14,7 @@ const ERROR404 = () => {
         flexDirection: "column",
       }}
     >
-      <img src={"../assets/404.png"} alt="page not found" />
+      <img loading="lazy" src={"../assets/404.png"} alt="page not found" />
       <Button
         variant="contained"
         color="secondary"

@@ -5,6 +5,14 @@
 
 }
 
+.homewrapper {
+  position: fixed;
+  top: 20%;
+  left: 65%;
+
+  width: 18%;
+}
+
 .rightbarWrapper {
   display: flex;
   flex-direction: column;

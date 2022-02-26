@@ -24,6 +24,7 @@ const Online = ({ id }) => {
 			<li className="rightbarFriend">
 				<div className="rightbarprofileImgContainer">
 					<img
+						loading="lazy"
 						className="rightbarprofileImg"
 						src={user?.profilePicture ? user?.profilePicture : PF + 'person/noAvatar.png'}
 						alt=""

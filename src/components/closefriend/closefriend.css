@@ -1,12 +1,13 @@
 .sidebarFriend {
-	display: flex;
-	align-items: center;
-	margin-bottom: 15px;
-	padding: 10px 15px;
-	border-bottom: 1px solid #edeff1;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-bottom: 1px solid #edeff1;
 }
+
 .sidebarFriend:hover {
-	background-color: #49506c18;
+    background-color: #49506c18;
 }
 
 /* .sidebarFriendImg {
@@ -18,9 +19,9 @@
 } */
 
 .sidebarFriendName {
-	color: #0c163b;
-	font-weight: 700;
-	font-style: normal;
-	margin-top: 0;
-	margin-left: 20px;
+    color: #0c163b;
+    font-weight: 700;
+    font-style: normal;
+    margin-top: 0;
+    margin-left: 20px;
 }

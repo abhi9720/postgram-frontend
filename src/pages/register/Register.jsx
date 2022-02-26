@@ -102,7 +102,7 @@ const Login = () => {
         <nav className="navbar fixed-top navbar-light removedecoration">
           <div className="container-fluid">
             <NavLink className="navbar-brand" to="/">
-              <img className="postgramlogo" src={PF + "assets/Postgram_LOGIN.png"} alt="" />
+              <img loading="lazy" className="postgramlogo" src={PF + "assets/Postgram_LOGIN.png"} alt="" />
 
 
             </NavLink>

@@ -143,6 +143,7 @@ const Share = () => {
           {file && (
             <div className="shareImgContainer">
               <img
+                loading="lazy"
                 className="shareImg"
                 src={URL.createObjectURL(file)}
                 alt=""

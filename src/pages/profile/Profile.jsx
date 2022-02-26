@@ -13,7 +13,7 @@ import { Instagram } from "react-content-loader";
 import axiosInstance from "../../utils/axiosConfig";
 import { useParams } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
-import { CircularProgress, Button, Tabs, Tab, IconButton, Box } from "@material-ui/core";
+import { CircularProgress, Button, Tabs, Tab, IconButton, Box, Typography } from "@material-ui/core";
 import { PhotoCamera, Done, TextsmsOutlined } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
@@ -242,7 +242,7 @@ export default function Profile() {
                     <div className="profileCover">
                       <div className="profileCoverImg">
                         {user.coverpicture ? (
-                          <img src={user.coverpicture} alt="" />
+                          <img loading="lazy" src={user.coverpicture} alt="" />
                         ) : (
                           <div> </div>
                         )}
@@ -277,7 +277,7 @@ export default function Profile() {
                       <div className="profileUserImg">
 
                         <div className="profileUserImageCover">
-                          <img
+                          <img loading="lazy"
                             src={
                               user.profilePicture
                                 ? user.profilePicture.replace(
@@ -322,7 +322,7 @@ export default function Profile() {
                       </div>
                     </div>
                     <div className="profileInfo">
-                      <p className="profileInfoName fs-3 mb-1">{user?.username} </p>
+                      <Typography variant="h5" gutterBottom component="div" className="profileInfoName">{user?.username} </Typography>
                       {console.log(user)}
                       {/* <span className="profileInfoDesc">{user.description}</span> */}
                     </div>

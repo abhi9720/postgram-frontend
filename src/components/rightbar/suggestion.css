@@ -1,0 +1,15 @@
+.communityFriend {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #edeff1;
+    border-radius: 0.25em;
+
+}
+
+.communityFriendName {
+    font-size: 14px;
+    line-height: 18px;
+    color: #262626;
+    margin-left: 20px;
+}

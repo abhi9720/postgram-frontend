@@ -10,6 +10,11 @@ import { AuthContext } from '../../context/AuthContext';
 import Button from '@material-ui/core/Button';
 
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
+
+
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import { Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
@@ -74,7 +79,8 @@ const Post = ({ post, isprofile }) => {
           <div className="postTop">
             <div className="postTopLeft">
               <Link to={`/profile/${user.username}`} className="d-flex">
-                <img
+                <LazyLoadImage effect="blur"
+                  loading="lazy"
                   src={
                     user.profilePicture
                       ? user.profilePicture.replace(
@@ -147,7 +153,7 @@ const Post = ({ post, isprofile }) => {
               <span className="postText">{post?.description} </span>
             )}
             {post.img ? (
-              <img src={post.img} alt=".." className="postImage" />
+              <LazyLoadImage effect="blur" src={post.img} alt=".." className="postImage" loading="lazy" />
             ) : (
               ''
             )}

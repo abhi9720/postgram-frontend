@@ -40,6 +40,10 @@ const App = () => {
           payload: res.data,
         });
       } catch (err) {
+        dispatch({
+          type: "AUTH_ERROR"
+        });
+
         console.log(err)
       }
     }

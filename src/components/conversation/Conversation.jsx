@@ -56,6 +56,7 @@ export default function Conversation({ conversation, currentuser, Online, ChatOp
           <div className={(ChatOpen?._id === user?._id) ? "conversation activeconversation" : "conversation"} >
             <div className="ConversationUser">
               <img
+                loading="lazy"
                 className="conversationImg"
                 src={
                   user?.profilePicture

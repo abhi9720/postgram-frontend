@@ -29,7 +29,7 @@ const Sidebar = () => {
     setSearched(
       allUsers.filter((u) =>
         u.username.toLowerCase().startsWith(search.toLowerCase())
-      ).slice(0, 4)
+      ).slice(0, 8)
     );
   }, [search, allUsers]);
 
@@ -112,7 +112,7 @@ const Sidebar = () => {
                 (u) =>
                   u._id !== state.user._id && (
                     <Link
-                      className="friend_name d-block"
+                      className="mt-3"
                       key={u._id}
                       to={"/profile/" + u.username}
                       style={{ textDecoration: "none" }}

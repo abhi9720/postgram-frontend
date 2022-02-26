@@ -73,13 +73,11 @@ html {
 }
 
 body {
-  background-color: #f6f6f6 !important;
+  background-color: #fafafa !important;
 }
 
 
-* {
-  overflow-x: hidden !important;
-}
+
 
 .iconstyle {
   font-size: 1.5rem;
