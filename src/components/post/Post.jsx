@@ -78,7 +78,7 @@ const Post = ({ post, isprofile }) => {
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">
-              <Link to={`/profile/${user.username}`} className="d-flex">
+              <Link to={`/profile/${user.id}`} className="d-flex">
                 <LazyLoadImage effect="blur"
                   loading="lazy"
                   src={
