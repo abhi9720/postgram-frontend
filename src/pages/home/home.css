@@ -70,6 +70,7 @@ html {
 .homeContainer {
   display: flex;
   margin-top: 5rem;
+  position: relative !important;
 }
 
 body {
@@ -84,7 +85,7 @@ body {
   color: #262626;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .hide-sm {
     display: none;
   }
@@ -102,6 +103,10 @@ body {
   .homeContainer {
     display: flex;
     margin-top: 4.5rem;
+
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
   }
 
   .container,

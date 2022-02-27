@@ -74,7 +74,7 @@ const Post = ({ post, isprofile }) => {
 
   return (
     <>
-      <div className="post" style={isprofile ? { width: '40%', margin: "20px", flex: '1 1 auto' } : {}}>
+      <div className="post" >
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">

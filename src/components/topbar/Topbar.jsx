@@ -66,7 +66,7 @@ const Topbar = () => {
 
 
       {/* Navbar*/}
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top" style={{ backgroundColor: '#fff' }}>
+      <nav className="navbar navbar-expand-lg navbar-light fixed-top customnav" style={{ backgroundColor: '#fff' }}>
         <div className="container">
           <div className="container-fluid d-flex justify-content-between align-items-center">
             {/* Left elements */}
