@@ -100,7 +100,7 @@ const Post = ({ post, isprofile }) => {
               </Link>
               <div className="Post_user">
                 <Link to={`/profile/${user?._id}`} className="d-flex" >
-                  <Typography className="postUserName" color={isprofile ? "primary" : ""}>{user.username}</Typography>
+                  <Typography className="postUserName">{user.username}</Typography>
                 </Link>
                 <span className="postDate">{format(post.createdAt)}</span>
               </div>
