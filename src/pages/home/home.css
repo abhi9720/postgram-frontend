@@ -107,6 +107,7 @@ body {
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    margin-bottom: 60px;
   }
 
   .container,
