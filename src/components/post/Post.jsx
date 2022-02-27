@@ -17,7 +17,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
-import { Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Typography } from '@material-ui/core';
 const Post = ({ post, isprofile }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLike, setisLike] = useState(false);
@@ -72,13 +72,18 @@ const Post = ({ post, isprofile }) => {
     setAnchorEl(null);
   };
 
+
+
+  const styleprofile = { "WebkitBoxShadow": "1px 1px 2px 1px rgb(29 28 28 / 8%)", "boxShadow": "1px 1px 2px 1px rgb(29 28 28 / 8%)", "border": "1px solid #374558", "width": "40%", "margin": "30px", "flex": "1 1 auto", "color": "#fff9", border: '1px solid #0000001f' }
+
+
   return (
     <>
-      <div className="post" >
+      <div className="post" style={isprofile ? styleprofile : {}}>
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">
-              <Link to={`/profile/${user?._id}`} className="d-flex">
+              <Link to={`/profile/${user?._id}`} className="d-flex"  >
                 <LazyLoadImage effect="blur"
                   loading="lazy"
                   src={
@@ -94,8 +99,8 @@ const Post = ({ post, isprofile }) => {
                 />
               </Link>
               <div className="Post_user">
-                <Link to={`/profile/${user?._id}`} className="d-flex">
-                  <span className="postUserName">{user.username}</span>
+                <Link to={`/profile/${user?._id}`} className="d-flex" >
+                  <Typography className="postUserName" color={isprofile ? "primary" : ""}>{user.username}</Typography>
                 </Link>
                 <span className="postDate">{format(post.createdAt)}</span>
               </div>

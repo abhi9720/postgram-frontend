@@ -210,6 +210,7 @@ export default function Profile() {
     dispatch({ type: "AcceptFriendRequest", payload: res.data });
   };
 
+
   return (
     <>
       <Topbar />
