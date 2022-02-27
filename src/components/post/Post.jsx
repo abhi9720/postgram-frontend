@@ -78,7 +78,7 @@ const Post = ({ post, isprofile }) => {
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">
-              <Link to={`/profile/${user.id}`} className="d-flex">
+              <Link to={`/profile/${user?._id}`} className="d-flex">
                 <LazyLoadImage effect="blur"
                   loading="lazy"
                   src={
@@ -94,7 +94,7 @@ const Post = ({ post, isprofile }) => {
                 />
               </Link>
               <div className="Post_user">
-                <Link to={`/profile/${user.username}`} className="d-flex">
+                <Link to={`/profile/${user?._id}`} className="d-flex">
                   <span className="postUserName">{user.username}</span>
                 </Link>
                 <span className="postDate">{format(post.createdAt)}</span>

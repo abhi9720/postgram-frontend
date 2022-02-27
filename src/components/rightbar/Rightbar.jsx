@@ -92,7 +92,7 @@ export default function Rightbar({ user }) {
                       <Link
                         className="friend_name"
 
-                        to={"/profile/" + data?.username}
+                        to={"/profile/" + data?._id}
                         style={{ textDecoration: "none" }}
 
                       >
