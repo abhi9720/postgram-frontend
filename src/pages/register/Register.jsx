@@ -5,12 +5,13 @@ import React from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { useAlert, positions } from "react-alert";
-import { CircularProgress, TextField } from "@material-ui/core";
+import { Checkbox, CircularProgress, FormControlLabel, TextField, Typography } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { NavLink } from 'react-router-dom';
+import { GitHub } from "@material-ui/icons";
 const Login = () => {
   const [field, setField] = useState({
     username: "",
@@ -51,6 +52,7 @@ const Login = () => {
         <div
           style={{
             color: "red",
+            whiteSpace: "pre-wrap"
           }}
         >
           Password mismatch
@@ -101,23 +103,36 @@ const Login = () => {
       <div className="register vh-100">
         <nav className="navbar fixed-top navbar-light removedecoration">
           <div className="container-fluid">
-            <NavLink className="navbar-brand" to="/">
-              <img loading="lazy" className="postgramlogo" src={PF + "assets/Postgram_LOGIN.png"} alt="" />
+
+            <div className="container-fluid">
+              <div className="d-flex justify-content-between w-100 px-0 px-lg-5" >
+                <NavLink className="navbar-brand" to="/" component="div">
+                  <img className="postgramlogo" src={PF + "assets/Postgram_LOGIN.png"} alt="" />
+                </NavLink>
+                <IconButton component="button" size="large" color="default" href="https://github.com/abhi9720/postgram-frontend" >
+
+                  <GitHub fontSize="large" />
+
+                </IconButton>
 
 
-            </NavLink>
+
+              </div>
+            </div>
+
+
           </div>
         </nav>
         <div className="registerWrapper mt-5">
-          <div className="registerLeft">
-            <h3 className="registerLogo hide-sm">Postgram</h3>
-            <span className="registerDesc">
-              Connect with friends and the world around you on
-              postgram-social.herokuapp.com
-            </span>
+          <div className="registerLeft hide-sm">
+            <Typography variant="h3" gutterBottom component="div" className="registerLogo">Postgram</Typography>
+            <Typography variant="h6" gutterBottom component="div" className="registerDesc">
+              Connect with friends and the world around you
+
+            </Typography>
           </div>
-          <div className="registerRight" style={{ borderRadius: "25px" }}>
-            <form className="registerBox card-body" onSubmit={handleSubmit}>
+          <div className="registerRight">
+            <form className="registerBox" onSubmit={handleSubmit}>
               <TextField
                 type="text"
                 id="filled-basic"
@@ -149,22 +164,22 @@ const Login = () => {
                 type={values.showPassword ? "text" : "password"}
                 onChange={inputEvent}
                 value={field.password}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={handleClickShowPassword}
-                      // onMouseDown={handleMouseDownPassword}
-                      >
-                        {values.showPassword ? (
-                          <Visibility />
-                        ) : (
-                          <VisibilityOff />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
+              // InputProps={{
+              //   endAdornment: (
+              //     <InputAdornment position="end">
+              //       <IconButton
+              //         onClick={handleClickShowPassword}
+              //       // onMouseDown={handleMouseDownPassword}
+              //       >
+              //         {values.showPassword ? (
+              //           <Visibility />
+              //         ) : (
+              //           <VisibilityOff />
+              //         )}
+              //       </IconButton>
+              //     </InputAdornment>
+              //   ),
+              // }}
               />
               <TextField
                 id="filled-password-input"
@@ -174,26 +189,40 @@ const Login = () => {
                 type={values.showPassword ? "text" : "password"}
                 onChange={inputEvent}
                 value={field.confirmPassword}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={handleClickShowPassword}
-                      // onMouseDown={handleMouseDownPassword}
-                      >
-                        {values.showPassword ? (
-                          <Visibility />
-                        ) : (
-                          <VisibilityOff />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
+              // InputProps={{
+              //   endAdornment: (
+              //     <InputAdornment position="end">
+              //       <IconButton
+              //         onClick={handleClickShowPassword}
+              //       // onMouseDown={handleMouseDownPassword}
+              //       >
+              //         {values.showPassword ? (
+              //           <Visibility />
+              //         ) : (
+              //           <VisibilityOff />
+              //         )}
+              //       </IconButton>
+              //     </InputAdornment>
+              //   ),
+              // }}
               />
               {status.current && (
                 <small style={{ color: "red" }}>* Password not match </small>
               )}
+
+              <div className="w-100">
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={values.showPassword}
+                      onChange={handleClickShowPassword}
+                      name="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Show Password"
+                />
+              </div>
               <button type="submit" className="registerButton">
                 {loading ? (
                   <CircularProgress color="primary" size="24px" />

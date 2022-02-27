@@ -1,27 +1,37 @@
 .profile {
   margin-top: 40px !important;
-  background-color: white;
+
   border: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
   border-radius: 15px;
-  -webkit-box-shadow: 0 0 20px rgb(8 21 66 / 5%);
-  box-shadow: 0 0 20px rgb(8 21 66 / 5%);
+  background-color: #fff;
+
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  box-shadow: rgb(140 152 164 / 25%) 0px 3px 6px 0px;
+  overflow: hidden;
+
   padding-bottom: 20px !important;
   ;
 }
 
 .shadowbg {
-  background-color: white;
+
   margin-bottom: 30px;
   border: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
   border-radius: 15px;
-  -webkit-box-shadow: 0 0 20px rgb(8 21 66 / 5%);
-  box-shadow: 0 0 20px rgb(8 21 66 / 5%);
+  background-color: #fff;
+  color: #1e2022;
+  box-shadow: none;
+
+  overflow: hidden;
+  border-radius: 8px;
+
+  border: 1px solid #0000001f;
 }
 
 .profileRightTop {
@@ -62,6 +72,12 @@
   background-color: #e4f0f6;
   border: none;
   outline: none;
+
+
+
+  text-align: center;
+
+  text-indent: 10000px
 }
 
 .profileCoverImg div {
@@ -128,8 +144,8 @@
 }
 
 .profileUserImg img {
-  width: 185px;
-  height: 185px;
+  width: 175px;
+  height: 175px;
   border-radius: 50%;
   object-fit: cover;
 

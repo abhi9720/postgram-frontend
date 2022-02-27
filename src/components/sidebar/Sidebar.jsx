@@ -114,7 +114,7 @@ const Sidebar = () => {
                     <Link
                       className="mt-3"
                       key={u._id}
-                      to={"/profile/" + u.username}
+                      to={"/profile/" + u._id}
                       style={{ textDecoration: "none" }}
                       onClick={handleClose}
                     >

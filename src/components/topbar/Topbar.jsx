@@ -213,7 +213,7 @@ const Topbar = () => {
       {/* ------------------------------------------------------------------------------------------------- */}
 
       {/* // nvabar for smaller screen */}
-      <nav className="navbar navbar-expand-lg navbar-light fixed-bottom p-0 m-0 d-block d-md-none d-lg-none customnav">
+      <nav className="navbar navbar-expand-lg navbar-light fixed-bottom p-0 m-0 d-block d-md-none d-lg-none" style={{ backgroundColor: '#fff' }}>
         <div className="container">
           <div className="container-fluid justify-content-between">
             {/* Right elements */}

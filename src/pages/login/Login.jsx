@@ -5,12 +5,10 @@ import { NavLink } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
-import { CircularProgress, TextField } from "@material-ui/core";
+import { Checkbox, CircularProgress, FormControlLabel, IconButton, TextField, Typography } from "@material-ui/core";
 // import { useAlert } from "react-alert";
-import IconButton from "@material-ui/core/IconButton";
-import Visibility from "@material-ui/icons/Visibility";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { GitHub } from "@material-ui/icons";
+
 import { MutatingDots } from 'react-loader-spinner'
 
 const Login = () => {
@@ -68,21 +66,28 @@ const Login = () => {
           <div className="login vh-100">
             <nav className="navbar fixed-top navbar-light removedecoration">
               <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/">
-                  <img className="postgramlogo" src={PF + "assets/Postgram_LOGIN.png"} alt="" />
+                <div className="d-flex justify-content-between w-100 px-0 px-lg-5" >
+                  <NavLink className="navbar-brand" to="/" component="div">
+                    <img className="postgramlogo" src={PF + "assets/Postgram_LOGIN.png"} alt="" />
+                  </NavLink>
+                  <IconButton component="button" size="large" color="default" href="https://github.com/abhi9720/postgram-frontend" >
+
+                    <GitHub fontSize="large" />
+
+                  </IconButton>
 
 
-                </NavLink>
+                </div>
               </div>
             </nav>
 
             <div className="loginWrapper">
-              <div className="loginLeft">
-                <h3 className="loginLogo hide-sm">Postgram</h3>
-                <span className="loginDesc">
-                  Connect with friends and the world around you on
-                  postgram-social.herokuapp.com
-                </span>
+              <div className="loginLeft hide-sm">
+                <Typography variant="h3" gutterBottom component="div" className="loginLogo">Postgram</Typography>
+                <Typography variant="h6" gutterBottom component="div" className="loginDesc">
+                  Connect with friends and the world around you
+
+                </Typography>
               </div>
               <div className="loginRight">
                 <form className="loginBox" onSubmit={handleClick}>
@@ -107,23 +112,37 @@ const Login = () => {
                     type={values.showPassword ? "text" : "password"}
                     onChange={inputEvent}
                     value={field.password}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton
-                            onClick={handleClickShowPassword}
-                          // onMouseDown={handleMouseDownPassword}
-                          >
-                            {values.showPassword ? (
-                              <Visibility />
-                            ) : (
-                              <VisibilityOff />
-                            )}
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
+                  // InputProps={{
+                  //   endAdornment: (
+                  //     <InputAdornment position="end">
+                  //       <IconButton
+                  //         onClick={handleClickShowPassword}
+                  //       // onMouseDown={handleMouseDownPassword}
+                  //       >
+                  //         {values.showPassword ? (
+                  //           <Visibility />
+                  //         ) : (
+                  //           <VisibilityOff />
+                  //         )}
+                  //       </IconButton>
+                  //     </InputAdornment>
+                  //   ),
+                  // }}
                   />
+
+                  <div className="w-100">
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={values.showPassword}
+                          onChange={handleClickShowPassword}
+                          name="checkedB"
+                          color="primary"
+                        />
+                      }
+                      label="Show Password"
+                    />
+                  </div>
 
                   <button
                     type="submit"

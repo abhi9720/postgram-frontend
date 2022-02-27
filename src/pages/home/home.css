@@ -74,20 +74,28 @@ html {
 }
 
 body {
-  background-color: #f6f6f6 !important;
+  background-color: #f3f4f6 !important;
+  color: #1e2022 !important;
 }
 
-
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  border: 0 solid #e5e7eb;
+}
 
 
 .iconstyle {
   font-size: 1.5rem;
-  color: #262626;
+  color: #1e2022 !important;
+  /* color: rgba(55, 65, 81, 1) !important; */
+  ;
 }
 
 @media (max-width: 800px) {
   .hide-sm {
-    display: none;
+    display: none !important;
   }
 
 

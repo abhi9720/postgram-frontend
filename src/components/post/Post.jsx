@@ -7,22 +7,31 @@ import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 
+
 import Button from '@material-ui/core/Button';
-
-
+import MuiAlert from '@material-ui/lab/Alert';
+import { Grow, Snackbar } from '@material-ui/core';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+
+import { Favorite, FavoriteBorderOutlined } from '@material-ui/icons';
 import { Dialog, DialogActions, DialogContent, DialogTitle, Typography } from '@material-ui/core';
+
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 const Post = ({ post, isprofile }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLike, setisLike] = useState(false);
   const [user, setUser] = useState({});
   const { state } = useContext(AuthContext);
+  const [opensnackbar, setOpensnackbar] = React.useState(false);
+  const [message, setMessage] = React.useState("");
+
 
   useEffect(() => {
     setisLike(post.likes.includes(state.user._id));
@@ -33,9 +42,25 @@ const Post = ({ post, isprofile }) => {
     setisLike(!isLike);
     try {
       await axiosInstance.put(`/post/${post._id}/like`, { userId: state.user._id });
+
+      if (window.screen.width > 850) {
+        setMessage("Post Liked")
+        setOpensnackbar(true);
+      }
+
     } catch (err) {
+      setLike(isLike ? like - 1 : like + 1);
+      setisLike(!isLike);
+      setMessage("Failed to  like Post")
+      setOpensnackbar(true);
       console.log(err);
+    } finally {
+
     }
+
+
+
+
   };
 
   useEffect(() => {
@@ -74,7 +99,23 @@ const Post = ({ post, isprofile }) => {
 
 
 
-  const styleprofile = { "WebkitBoxShadow": "1px 1px 2px 1px rgb(29 28 28 / 8%)", "boxShadow": "1px 1px 2px 1px rgb(29 28 28 / 8%)", "border": "1px solid #374558", "width": "40%", "margin": "30px", "flex": "1 1 auto", "color": "#fff9", border: '1px solid #0000001f' }
+  const styleprofile = { "WebkitBoxShadow": "1px 1px 2px 1px rgb(29 28 28 / 8%)", "boxShadow": "1px 1px 2px 1px rgb(29 28 28 / 8%)", "border": "1px solid #0000001f", "width": "40%", "margin": "30px", "flex": "1 1 auto", "color": "#fff9" }
+
+
+
+
+
+
+
+
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpensnackbar(false);
+  };
+
 
 
   return (
@@ -155,7 +196,7 @@ const Post = ({ post, isprofile }) => {
           </div>
           <div className="postCenter">
             {post?.description && (
-              <span className="postText">{post?.description} </span>
+              <Typography className="postText">{post?.description} </Typography>
             )}
             {post.img ? (
               <LazyLoadImage effect="blur" src={post.img} alt=".." className="postImage" loading="lazy" />
@@ -166,21 +207,21 @@ const Post = ({ post, isprofile }) => {
 
           <div className="postBottom">
             <div className="postBottomLeft">
-              <ThumbUpAltIcon
+              {isLike ? <Favorite
                 className="likeIcon"
-                style={{ fontSize: 25 }}
-                color="primary"
+                style={{ fontSize: 25, color: "rgb(237, 73, 86)" }}
                 onClick={likeHandler}
                 alt=""
-              />
-              <FavoriteIcon
-                className="likeIcon"
-                style={{ fontSize: 25 }}
-                color="secondary"
-                onClick={likeHandler}
-                alt=""
-              />
+              /> :
 
+                <FavoriteBorderOutlined
+                  className="likeIcon"
+                  style={{ fontSize: 25 }}
+                  onClick={likeHandler}
+                  alt=""
+                />
+
+              }
               <span className="postLikeCounter">{like} people like it</span>
             </div>
             {/* <div className="postBottomRight">
@@ -189,6 +230,23 @@ const Post = ({ post, isprofile }) => {
           </div>
         </div>
       </div>
+
+
+
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        open={opensnackbar}
+        onClose={handleCloseSnackbar}
+        autoHideDuration={3000}
+        key={"bottom" + "right"}
+        TransitionComponent={Grow}
+
+      >
+
+        <Alert onClose={handleCloseSnackbar} style={{ backgroundColor: "#223354" }}>
+          {message}
+        </Alert>
+      </Snackbar>
     </>
   );
 };

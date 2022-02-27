@@ -15,24 +15,23 @@
   background-color: #F0F7FF;
 }
 
+* {
+  --tw-ring-inset: var(--tw-empty,
+      /*!*/
+      /*!*/
+    );
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: #3b82f680;
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 1px 3px 0 #0000001a, 0 1px 2px 0 #0000000f;
+
+}
+
 
 .customnav {
-  backdrop-filter: blur(20px);
-  background-color: #fff;
-  backdrop-filter: blur(3px);
-  box-shadow: none;
-  border-bottom: 1px solid #dbdbdb;
-  /* -webkit-box-shadow: 0px 4px 40px rgb(0 0 0 / 7%);
-  box-shadow: 0px 4px 40px rgb(0 0 0 / 7%); */
-  /* background-color: #fff;
-  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  
-  overflow: hidden;
-  z-index: 6;
-   */
-
-
-
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 transparent), var(--tw-ring-shadow, 0 0 transparent), var(--tw-shadow);
 }
 
 

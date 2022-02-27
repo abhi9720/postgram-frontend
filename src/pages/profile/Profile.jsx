@@ -246,7 +246,7 @@ export default function Profile() {
                         {user.coverpicture ? (
                           <img loading="lazy" src={user.coverpicture} alt="" />
                         ) : (
-                          <div> </div>
+                          <img loading="lazy" src={"../assets/Loader.gif"} alt="" />
                         )}
                         {user.username === state.user?.username && (
                           <Button>

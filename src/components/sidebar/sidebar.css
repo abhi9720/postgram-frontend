@@ -43,7 +43,7 @@
 .searchIcons {}
 
 .searchContainer {
-  padding: 0px 4px;
+
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -65,8 +65,9 @@
   position: relative;
   background: #f3f6f9;
   border-radius: 12px;
+  box-sizing: border-box;
   margin-left: 7px;
-
+  padding: 0px 10px 0px 4px !important;
 
 
 }

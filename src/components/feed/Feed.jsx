@@ -10,7 +10,7 @@ import { useContext, useEffect, useState } from "react";
 import axiosInstance from '../../utils/axiosConfig'
 import { AuthContext } from "../../context/AuthContext";
 import ContentLoader from "react-content-loader";
-
+import { Typography } from '@material-ui/core';
 const Loader = () => {
   return (
     <div style={{ marginTop: "20px" }}>
@@ -70,9 +70,15 @@ const Feed = ({ userid, profile }) => {
               <Post key={p._id} post={p} isprofile={profile || false} />
             ))}
             {posts.length === 0 &&
-              <p className='display-6 mt-5'>
-                No Post Yet
-              </p>
+              <>
+                <Typography variant="h4" gutterBottom component="div" className="text-center mt-5">
+                  No Post Yet
+                  <br />
+                  Follow Friends To View Their Post
+                </Typography >
+
+
+              </>
             }
           </div>
         )}
