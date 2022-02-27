@@ -98,7 +98,7 @@ const App = () => {
           <Route exact path="/messenger">
             {state.isAuthenticated ? <Messenger /> : <Login />}
           </Route>
-          <Route exact path="/profile/:username">
+          <Route exact path="/profile/:id">
             {state.isAuthenticated ? <Profile /> : <Login />}
           </Route>
 

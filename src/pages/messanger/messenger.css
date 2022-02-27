@@ -344,7 +344,7 @@ div.MuiCard-root {
 
 
 
-@media (max-width: 830px) {
+@media (max-width: 850px) {
   .sidebar_flex0 {
     flex: 0;
     display: none;

@@ -23,15 +23,15 @@ const Loader = () => {
   );
 };
 
-const Feed = ({ username, profile }) => {
+const Feed = ({ userid, profile }) => {
   const [posts, setPosts] = useState([]);
   const { state } = useContext(AuthContext);
   const [fetching, setfetching] = useState(false);
   useEffect(() => {
     const fetchPosts = async () => {
       setfetching(true);
-      const res = username
-        ? await axiosInstance.get("/post/profile/" + username)
+      const res = userid
+        ? await axiosInstance.get("/post/profile/" + userid)
         : await axiosInstance.get("/post/timeline/" + state?.user?._id);
 
       setPosts(
@@ -44,7 +44,7 @@ const Feed = ({ username, profile }) => {
     };
 
     fetchPosts();
-  }, [username, state.user._id]);
+  }, [userid, state.user._id]);
 
   return (
     <div className="feed" >

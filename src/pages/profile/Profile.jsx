@@ -20,9 +20,10 @@ import { Link } from "react-router-dom";
 import { io } from "socket.io-client";
 export default function Profile() {
   const [user, setUser] = useState({});
-  const username = useParams().username;
-  const { status } = useQuery(username, async () => {
-    const res = await axiosInstance.get(`/user/?username=${username}`);
+  const userid = useParams().id;
+
+  const { status } = useQuery(userid, async () => {
+    const res = await axiosInstance.get(`/user/?userId=${userid}`);
     setUser(res.data);
   });
   const { state, dispatch } = useContext(AuthContext);
@@ -459,7 +460,7 @@ export default function Profile() {
 
                 {
                   value === 0 ?
-                    <Feed username={user.username} profile={true} />
+                    <Feed username={userid} profile={true} />
                     :
                     <Rightbar user={user} profile={true} />
                 }

@@ -155,7 +155,7 @@ const Topbar = () => {
               </li>
 
               <li style={{ marginTop: "1px" }}>
-                <NavLink to={`/profile/${state.user?.username}`}>
+                <NavLink to={`/profile/${state.user?._id}`}>
                   <Avatar
                     alt={state.user.username}
                     src={
@@ -274,7 +274,7 @@ const Topbar = () => {
               </li>
 
               <li style={{ marginTop: "5px" }}>
-                <NavLink to={`/profile/${state.user.username}`}>
+                <NavLink to={`/profile/${state.user._id}`}>
 
                   <Avatar
                     alt={state.user.username}
