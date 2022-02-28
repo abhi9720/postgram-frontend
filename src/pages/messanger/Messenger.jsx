@@ -251,7 +251,7 @@ const Messenger = () => {
 
                   <Link
                     className="otherside_username"
-                    to={"/profile/" + otherSide?.username}
+                    to={"/profile/" + otherSide?._id}
                   >
                     <Avatar src={otherSide?.profilePicture} />
                     <div className="chat_headerInfo">

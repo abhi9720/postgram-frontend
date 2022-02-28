@@ -53,7 +53,7 @@ const FriendRequest = ({ id }) => {
         <div> loading ... </div>
       ) : (
         <Link
-          to={"/profile/" + user?.username}
+          to={"/profile/" + user?._id}
           className="friendrequest"
           style={{ textDecoration: "none" }}
         >
