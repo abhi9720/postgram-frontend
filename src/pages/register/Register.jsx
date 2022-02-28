@@ -6,12 +6,9 @@ import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { useAlert, positions } from "react-alert";
 import { Checkbox, CircularProgress, FormControlLabel, TextField, Typography } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import Visibility from "@material-ui/icons/Visibility";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+
 import { NavLink } from 'react-router-dom';
-import { GitHub } from "@material-ui/icons";
+
 const Login = () => {
   const [field, setField] = useState({
     username: "",
@@ -109,11 +106,11 @@ const Login = () => {
                 <NavLink className="navbar-brand" to="/" component="div">
                   <img className="postgramlogo" src={PF + "assets/Postgram_LOGIN.png"} alt="" />
                 </NavLink>
-                <IconButton component="button" size="large" color="default" href="https://github.com/abhi9720/postgram-frontend" >
+                {/* <IconButton component="button" size="large" color="default" href="https://github.com/abhi9720/postgram-frontend" >
 
                   <GitHub fontSize="large" />
 
-                </IconButton>
+                </IconButton> */}
 
 
 

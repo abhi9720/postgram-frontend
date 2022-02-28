@@ -5,9 +5,9 @@ import { NavLink } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
-import { Checkbox, CircularProgress, FormControlLabel, IconButton, TextField, Typography } from "@material-ui/core";
+import { Checkbox, CircularProgress, FormControlLabel, TextField, Typography } from "@material-ui/core";
 // import { useAlert } from "react-alert";
-import { GitHub } from "@material-ui/icons";
+// import { GitHub } from "@material-ui/icons";
 
 import { MutatingDots } from 'react-loader-spinner'
 
@@ -70,11 +70,11 @@ const Login = () => {
                   <NavLink className="navbar-brand" to="/" component="div">
                     <img className="postgramlogo" src={PF + "assets/Postgram_LOGIN.png"} alt="" />
                   </NavLink>
-                  <IconButton component="button" size="large" color="default" href="https://github.com/abhi9720/postgram-frontend" >
+                  {/* <IconButton component="button" size="large" color="default" href="https://github.com/abhi9720/postgram-frontend" >
 
                     <GitHub fontSize="large" />
 
-                  </IconButton>
+                  </IconButton> */}
 
 
                 </div>
