@@ -41,7 +41,7 @@ const Share = () => {
         data
       ).then(async (res) => {
         newPost.img = res.data.url;
-        console.log(res.data);
+
         await axiosInstance.post("/post", newPost);
         desc.current.value = "";
       })
@@ -161,7 +161,7 @@ const Share = () => {
               <div className="shareOptions">
                 <label htmlFor="file" className="shareOption">
                   <PermMedia htmlColor="tomato" className="shareIcon" />
-                  <span className="shareOptionText">Photo or vedio </span>
+                  <span className="shareOptionText">Photo  </span>
                   <input
                     type="file"
                     id="file"

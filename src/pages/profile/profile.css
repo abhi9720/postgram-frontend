@@ -9,11 +9,11 @@
   background-color: #fff;
 
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  box-shadow: rgb(140 152 164 / 25%) 0px 3px 6px 0px;
-  overflow: hidden;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 transparent), var(--tw-ring-shadow, 0 0 transparent), var(--tw-shadow);
 
+  overflow: hidden;
   padding-bottom: 20px !important;
-  ;
+
 }
 
 .shadowbg {

@@ -1,5 +1,5 @@
 import "./register.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axiosInstance from "../../utils/axiosConfig";
 import React from "react";
 import { useHistory } from "react-router";
@@ -8,6 +8,7 @@ import { useAlert, positions } from "react-alert";
 import { Checkbox, CircularProgress, FormControlLabel, TextField, Typography } from "@material-ui/core";
 
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
   const [field, setField] = useState({
@@ -35,6 +36,8 @@ const Login = () => {
       };
     });
   };
+
+  const { dispatch } = useContext(AuthContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {
@@ -64,26 +67,12 @@ const Login = () => {
     } else {
       try {
         setloading(true);
-        await axiosInstance.post("/auth/register", user);
-        history.push("/login");
-      } catch (err) {
-        console.log(err);
-        alert.error(
-          <div
-            style={{
-              color: "red",
-            }}
-          >
-            Username or email id already exits
-          </div>,
-          {
-            position: positions.TOP_RIGHT,
-            containerStyle: {
-              backgroundColor: "white",
-            },
-          }
-        );
+        const res = await axiosInstance.post("/auth/register", user);
+        console.log(res);
+        dispatch({ type: "REGISTER_SUCCESS", payload: res.data });
 
+      } catch (err) {
+        dispatch({ type: "LOGIN_FAILURE", payload: err });
         console.log(err);
       } finally {
         setloading(false);

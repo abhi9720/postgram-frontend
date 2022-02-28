@@ -25,7 +25,7 @@ const Login = () => {
   });
   const inputEvent = (event) => {
     const { value, name } = event.target;
-    console.log(value, name);
+
     setField((prev) => {
       return {
         ...prev,

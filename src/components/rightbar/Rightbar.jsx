@@ -28,7 +28,7 @@ export default function Rightbar({ user }) {
         setfetching(true)
         const res = await axiosInstance.get(`/user/connection/suggestion`);
         setSuggestion(res.data || []);
-        console.log(res)
+
       } catch (err) {
         console.log(err);
       }
@@ -91,7 +91,7 @@ export default function Rightbar({ user }) {
                     return (
                       <Link
                         className="friend_name"
-
+                        key={data?._id}
                         to={"/profile/" + data?._id}
                         style={{ textDecoration: "none" }}
 
@@ -288,7 +288,7 @@ export default function Rightbar({ user }) {
       ) : (
         <div className="rightbar hide-sm">
           <div className="rightbarWrapper hide-sm">
-            <HomeRightbar key="HomeRightbar" />
+            <HomeRightbar key="HomeRightbar12" />
           </div>
 
         </div>

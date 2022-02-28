@@ -46,7 +46,7 @@ export default function Conversation({ conversation, currentuser, Online, ChatOp
     getUser();
   }, [currentuser, conversation]);
 
-  console.log(ChatOpen)
+
   return (
     <>
       {loading ? (

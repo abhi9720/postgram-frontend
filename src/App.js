@@ -17,7 +17,7 @@ import setAuthToken from "./utils/setAuthToken";
 const App = () => {
   const { state, dispatch } = useContext(AuthContext);
   console.log("isAuth : " + state.isAuthenticated);
-  console.log(useContext(AuthContext))
+
   // const alert = useAlert();
   if (localStorage.token) {
 
@@ -31,10 +31,10 @@ const App = () => {
       setAuthToken(localStorage.token);
 
       try {
-        console.log("making request to get data by token")
+
         dispatch({ type: "LOADING_USER" })
         const res = await axiosInstance.get("/auth");
-        console.log(res.data)
+
         dispatch({
           type: "USER_LOADED",
           payload: res.data,
@@ -76,7 +76,7 @@ const App = () => {
     loadUser()
     // eslint-disable-next-line
   }, []);
-  console.log("state.isAuthenticated : " + state.isAuthenticated);
+
 
   return (
     <>

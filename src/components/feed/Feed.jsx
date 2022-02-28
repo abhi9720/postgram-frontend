@@ -72,11 +72,22 @@ const Feed = ({ userid, profile }) => {
             ))}
             {posts.length === 0 &&
               <>
-                <Typography variant="h4" gutterBottom component="div" className="text-center mt-5">
+
+
+
+                <Typography variant="h5" color="textSecondary" gutterBottom component="div" className="text-center mt-5">
                   No Post Yet
                   <br />
-                  Follow Friends To View Their Post
+                  {!profile &&
+                    "Follow Friends To View Their Post"
+                  }
+
+
+
                 </Typography >
+
+
+
 
 
               </>

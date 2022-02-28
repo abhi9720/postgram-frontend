@@ -4,7 +4,7 @@ import axiosInstance from '../utils/axiosConfig'
 // this going to set token every axios request by default
 const setAuthToken = (token) => {
     if (token) {
-        console.log("Set auth token ")
+
         axiosInstance.defaults.headers.common["x-auth-token"] = token;
     } else {
         delete axiosInstance.defaults.headers.common["x-auth-token"];

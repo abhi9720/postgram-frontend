@@ -15,10 +15,11 @@ import Message from "../../components/message/Message";
 
 import { Link, NavLink } from "react-router-dom";
 import { Chat, Home, Close } from "@material-ui/icons";
+import { MutatingDots } from "react-loader-spinner";
 
 const Messenger = () => {
   const { state } = useContext(AuthContext);
-
+  const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState();
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
@@ -99,10 +100,14 @@ const Messenger = () => {
   useEffect(() => {
     const getConversation = async () => {
       try {
+        setLoading(true)
         const res = await axiosInstance.get(`/conversation/${state.user._id}`);
         setConversations(res.data);
       } catch (err) {
         console.log(err);
+      }
+      finally {
+        setLoading(false)
       }
     };
     getConversation();
@@ -173,41 +178,56 @@ const Messenger = () => {
 
   return (
     <>
-      <MessengerNavbar />
+      {loading ? <>
 
-      <div className="messenger">
+        <div className="d-flex vh-100 align-items-center justify-content-center">
+          {/* <ReactLoading type={'bars'} color="#00e676" /> */}
+          <MutatingDots height="100"
+            width="100"
+            color='#ff5733'
+            ariaLabel='loading' />
 
-
-        <div className="chat_icon">
-          <Button   >
-            <NavLink
-              to="/"
-              role="button"
-            >
-              <Home
-                variant="extended"
-                onClick={() =>
-                  window.location.href = "/"
-                } />
-            </NavLink>
-          </Button>
-
-          <Button
-            onClick={(e) => {
-              sidebarHandler(e);
-            }}
-            backgroundColor="#f50057"
-            variant="contained"
-            startIcon={<Chat />}
-          >
-            Chat
-
-          </Button>
         </div>
+      </> :
 
-        <div className={hide ? "sidebar_flex0" : "sidebar_flex1"}>
-          <div className="chatMenuWrapper">
-            {/* <div className="chatMenuInput">
+        <>
+
+
+          <MessengerNavbar />
+
+          <div className="messenger">
+
+
+            <div className="chat_icon">
+              <Button   >
+                <NavLink
+                  to="/"
+                  role="button"
+                >
+                  <Home
+                    variant="extended"
+                    onClick={() =>
+                      window.location.href = "/"
+                    } />
+                </NavLink>
+              </Button>
+
+              <Button
+                onClick={(e) => {
+                  sidebarHandler(e);
+                }}
+                backgroundColor="#f50057"
+                variant="contained"
+                startIcon={<Chat />}
+              >
+                Chat
+
+              </Button>
+            </div>
+
+            <div className={hide ? "sidebar_flex0" : "sidebar_flex1"}>
+              <div className="chatMenuWrapper">
+                {/* <div className="chatMenuInput">
               <Search />
               <input
                 type="text"
@@ -217,53 +237,53 @@ const Messenger = () => {
               />
             </div> */}
 
-            <div className="user">
-              {conversations.map((data) => {
-                return (
-                  <div
-                    key={data._id}
-                    onClick={() => {
-                      setCurrentChat(data);
-                      if (window.screen.width <= 850) {
-                        sidebarHandler();
-                      }
-                    }}>
-                    <Conversation
-                      key={data._id}
-                      conversation={data}
-                      currentuser={state.user}
-                      Online={onlineUsers}
-                      ChatOpen={otherSide}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        <div
-          className={hide ? "chat chatbox_flex" : "chat chatbox_flexsmall"}>
-          <div className="chatBoxWrapper">
-            {currentChat ? (
-              <>
-                <div className="chat_header">
-
-                  <Link
-                    className="otherside_username"
-                    to={"/profile/" + otherSide?._id}
-                  >
-                    <Avatar src={otherSide?.profilePicture} />
-                    <div className="chat_headerInfo">
-                      <p className="chat-room-name">
-                        {otherSide?.username}
-                      </p>
-                    </div>
-                  </Link>
-
+                <div className="user">
+                  {conversations.map((data) => {
+                    return (
+                      <div
+                        key={data._id}
+                        onClick={() => {
+                          setCurrentChat(data);
+                          if (window.screen.width <= 850) {
+                            sidebarHandler();
+                          }
+                        }}>
+                        <Conversation
+                          key={data._id}
+                          conversation={data}
+                          currentuser={state.user}
+                          Online={onlineUsers}
+                          ChatOpen={otherSide}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
+              </div>
+            </div>
 
-                {/* <Avatar src={otherSide?.profilePicture} />
+            <div
+              className={hide ? "chat chatbox_flex" : "chat chatbox_flexsmall"}>
+              <div className="chatBoxWrapper">
+                {currentChat ? (
+                  <>
+                    <div className="chat_header">
+
+                      <Link
+                        className="otherside_username"
+                        to={"/profile/" + otherSide?._id}
+                      >
+                        <Avatar src={otherSide?.profilePicture} />
+                        <div className="chat_headerInfo">
+                          <p className="chat-room-name">
+                            {otherSide?.username}
+                          </p>
+                        </div>
+                      </Link>
+
+                    </div>
+
+                    {/* <Avatar src={otherSide?.profilePicture} />
                   <div className="chat_headerInfo">
                     <span
                       className="otherside_username"
@@ -274,87 +294,88 @@ const Messenger = () => {
                     <p className="chat-room-last-seen">last seen 20:22 PM </p>
                   </div>
                   <div className="chat_headerRight"></div> */}
-                {/* </div> */}
+                    {/* </div> */}
 
-                <div className="chat_body">
-                  {messages.map((m) => (
-                    <div key={m._id} ref={messagesEndRef}>
-                      <Message
-                        Message={m}
-                        own={m.sender === state.user._id ? true : false}
-                        img={
-                          m.sender === state.user._id
-                            ? state.user.profilePicture
-                            : otherSide?.profilePicture
-                        }
-                      />
+                    <div className="chat_body">
+                      {messages.map((m) => (
+                        <div key={m._id} ref={messagesEndRef}>
+                          <Message
+                            Message={m}
+                            own={m.sender === state.user._id ? true : false}
+                            img={
+                              m.sender === state.user._id
+                                ? state.user.profilePicture
+                                : otherSide?.profilePicture
+                            }
+                          />
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-                <div className="messageSender">
-                  <div className="chat_footer">
-                    <IconButton onClick={() => setshowEmojiPannel(!showEmojiPannel)}>
-                      <InsertEmoticonIcon />
-                    </IconButton>
-                    <form onSubmit={submitHandler}>
-                      <input
-                        type="text"
+                    <div className="messageSender">
+                      <div className="chat_footer">
+                        <IconButton onClick={() => setshowEmojiPannel(!showEmojiPannel)}>
+                          <InsertEmoticonIcon />
+                        </IconButton>
+                        <form onSubmit={submitHandler}>
+                          <input
+                            type="text"
 
-                        placeholder="Type a message"
-                        onChange={(e) => {
-                          setNewMessage(e.target.value)
+                            placeholder="Type a message"
+                            onChange={(e) => {
+                              setNewMessage(e.target.value)
 
-                        }}
-                        onFocus={() => setshowEmojiPannel(null)}
-                        value={newMessage}
+                            }}
+                            onFocus={() => setshowEmojiPannel(null)}
+                            value={newMessage}
+                          />
+                          <button type="submit">Send a Message</button>
+                        </form>
+                        <small className="loader">
+                          {send ? (
+                            <CircularProgress color="primary" size="24px" />
+                          ) : (
+                            " "
+                          )}
+                        </small>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="no_conversation">
+                      <img
+                        src="https://res.cloudinary.com/abhi97/image/upload/v1633285360/recipes/undraw_Begin_chat_re_v0lw_lyfrkb.svg"
+                        alt="failed to load"
                       />
-                      <button type="submit">Send a Message</button>
-                    </form>
-                    <small className="loader">
-                      {send ? (
-                        <CircularProgress color="primary" size="24px" />
-                      ) : (
-                        " "
-                      )}
-                    </small>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="no_conversation">
-                  <img
-                    src="https://res.cloudinary.com/abhi97/image/upload/v1633285360/recipes/undraw_Begin_chat_re_v0lw_lyfrkb.svg"
-                    alt="failed to load"
-                  />
-                  <span>Open a new Conversation </span>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-        {
-          showEmojiPannel &&
-
-          <Card className="p-0 m-0">
-
-            <CardContent className="p-0 m-0">
-              <div className="emojipannelclose">
-                <IconButton onClick={() => setshowEmojiPannel(!showEmojiPannel)} aria-label="close" component="span">
-                  <Close size="small" />
-                </IconButton>
+                      <span>Open a new Conversation </span>
+                    </div>
+                  </>
+                )}
               </div>
+            </div>
+            {
+              showEmojiPannel &&
 
-              <Picker
-                preload={true}
-                onEmojiClick={onEmojiClick} />
-            </CardContent>
-          </Card>
+              <Card className="p-0 m-0">
 
-        }
-      </div>
+                <CardContent className="p-0 m-0">
+                  <div className="emojipannelclose">
+                    <IconButton onClick={() => setshowEmojiPannel(!showEmojiPannel)} aria-label="close" component="span">
+                      <Close size="small" />
+                    </IconButton>
+                  </div>
 
+                  <Picker
+                    preload={true}
+                    onEmojiClick={onEmojiClick} />
+                </CardContent>
+              </Card>
 
+            }
+          </div>
+        </>
+
+      }
 
 
     </>

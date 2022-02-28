@@ -163,4 +163,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-console.log(window.screen.width);
+
