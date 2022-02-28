@@ -30,7 +30,8 @@ const Feed = ({ userid, profile }) => {
   useEffect(() => {
     const fetchPosts = async () => {
       setfetching(true);
-      const res = userid
+      alert("/post/profile/" + userid)
+      const res = profile
         ? await axiosInstance.get("/post/profile/" + userid)
         : await axiosInstance.get("/post/timeline/" + state?.user?._id);
 

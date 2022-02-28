@@ -461,7 +461,7 @@ export default function Profile() {
 
                 {
                   value === 0 ?
-                    <Feed username={userid} profile={true} />
+                    <Feed userid={userid} profile={true} />
                     :
                     <Rightbar user={user} profile={true} />
                 }
