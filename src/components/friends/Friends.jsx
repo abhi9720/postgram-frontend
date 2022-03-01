@@ -15,7 +15,7 @@ const Friends = ({ userId }) => {
   return (
     <>
       <Link
-        to={"/profile/" + user?.username}
+        to={"/profile/" + user?._id}
         style={{ textDecoration: "none" }}
       >
         <div className="rightbarFollowing">

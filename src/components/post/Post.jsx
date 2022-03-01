@@ -145,6 +145,7 @@ const Post = ({ post, isprofile }) => {
                 </Link>
                 <span className="postDate">{format(post.createdAt)}</span>
               </div>
+
             </div>
             {post.userId === state.user._id ? (
               <div className="postTopRight">
@@ -154,6 +155,7 @@ const Post = ({ post, isprofile }) => {
                   aria-haspopup="true"
                   onClick={handleClick}
                 >
+
                   <MoreVert />
                 </Button>
 

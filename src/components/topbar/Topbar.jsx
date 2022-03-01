@@ -311,23 +311,14 @@ const Topbar = () => {
 
       {/* // add post */}
       <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-dialog" role="document">
           <div className="modal-content">
 
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">Add Post</h5>
-
             </div>
-            {/* 
-            <div className="modal-body">...</div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
-              <button type="button" className="btn btn-primary">Save changes</button>
-            
-            
-            
-            
-            </div> */}
+
+
 
 
             <Share />

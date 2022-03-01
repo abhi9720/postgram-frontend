@@ -1,101 +1,147 @@
 
 import React from 'react'
-
+import InfiniteScroll from 'react-infinite-scroller'
 import "./feed.css";
-
-
+import { ThreeCircles } from "react-loader-spinner";
 import Post from "../post/Post";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 import axiosInstance from '../../utils/axiosConfig'
 import { AuthContext } from "../../context/AuthContext";
-import ContentLoader from "react-content-loader";
-import { Typography } from '@material-ui/core';
-const Loader = () => {
-  return (
-    <div style={{ marginTop: "20px" }}>
-      <ContentLoader viewBox="0 0 1000 450" height={250} width={"100%"}>
-        <circle cx="30" cy="30" r="30" />
-        <rect x="70" y="20" rx="15" ry="15" width="40%" height="20" />
-        <rect x="0" y="82" rx="5" ry="5" width="100%" height="150" />
-      </ContentLoader>
-    </div>
-  );
-};
+
+import { Box, Typography } from '@material-ui/core';
+
+
 
 const Feed = ({ userid, profile }) => {
-  const [posts, setPosts] = useState([]);
+  const [feedState, setFeedState] = useState({
+    posts: [],
+    page: 0,
+    hasMore: true
+  });
+  // const [posts, setPosts] = useState([]);
+  // const [page, setPage] = useState(0);
   const { state } = useContext(AuthContext);
   const [fetching, setfetching] = useState(false);
-  useEffect(() => {
-    const fetchPosts = async () => {
-      setfetching(true);
+
+
+
+  const fetchPosts = () => {
+
+
+    setfetching(true);
+    setTimeout(async () => {
 
       const res = profile
-        ? await axiosInstance.get("/post/profile/" + userid)
-        : await axiosInstance.get("/post/timeline/" + state?.user?._id);
+        ? await axiosInstance.get("/post/profile/" + userid + `?page=${feedState.page}`)
+        : await axiosInstance.get("/post/timeline/" + state?.user?._id + `?page=${feedState.page}`);
+      const p = feedState.page;
+      if (res.data.length === 0) {
+        setFeedState(prev => {
+          return {
+            ...prev,
+            hasMore: false
+          }
+        });
+        return
+      }
+      const allpost = [...feedState.posts, ...res.data]
+      console.log(allpost)
+      setFeedState(prev => {
+        return {
+          ...prev,
+          posts: allpost,
+          page: p + 1
+        }
+      });
+      console.log("after fetching data new data : ")
+      console.dir(feedState)
 
-      setPosts(
-        res.data.sort((p1, p2) => {
-          return new Date(p2.createdAt) - new Date(p1.createdAt);
-        })
-      );
 
-      setfetching(false);
-    };
+    }, 2000);
+    setfetching(false);
 
-    fetchPosts();
-  }, [userid, state.user._id]);
+
+
+  };
+
 
   return (
     <div className="feed" >
       <div className="feedWrapper">
         {/* {username ? username === state.user?.username ? <Share /> : "" : <Share />} */}
 
-        {fetching ? (
-          <>
-            <Loader />
-            <Loader />
-            <Loader />
-            <Loader />
-            <Loader />
-            <Loader />
-            <Loader />
-            <Loader />
-            <Loader />
-            <Loader />
-          </>
-        ) : (
+
+
+
+        <InfiniteScroll
+          key="InfiniteScroll"
+          pageStart={feedState.page}
+          loadMore={fetchPosts}
+          hasMore={feedState.hasMore}
+          loader={
+
+            <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: "40px" }}>
+              <ThreeCircles
+                height="40"
+                width="40"
+                color='#0f1724'
+                ariaLabel='loading' />
+            </div>
+          }
+        >
+
+
           <div className="postList" style={profile ? { flexDirection: "row" } : { flexDirection: "column" }}>
-            {posts.map((p) => (
+
+
+
+            {feedState?.posts?.map((p, i) => (
               <Post key={p._id} post={p} isprofile={profile || false} />
             ))}
-            {posts.length === 0 &&
-              <>
+
+            {(feedState.hasMore === false && !profile) &&
+              <Box style={feedState.posts.length === 0 ? { textAlign: 'center', width: "100%", marginTop: '19%' } : { textAlign: 'center', width: "100%" }}>
+
+                {feedState.posts.length === 0 ?
+
+                  <Typography variant="h4" component="div" >
+                    Yay! No Post Yet
+                  </Typography>
+
+                  : <b>Yay! You have seen it all</b>
+                }
 
 
+              </Box>
 
-                <Typography variant="h5" color="textSecondary" gutterBottom component="div" className="text-center mt-5">
-                  No Post Yet
-                  <br />
-                  {!profile &&
-                    "Follow Friends To View Their Post"
-                  }
-
-
-
-                </Typography >
-
-
-
-
-
-              </>
             }
+
           </div>
-        )}
-      </div>
-    </div>
+
+        </InfiniteScroll>
+
+
+
+        {
+          feedState.posts.length === 0 &&
+          <>
+
+
+            {profile &&
+              <Typography variant="h5" color="textSecondary" gutterBottom component="div" className="text-center mt-5">
+                No Post Yet
+              </Typography >
+            }
+
+          </>
+        }
+
+
+
+
+      </div >
+    </div >
   );
 };
 

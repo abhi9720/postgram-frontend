@@ -1,40 +1,40 @@
 /* width */
-::-webkit-scrollbar {
+.chat_body::-webkit-scrollbar {
   width: 0px;
 }
 
 /* Track */
-::-webkit-scrollbar-track {
+.chat_body::-webkit-scrollbar-track {
   background: transparent;
 }
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+.chat_body::-webkit-scrollbar-thumb {
   background: rgba(136, 136, 136, 0.342);
 }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+.chat_body::-webkit-scrollbar-thumb:hover {
   background: rgba(85, 85, 85, 0.801);
 }
 
 /* width */
-::-webkit-scrollbar {
+.chat_body::-webkit-scrollbar {
   width: 0px;
 }
 
 /* Track */
-::-webkit-scrollbar-track {
+.chat_body::-webkit-scrollbar-track {
   background: transparent;
 }
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+.chat_body::-webkit-scrollbar-thumb {
   background: rgba(136, 136, 136, 0.342);
 }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+.chat_body::-webkit-scrollbar-thumb:hover {
   background: rgba(85, 85, 85, 0.801);
 }
 

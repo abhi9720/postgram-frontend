@@ -74,7 +74,7 @@ html {
 }
 
 body {
-  background-color: #f3f4f6 !important;
+  background-color: #f6f7f9 !important;
   color: #1e2022 !important;
 }
 
@@ -121,65 +121,47 @@ body {
   .container,
   .container-fluid {
     width: 100%;
-    padding-right: 4px !important;
-    padding-left: 4px !important;
-    margin-right: auto;
-    margin-left: auto;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
 
 
-.homeContainer::-webkit-scrollbar {
-  width: 18px;
-
+body::-webkit-scrollbar {
+  width: 7px;
 }
 
-.homeContainer::-webkit-scrollbar-track {
-  background: hsl(0, 0%, 90%);
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-.homeContainer::-webkit-scrollbar-thumb,
-.homeContainer::-webkit-scrollbar-thumb:hover {
-  border-radius: 20px;
-  border: solid 6px transparent;
-  background-clip: content-box
-}
-
-.homeContainer::-webkit-scrollbar-thumb {
-  background-color: var(--accent) !important;
-  border-radius: 20px;
-
-}
-
-.homeContainer::-webkit-scrollbar-button,
-.homeContainer::-webkit-scrollbar-corner {
-  cursor: pointer;
-  display: none
-}
-
-.homeContainer::-webkit-scrollbar-button,
-.homeContainer::-webkit-scrollbar-corner {
-  background: red
-}
-
-.homeContainer::-webkit-scrollbar-arrow-color {
-  color: white
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 2px solid rgba(112, 128, 144, 0.253);
 }
 
 
-
-@media screen and (max-width: 800px) {
-  .homeContainer::-webkit-scrollbar {
-    width: 0
-  }
+.backToTopButton-enter-done {
+  opacity: 0.6;
+  background-color: #1967d2 !important;
+  -webkit-box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%) !important;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%) !important;
 }
 
+.backToTopButton-enter-done:hover,
+.backToTopButton-enter-done:focus {
+  opacity: 1;
+}
 
-@media screen and (max-width: 1024px) {
+@media(max-width: 1024px) {
 
   html,
   body {
     overflow-x: hidden
   }
+
+  .backToTopButton-enter-done {}
 }
