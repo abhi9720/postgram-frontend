@@ -3,24 +3,6 @@
     "name": "Postgram",
     "icons": [
         {
-            "src": "./assets/Logo/maskable_icon_x48.png",
-            "sizes": "48x48",
-            "type": "image/x-icon",
-            "purpose": "any"
-        },
-        {
-            "src": "./assets/Logo/maskable_icon_x72.png",
-            "sizes": "72x72",
-            "type": "image/x-icon",
-            "purpose": "maskable"
-        },
-        {
-            "src": "./assets/Logo/maskable_icon_x128.png",
-            "sizes": "72x72",
-            "type": "image/x-icon",
-            "purpose": "any"
-        },
-        {
             "src": "./assets/Logo/maskable_icon_x192.png",
             "type": "image/png",
             "sizes": "192x192",
