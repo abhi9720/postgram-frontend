@@ -3,18 +3,32 @@
     "name": "Postgram",
     "icons": [
         {
-            "src": "favicon.ico",
-            "sizes": "32x25",
-            "type": "image/x-icon"
+            "src": "./assets/Logo/maskable_icon_x48.png",
+            "sizes": "48x48",
+            "type": "image/x-icon",
+            "purpose": "any"
         },
         {
-            "src": "./assets/Logo/Postgram1.png",
+            "src": "./assets/Logo/maskable_icon_x72.png",
+            "sizes": "72x72",
+            "type": "image/x-icon",
+            "purpose": "maskable"
+        },
+        {
+            "src": "./assets/Logo/maskable_icon_x128.png",
+            "sizes": "72x72",
+            "type": "image/x-icon",
+            "purpose": "any"
+        },
+        {
+            "src": "./assets/Logo/maskable_icon_x192.png",
             "type": "image/png",
-            "sizes": "192x192"
+            "sizes": "192x192",
+            "purpose": "maskable"
         }
     ],
     "start_url": "/",
     "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#ffffff"
+    "theme_color": "#214fe0",
+    "background_color": "#0f1724"
 }
