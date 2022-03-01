@@ -1,0 +1,20 @@
+{
+    "short_name": "Postgram",
+    "name": "Postgram",
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "32x25",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "./assets/Logo/Postgram1.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+}
