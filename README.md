@@ -36,9 +36,7 @@ Looks Excited right , just click on link below and create your account and join 
 
 ### Mobile Responsive 
 
-|      |     |     
-| ------------- | --------------- |
-|![mobile view](https://user-images.githubusercontent.com/68281476/156369567-cef1ec6a-432c-4dae-abb8-7f2850a9a41f.png) ‎ ‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎ | ![mobile view2](https://user-images.githubusercontent.com/68281476/156369580-0929ec18-8ab5-4f22-a576-8266c4767355.png)|
+ ![mobile view2](https://user-images.githubusercontent.com/68281476/156369580-0929ec18-8ab5-4f22-a576-8266c4767355.png)
 
 
 ### Functionality and Features
