@@ -238,3 +238,26 @@
 /* .MuiToolbar-regular {
   min-height: none !important;
 } */
+
+
+.offcanvas.show {
+  z-index: 100000;
+}
+
+@media(max-width:800px) {
+
+  .sidebar:focus-within {
+    flex: 1;
+  }
+
+  .sidebar:focus-within+li.logout {
+    display: none !important;
+
+
+  }
+
+  li.logout {
+
+    display: block !important;
+  }
+}

@@ -87,6 +87,16 @@ const Topbar = () => {
 
               <Sidebar />
 
+              <li className="logout me-auto d-block d-md-none">
+                <span className="topbarNavLink">
+                  <NavLink to="/login" onClick={logout}>
+                    <IconButton>
+                      <ExitToAppOutlined className='iconstyle' />
+                    </IconButton>
+                  </NavLink>
+                </span>
+              </li>
+
             </ul>
             {/* Center elements */}
 
@@ -202,6 +212,9 @@ const Topbar = () => {
                 </span>
               </li>
             </ul>
+
+
+
             {/* Right elements */}
           </div>
         </div>
@@ -333,7 +346,7 @@ const Topbar = () => {
 
 
 
-      <div className="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabIndex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+      <div className="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabIndex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style={{ zIndex: 1000000 }}>
         <div className="offcanvas-header">
           <h5 className="offcanvas-title" id="offcanvasScrollingLabel">Connection Requests</h5>
           <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
