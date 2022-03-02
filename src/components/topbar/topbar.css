@@ -250,14 +250,15 @@
     flex: 1;
   }
 
+
   .sidebar:focus-within+li.logout {
     display: none !important;
-
-
+    transition: opacity 1s ease-out;
+    opacity: 0;
   }
 
   li.logout {
-
+    opacity: 1;
     display: block !important;
   }
 }
