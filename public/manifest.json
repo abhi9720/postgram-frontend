@@ -3,16 +3,6 @@
     "name": "Postgram",
     "icons": [
         {
-            "src": "./assets/Logo/maskable_icon_x48.png",
-            "type": "image/png",
-            "sizes": "48x48"
-        },
-        {
-            "src": "./assets/Logo/maskable_icon_x72.png",
-            "type": "image/png",
-            "sizes": "72x72"
-        },
-        {
             "src": "./assets/Logo/maskable_icon_x96.png",
             "type": "image/png",
             "sizes": "96x96"
