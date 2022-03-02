@@ -9,7 +9,7 @@
 
 
 
-This is an **social** - networking app with lot of functionality like  sharing post , adding new friend, follow other users , do realtime chat chat with your friends.
+This is an **social** - networking app with lot of functionality like  sharing post , adding new friend, follow other users , do realtime chat  with your friends.
 Looks Excited right , just click on link below and create your account and join these amazing peoples.
 
 
