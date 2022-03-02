@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
@@ -13,7 +13,7 @@ import axiosInstance from './utils/axiosConfig'
 // import { useAlert } from "react-alert";
 import Community from "./pages/Community/Community.jsx";
 import setAuthToken from "./utils/setAuthToken";
-
+let deferredPrompt;
 const App = () => {
   const { state, dispatch } = useContext(AuthContext);
   console.log("isAuth : " + state.isAuthenticated);
@@ -51,32 +51,40 @@ const App = () => {
 
 
   useEffect(() => {
-    // if (user && Object.entries(user).length > 0) {
-    //   fetch(`/user/?userId=${user?._id}`)
-    //     .then((results) => results.json())
-    //     .then((res) => {
-    //       dispatch({ type: "LOGIN_SUCCESS", payload: res });
-    //     });
-    // } else {
-    //   alert.error(
-    //     <div
-    //       style={{
-    //         color: "red",
-    //         borderRadius: "15px",
-    //         padding: "5px 5px",
-    //       }}>
-    //       Login To Continue
-    //     </div>,
-
-    //     { position: "bottom right" }
-    //   );
-
-    //   dispatch({ type: "LOGIN_FAILURE" });
-    // }
     loadUser()
     // eslint-disable-next-line
   }, []);
 
+  const [installable, setInstallable] = useState(false);
+  useEffect(() => {
+    window.addEventListener("beforeinstallprompt", (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      // Update UI notify the user they can install the PWA
+      setInstallable(true);
+    });
+
+    window.addEventListener('appinstalled', () => {
+      // Log install to analytics
+      console.log('INSTALL: Success');
+    });
+  }, []);
+  const handleInstallClick = (e) => {
+    // Hide the app provided install promotion
+    setInstallable(false);
+    // Show the install prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+    });
+  };
 
   return (
     <>

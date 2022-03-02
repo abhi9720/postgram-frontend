@@ -30,35 +30,64 @@ const Feed = ({ userid, profile }) => {
 
 
     setfetching(true);
-    setTimeout(async () => {
 
-      const res = profile
-        ? await axiosInstance.get("/post/profile/" + userid + `?page=${feedState.page}`)
-        : await axiosInstance.get("/post/timeline/" + state?.user?._id + `?page=${feedState.page}`);
-      const p = feedState.page;
-      if (res.data.length === 0) {
+    if (profile) {
+
+      axiosInstance.get("/post/profile/" + userid + `?page=${feedState.page}`)
+        .then(res => {
+          const p = feedState.page;
+          if (res.data.length === 0) {
+            setFeedState(prev => {
+              return {
+                ...prev,
+                hasMore: false
+              }
+            });
+            return
+          }
+          const allpost = [...feedState.posts, ...res.data]
+
+          setFeedState(prev => {
+            return {
+              ...prev,
+              posts: allpost,
+              page: p + 1
+            }
+          });
+
+
+        })
+    }
+    else {
+      axiosInstance.get("/post/timeline/" + state?.user?._id + `?page=${feedState.page}`).then(res => {
+        const p = feedState.page;
+        if (res.data.length === 0) {
+          setFeedState(prev => {
+            return {
+              ...prev,
+              hasMore: false
+            }
+          });
+          return
+        }
+        const allpost = [...feedState.posts, ...res.data]
+
         setFeedState(prev => {
           return {
             ...prev,
-            hasMore: false
+            posts: allpost,
+            page: p + 1
           }
         });
-        return
-      }
-      const allpost = [...feedState.posts, ...res.data]
-      console.log(allpost)
-      setFeedState(prev => {
-        return {
-          ...prev,
-          posts: allpost,
-          page: p + 1
-        }
-      });
-      console.log("after fetching data new data : ")
-      console.dir(feedState)
 
 
-    }, 2000);
+      })
+
+    }
+
+
+
+
     setfetching(false);
 
 
