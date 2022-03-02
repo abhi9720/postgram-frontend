@@ -254,9 +254,10 @@
 
   .sidebar:focus-within+li.logout {
     opacity: 0;
+    display: none !important;
     visibility: hidden;
     transition: opacity 1s ease-out;
-    display: none !important;
+
   }
 
   li.logout {
