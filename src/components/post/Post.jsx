@@ -224,7 +224,7 @@ const Post = ({ post, isprofile }) => {
                 />
 
               }
-              <span className="postLikeCounter">{like} people like it</span>
+              <span className="postLikeCounter">{like > 0 && `${like} people like it`}  </span>
             </div>
             {/* <div className="postBottomRight">
 							<span className="postCommentText">{post.comment} comments</span>

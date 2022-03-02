@@ -96,15 +96,15 @@
 
 .postUserName {
   display: block;
-  font-size: 1rem;
+  font-size: 1.2rem !important;
   color: #2b2b2b;
-  font-weight: 700;
+  font-weight: 700 !important;
   margin: 0 10px;
 }
 
 .postDate {
   font-size: 10px;
-  margin-left: 10px;
+
 }
 
 .postCenter {

@@ -93,7 +93,7 @@ const Login = () => {
             <div className="container-fluid">
               <div className="d-flex justify-content-between w-100 px-0 px-lg-5" >
                 <NavLink className="navbar-brand" to="/" component="div">
-                  <img className="postgramlogo" src={PF + "assets/Postgram_LOGIN.png"} alt="" />
+                  <img className="postgramlogo" src={PF + "assets/Logo/logo-removebg-preview.png"} alt="" />
                 </NavLink>
                 {/* <IconButton component="button" size="large" color="default" href="https://github.com/abhi9720/postgram-frontend" >
 

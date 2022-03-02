@@ -73,8 +73,8 @@ const Topbar = () => {
             <div className="d-flex align-items-center">
               {/* Brand */}
               <NavLink className="navbar-brand m-0" to="/">
-                <img className="logolg d-none d-md-block" src={PF + "assets/Logo/logo_text-cropped.svg"} alt="" />
-                <img className="logosm d-block d-md-none d-lg-none" src={PF + "assets/Logo/Postgram.png"} alt="" />
+                <img className="logolg d-none d-md-block" src={PF + "assets/Logo/logo-removebg-preview.png"} alt="" />
+                <img className="logosm d-block d-md-none d-lg-none" src={PF + "assets/Logo/smalllogo192x192.png"} alt="" />
               </NavLink>
 
 
