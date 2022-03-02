@@ -1,5 +1,13 @@
+# Postgram
 
-# Postgram- A social Networking hub
+
+![logo](https://user-images.githubusercontent.com/68281476/156367921-605d871b-ea47-4f2b-b8ff-f8667b2e1d46.png)
+
+
+
+
+
+
 
 This is an **social** - networking app with lot of functionality like  sharing post , adding new friend, follow other users , do realtime chat chat with your friends.
 Looks Excited right , just click on link below and create your account and join these amazing peoples.
@@ -20,13 +28,17 @@ Looks Excited right , just click on link below and create your account and join 
 
 ---
 **MESSENGER**
-|     |        |       |
-| ------------- | --------------- | -------------------- |
-| ![messenger](https://user-images.githubusercontent.com/68281476/155943176-2a60914c-0c91-4772-b01c-de3ed59b1a4a.png)     | ![chat](https://user-images.githubusercontent.com/68281476/155943297-ec0088c7-f0d0-4fda-8ce0-564ed1486d18.png)         | 
+|     |        |
+| ------------- | --------------- |
+|![messenger](https://user-images.githubusercontent.com/68281476/155943176-2a60914c-0c91-4772-b01c-de3ed59b1a4a.png)     | ![chat](https://user-images.githubusercontent.com/68281476/155943297-ec0088c7-f0d0-4fda-8ce0-564ed1486d18.png)| 
 
  
 
+### Mobile Responsive 
 
+|      |     |     
+| ------------- | --------------- |
+|![mobile view](https://user-images.githubusercontent.com/68281476/156369567-cef1ec6a-432c-4dae-abb8-7f2850a9a41f.png) ‎ ‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎ | ![mobile view2](https://user-images.githubusercontent.com/68281476/156369580-0929ec18-8ab5-4f22-a576-8266c4767355.png)|
 
 
 ### Functionality and Features
