@@ -84,4 +84,4 @@ Looks Excited right , just click on link below and create your account and join 
 
 - And Finally , run `cd .\server\` then `npm start`
 ---
-> **Backend Code - ** https://postgram-social.netlify.app/
+> **Backend Code - ** https://github.com/abhi9720/postgram-server
