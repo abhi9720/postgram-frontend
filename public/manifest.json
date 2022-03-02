@@ -4,8 +4,13 @@
     "icons": [
         {
             "src": "favicon.ico",
-            "sizes": "64x64 32x32 24x24 16x16",
+            "sizes": "48x48",
             "type": "image/x-icon"
+        },
+        {
+            "src": "./assets/Logo/maskable_icon_x72.png",
+            "type": "image/png",
+            "sizes": "72x72"
         },
         {
             "src": "./assets/Logo/maskable_icon_x96.png",
@@ -20,7 +25,17 @@
         {
             "src": "./assets/Logo/maskable_icon_x192.png",
             "type": "image/png",
-            "sizes": "192x192",
+            "sizes": "192x192"
+        },
+        {
+            "src": "./assets/Logo/maskable_icon_x384.png",
+            "type": "image/png",
+            "sizes": "384x384"
+        },
+        {
+            "src": "./assets/Logo/maskable_icon.png",
+            "type": "image/png",
+            "sizes": "493x493",
             "purpose": "maskable"
         }
     ],
