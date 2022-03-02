@@ -73,12 +73,14 @@ const AuthReducer = (state, action) => {
 			};
 		case 'Update_Profile_Pic':
 			return {
+				...state,
 				user: action.payload,
 				isFetching: false,
 				error: false,
 			};
 		case 'Update_Cover_Pic':
 			return {
+				...state,
 				user: action.payload,
 				isFetching: false,
 				error: false,
@@ -86,6 +88,7 @@ const AuthReducer = (state, action) => {
 		case 'AcceptFriendRequest':
 
 			return {
+				...state,
 				user: action.payload,
 				isFetching: false,
 				error: false,
@@ -93,12 +96,14 @@ const AuthReducer = (state, action) => {
 		case 'RejectFriendRequest':
 
 			return {
+				...state,
 				user: action.payload,
 				isFetching: false,
 				error: false,
 			};
 		case 'UNFRIEND':
 			return {
+				...state,
 				user: action.payload,
 				isFetching: false,
 				error: false,

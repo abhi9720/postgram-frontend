@@ -102,7 +102,7 @@ const Share = () => {
             <div
               className="d-flex align-items-center"
               style={{ width: "100% " }}>
-              <Link to={`/profile/${state.user.username}`} className="d-flex">
+              <Link to={`/profile/${state.user._id}`} className="d-flex">
                 <Avatar
                   src={
                     state.user.profilePicture

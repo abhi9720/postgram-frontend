@@ -20,7 +20,7 @@ const CloseFriend = ({ user }) => {
         component="div"
         style={{ height: '30px', width: "30px", marginRight: "20px" }}
       >
-        {user.username ? user.username[0].toUpperCase() : "Abhi"}
+        {user.username ? user.username[0].toUpperCase() : "-"}
       </Avatar>
       <Typography variant="body2" gutterBottom component="div" ml={2}>{user.username}</Typography>
     </div>

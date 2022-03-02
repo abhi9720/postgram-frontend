@@ -132,12 +132,15 @@ export default function Profile() {
       const res = await axiosInstance.put(`/user/${user._id}/unfriend`, {
         userId: state.user?._id,
       });
+
       await axiosInstance.delete(`/conversation/delete/${user._id}/${state.user?._id}`);
 
-      setIsFriend(false);
+
       dispatch({ type: "UNFRIEND", payload: res.data });
+      setIsFriend(false);
     } catch (err) {
     } finally {
+
       setIsloading1(false);
     }
   };
@@ -155,7 +158,7 @@ export default function Profile() {
         );
         dispatch({ type: "Update_Profile_Pic", payload: updateddata.data });
 
-        window.location.reload();
+
       } catch (err) {
       } finally {
         setUpdatingProfilePhoto(false);
@@ -181,7 +184,7 @@ export default function Profile() {
         );
         dispatch({ type: "Update_Cover_Pic", payload: updateddata.data });
 
-        window.location.reload();
+        // window.location.reload();
       } catch (err) {
       } finally {
         setUpdatingCoverPhoto(false);
@@ -243,12 +246,12 @@ export default function Profile() {
                   <div className="profileRightTop">
                     <div className="profileCover">
                       <div className="profileCoverImg">
-                        {user.coverpicture ? (
-                          <img loading="lazy" src={user.coverpicture} alt="" />
+                        {state.user.coverpicture ? (
+                          <img loading="lazy" src={state.user.coverpicture} alt="" />
                         ) : (
                           <img loading="lazy" src={"../assets/Loader.gif"} alt="" />
                         )}
-                        {user.username === state.user?.username && (
+                        {user._id === state.user?._id && (
                           <Button>
                             {upatingCoverPhoto ? (
                               <CircularProgress />
@@ -281,8 +284,8 @@ export default function Profile() {
                         <div className="profileUserImageCover">
                           <img loading="lazy"
                             src={
-                              user.profilePicture
-                                ? user.profilePicture.replace(
+                              state.user.profilePicture
+                                ? state.user.profilePicture.replace(
                                   "/upload",
                                   "/upload/w_1000,h_1000,c_thumb,g_faces"
                                 )
@@ -291,7 +294,7 @@ export default function Profile() {
                             alt=""
                           />
 
-                          {user.username === state.user?.username && (
+                          {user._id === state.user?._id && (
                             <>
                               <div className="uploadIcon">
                                 {upatingProfilePhoto ? (
@@ -325,7 +328,7 @@ export default function Profile() {
                     </div>
                     <div className="profileInfo">
                       <Typography variant="h5" gutterBottom component="div" className="profileInfoName">{user?.username} </Typography>
-                      {console.log(user)}
+
                       {/* <span className="profileInfoDesc">{user.description}</span> */}
                     </div>
                     <div className="profileFollow">
@@ -347,11 +350,11 @@ export default function Profile() {
                           </thead>
                         </table>
                       </div>
-                      {user.username !== state.user?.username && <div className="divider"></div>}
+                      {user._id !== state.user?._id && <div className="divider"></div>}
 
                       <div className="btn_function"
                         style={
-                          user.username !== state.user?.username
+                          user._id !== state.user?._id
                             ? { display: "inline-block" }
                             : { display: "none" }
                         }
@@ -359,7 +362,7 @@ export default function Profile() {
                         <Link
                           to="/messenger"
                           style={
-                            user.username !== state.user?.username
+                            user._id !== state.user?._id
                               ? { display: "inline-block" }
                               : { display: "none" }
                           }
@@ -369,7 +372,7 @@ export default function Profile() {
                           </Button>
                         </Link>
 
-                        {user.username !== state.user?.username && (
+                        {user._id !== state.user?._id && (
                           <div>
                             {state.user?.friendrequest.includes(user._id) ? (
                               <Button
@@ -406,7 +409,7 @@ export default function Profile() {
                             )}
                           </div>
                         )}
-                        {user.username !== state.user?.username && (
+                        {user._id !== state.user?._id && (
                           <div>
 
                             <Button
