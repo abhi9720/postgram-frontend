@@ -45,15 +45,15 @@ Looks Excited right , just click on link below and create your account and join 
 
 - Simple login and signup
 - Adding new post
+- Infinite Scroll
 - Follow other user
-- Like a post
-- Delete a post
+- Like a post or Delete a post
 - Sending Friend Request using socket.io - accept or reject both
 - Realtime chat application
 - Creative profile page of user to manage your follower and following , and friend
 - Upload profile picture and Cover image for profile page
 - Easily Search other user , follow or send request
-- **Awesome UI for laptop and Mobile**
+- **Awesome UI and Responsive For Mobile**
 
 ## **Technology & library Used**
 
