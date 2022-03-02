@@ -1,7 +1,15 @@
+# Postgram
 
-# Postgram- A social Networking hub
 
-This is an **social** - networking app with lot of functionality like  sharing post , adding new friend, follow other users , do realtime chat chat with your friends.
+![logo](https://user-images.githubusercontent.com/68281476/156367921-605d871b-ea47-4f2b-b8ff-f8667b2e1d46.png)
+
+
+
+
+
+
+
+This is an **social** - networking app with lot of functionality like  sharing post , adding new friend, follow other users , do realtime chat  with your friends.
 Looks Excited right , just click on link below and create your account and join these amazing peoples.
 
 
@@ -20,28 +28,30 @@ Looks Excited right , just click on link below and create your account and join 
 
 ---
 **MESSENGER**
-|     |        |       |
-| ------------- | --------------- | -------------------- |
-| ![messenger](https://user-images.githubusercontent.com/68281476/155943176-2a60914c-0c91-4772-b01c-de3ed59b1a4a.png)     | ![chat](https://user-images.githubusercontent.com/68281476/155943297-ec0088c7-f0d0-4fda-8ce0-564ed1486d18.png)         | 
+|     |        |
+| ------------- | --------------- |
+|![messenger](https://user-images.githubusercontent.com/68281476/155943176-2a60914c-0c91-4772-b01c-de3ed59b1a4a.png)     | ![chat](https://user-images.githubusercontent.com/68281476/155943297-ec0088c7-f0d0-4fda-8ce0-564ed1486d18.png)| 
 
  
 
+### Mobile Responsive 
 
+ ![mobile view2](https://user-images.githubusercontent.com/68281476/156369580-0929ec18-8ab5-4f22-a576-8266c4767355.png)
 
 
 ### Functionality and Features
 
 - Simple login and signup
 - Adding new post
+- Infinite Scroll
 - Follow other user
-- Like a post
-- Delete a post
+- Like a post or Delete a post
 - Sending Friend Request using socket.io - accept or reject both
 - Realtime chat application
 - Creative profile page of user to manage your follower and following , and friend
 - Upload profile picture and Cover image for profile page
 - Easily Search other user , follow or send request
-- **Awesome UI for laptop and Mobile**
+- **Awesome UI and Responsive For Mobile**
 
 ## **Technology & library Used**
 
@@ -73,3 +83,5 @@ Looks Excited right , just click on link below and create your account and join 
 `REACT_APP_End_Point = http://localhost:8800/` or any port 
 
 - And Finally , run `cd .\server\` then `npm start`
+---
+> **Backend Code - ** https://github.com/abhi9720/postgram-server
