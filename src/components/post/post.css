@@ -173,6 +173,7 @@
 
 .postBottomLeft:first-child {
   transform: scale(0.8);
+
 }
 
 @media(max-width:800px) {
@@ -193,6 +194,12 @@
 
 .go2484888251 {
   transition: all 0.2s ease-in-out;
+
+
+  -webkit-transition: all 2s ease-in-out;
+  -moz-transition: all 2s ease-in-out;
+  -o-transition: all 2s ease-in-out;
+  transition: all 2s ease-in-out;
 }
 
 .transit {
