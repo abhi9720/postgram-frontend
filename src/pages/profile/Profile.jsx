@@ -246,11 +246,25 @@ export default function Profile() {
                   <div className="profileRightTop">
                     <div className="profileCover">
                       <div className="profileCoverImg">
-                        {state.user.coverpicture ? (
-                          <img loading="lazy" src={state.user.coverpicture} alt="" />
-                        ) : (
-                          <img loading="lazy" src={"../assets/Loader.gif"} alt="" />
-                        )}
+                        {
+                          user._id === state.user?._id ? (
+                            state.user.coverpicture ? (
+                              <img loading="lazy" src={state.user.coverpicture} alt="" />
+                            ) : (
+                              <img loading="lazy" src={"../assets/Loader.gif"} alt="" />
+                            )
+
+                          ) : (
+
+                            user.coverpicture ? (
+                              <img loading="lazy" src={user.coverpicture} alt="" />
+                            ) : (
+                              <img loading="lazy" src={"../assets/Loader.gif"} alt="" />
+                            )
+                          )
+
+
+                        }
                         {user._id === state.user?._id && (
                           <Button>
                             {upatingCoverPhoto ? (
@@ -284,12 +298,26 @@ export default function Profile() {
                         <div className="profileUserImageCover">
                           <img loading="lazy"
                             src={
-                              state.user.profilePicture
-                                ? state.user.profilePicture.replace(
-                                  "/upload",
-                                  "/upload/w_1000,h_1000,c_thumb,g_faces"
-                                )
-                                : "../assets/person/noAvatar.png"
+                              user._id === state.user?._id ? (
+                                state.user.profilePicture
+                                  ? state.user.profilePicture.replace(
+                                    "/upload",
+                                    "/upload/w_1000,h_1000,c_thumb,g_faces"
+                                  )
+                                  : "../assets/person/noAvatar.png"
+                              ) : (
+
+                                user.profilePicture
+                                  ? user.profilePicture.replace(
+                                    "/upload",
+                                    "/upload/w_1000,h_1000,c_thumb,g_faces"
+                                  )
+                                  : "../assets/person/noAvatar.png"
+
+                              )
+
+
+
                             }
                             alt=""
                           />
