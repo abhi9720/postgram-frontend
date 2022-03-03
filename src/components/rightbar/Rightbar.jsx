@@ -76,10 +76,8 @@ export default function Rightbar({ user }) {
               :
               <>
                 <div className="d-flex justify-content-between gx-3">
-                  <p className="text-muted fs-6"
-                    sx={{
-                      ml: 2
-                    }}
+                  <p className=""
+
 
                   >Suggestions For You</p>
                   {/* <NavLink className="text-muted" to="/community">

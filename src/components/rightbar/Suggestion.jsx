@@ -24,7 +24,7 @@ const Suggestion = ({ user }) => {
                 >
                     {user.username ? user.username[0].toUpperCase() : "-----"}
                 </Avatar>
-                <Typography variant="body2" gutterBottom component="div" ml={2}>{user.username}</Typography>
+                <Typography variant="subtitle2" ml={2} gutterBottom component="div" >{user.username}</Typography>
 
             </div>
         </>
