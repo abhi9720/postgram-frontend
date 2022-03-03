@@ -324,7 +324,7 @@ const Topbar = () => {
 
       {/* // add post */}
       <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div className="modal-dialog" role="document">
           <div className="modal-content">
 
             <div className="modal-header">

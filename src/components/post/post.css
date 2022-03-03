@@ -111,6 +111,7 @@
   overflow: hidden;
   box-sizing: border-box;
   margin-top: 0px;
+
 }
 
 .lazy-load-image-background.blur.lazy-load-image-loaded {
@@ -121,15 +122,13 @@
   width: 100%;
   object-fit: cover;
   background-position: center;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 
 }
 
 .postBottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 5px;
+
+
   color: #262626;
 }
 
@@ -137,10 +136,14 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 60px;
-  padding: 0px 10px;
-
+  padding: 0;
+  width: fit-content;
+  position: relative;
+  left: -20px;
 }
+
 
 .likeIcon {
   cursor: pointer;
@@ -154,9 +157,12 @@
 
 .postLikeCounter {
   font-size: 12px !important;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   color: #262626;
   font-weight: 600 !important;
+  position: relative;
+  left: -20px;
+
 }
 
 .postCommentText {
@@ -166,12 +172,17 @@
 }
 
 
-@media(max-width:700px) {
+@media(max-width:800px) {
   .post {
     width: 100%;
     margin-bottom: 5px;
     border-radius: 2px;
     padding: 0px 2px;
-    height: auto;
+
+  }
+
+  .postBottomLeft {
+
+    left: -30px;
   }
 }

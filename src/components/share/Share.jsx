@@ -165,7 +165,7 @@ const Share = () => {
                   <input
                     type="file"
                     id="file"
-                    accept=".png,.jpeg,.jpg"
+                    accept=".png,.jpeg,.jpg,.jfif,.pjpeg"
                     onChange={(e) => {
                       setFile(e.target.files[0]);
                     }}

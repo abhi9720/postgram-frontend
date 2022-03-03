@@ -6,8 +6,8 @@ import { format } from 'timeago.js';
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-
-
+import { useDoubleTap } from 'use-double-tap';
+import Heart from "react-animated-heart";
 import Button from '@material-ui/core/Button';
 import MuiAlert from '@material-ui/lab/Alert';
 import { Grow, Snackbar } from '@material-ui/core';
@@ -62,6 +62,12 @@ const Post = ({ post, isprofile }) => {
 
 
   };
+
+
+  const bind = useDoubleTap((event) => {
+    likeHandler()
+
+  });
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -125,7 +131,7 @@ const Post = ({ post, isprofile }) => {
           <div className="postTop">
             <div className="postTopLeft">
               <Link to={`/profile/${user?._id}`} className="d-flex"  >
-                <LazyLoadImage effect="blur"
+                <LazyLoadImage
                   loading="lazy"
                   src={
                     user.profilePicture
@@ -201,7 +207,7 @@ const Post = ({ post, isprofile }) => {
               <Typography className="postText">{post?.description} </Typography>
             )}
             {post.img ? (
-              <LazyLoadImage effect="blur" src={post.img} alt=".." className="postImage" loading="lazy" />
+              <LazyLoadImage  {...bind} effect="blur" src={post.img} alt=".." className="postImage" loading="lazy" />
             ) : (
               ''
             )}
@@ -209,7 +215,7 @@ const Post = ({ post, isprofile }) => {
 
           <div className="postBottom">
             <div className="postBottomLeft">
-              {isLike ? <Favorite
+              {/* {isLike ? <Favorite
                 className="likeIcon"
                 style={{ fontSize: 25, color: "rgb(237, 73, 86)" }}
                 onClick={likeHandler}
@@ -223,7 +229,12 @@ const Post = ({ post, isprofile }) => {
                   alt=""
                 />
 
-              }
+              } */}
+
+              <Heart isClick={isLike} onClick={likeHandler} />
+
+
+
               <span className="postLikeCounter">{like > 0 && `${like} people like it`}  </span>
             </div>
             {/* <div className="postBottomRight">
@@ -254,3 +265,4 @@ const Post = ({ post, isprofile }) => {
 };
 
 export default Post;
+
