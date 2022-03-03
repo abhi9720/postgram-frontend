@@ -16,21 +16,26 @@ Looks Excited right , just click on link below and create your account and join 
 ---
 
 ## Live Demo [Postgram](https://postgram-social.netlify.app/)
- **Homepage**
-![postgram-social netlify app_(Nest Hub Max)](https://user-images.githubusercontent.com/68281476/155942469-8ea2d779-cdd7-470e-a0e6-31cec35832d7.png) 
+
+ ### Homepage
+ |      |
+| ------------- |  
+ |![postgram-social netlify app_(Nest Hub Max)](https://user-images.githubusercontent.com/68281476/156540884-28aafaeb-8b79-43cf-91f6-7a2b07bc5d5d.png)|
+
 
 ----
- **Profile** 
-|      |     |       |
-| ------------- | --------------- | -------------------- |
-| ![image](https://assets.leetcode.com/users/images/e7220227-f7ad-4d1b-a6e0-51b364866e34_1646033006.3632839.png) |   ![connection](https://user-images.githubusercontent.com/68281476/155944260-b945e0f6-8985-4330-8864-8ec3fa02a3e8.png)
- |
+ ### Profile
+|      |
+| ------------- |  
+| ![profile](https://user-images.githubusercontent.com/68281476/156541815-78092acf-cf20-4a46-8a74-4a2f1a0040cd.png)
+  
 
 ---
-**MESSENGER**
-|     |        |
-| ------------- | --------------- |
-|![messenger](https://user-images.githubusercontent.com/68281476/155943176-2a60914c-0c91-4772-b01c-de3ed59b1a4a.png)     | ![chat](https://user-images.githubusercontent.com/68281476/155943297-ec0088c7-f0d0-4fda-8ce0-564ed1486d18.png)| 
+### MESSENGER
+|     |       
+| ------------- |
+| ![155943297-ec0088c7-f0d0-4fda-8ce0-564ed1486d18](https://user-images.githubusercontent.com/68281476/156542506-0dc398d0-7fb4-484a-bf4b-f77bf3ca44d6.png)
+
 
  
 
