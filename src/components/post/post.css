@@ -171,6 +171,9 @@
   font-size: 15px;
 }
 
+.postBottomLeft:first-child {
+  transform: scale(0.8);
+}
 
 @media(max-width:800px) {
   .post {
@@ -185,4 +188,17 @@
 
     left: -30px;
   }
+}
+
+
+.go2484888251 {
+  transition: all 0.2s ease-in-out;
+}
+
+.transit {
+  transform: scale(1.2);
+}
+
+.go4268192979 {
+  background-position: 2px 2px !important;
 }

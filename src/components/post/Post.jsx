@@ -65,7 +65,25 @@ const Post = ({ post, isprofile }) => {
 
 
   const bind = useDoubleTap((event) => {
-    likeHandler()
+    if (!isLike) likeHandler()
+    else {
+
+      // document.getElementsByClassName("go2484888251").style.border = "1px solid #639";
+
+      event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].classList.add("transit")
+      console.dir(event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].classList)
+
+      const myTimeout = setTimeout(myGreeting, 500);
+      function myGreeting() {
+        event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].classList.remove("transit")
+      }
+
+      function myStopFunction() {
+
+        clearTimeout(myTimeout);
+      }
+
+    }
 
   });
 
