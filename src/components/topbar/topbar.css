@@ -1,7 +1,8 @@
 .logolg {
-  margin-top: 2px;
-  width: 200px;
+
+  width: 160px;
   object-fit: cover;
+  padding: 0;
 }
 
 .logosm {

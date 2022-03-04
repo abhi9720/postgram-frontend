@@ -366,7 +366,6 @@ const Messenger = () => {
                   </div>
 
                   <Picker
-                    preload={true}
                     onEmojiClick={onEmojiClick} />
                 </CardContent>
               </Card>

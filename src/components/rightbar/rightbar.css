@@ -252,6 +252,15 @@
   padding-left: 5px;
 }
 
+@media(max-width:900px) {
+  .homewrapper {
+    position: fixed;
+    top: 20%;
+    left: 65%;
+    width: 18%;
+  }
+}
+
 @media (max-width: 800px) {
   .homeright {
     display: none;

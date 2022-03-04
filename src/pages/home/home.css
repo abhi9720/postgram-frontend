@@ -131,8 +131,10 @@ body {
 
 
 
+
+
 body::-webkit-scrollbar {
-  width: 7px;
+  width: 0px;
 }
 
 body::-webkit-scrollbar-track {
@@ -164,5 +166,5 @@ body::-webkit-scrollbar-thumb {
     overflow-x: hidden
   }
 
-  .backToTopButton-enter-done {}
+
 }

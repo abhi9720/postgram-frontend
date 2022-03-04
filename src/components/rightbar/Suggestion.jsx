@@ -20,11 +20,11 @@ const Suggestion = ({ user }) => {
                     }
                     alt=""
                     component="div"
-                    style={{ height: '30px', width: "30px", marginRight: "20px" }}
+                    style={{ height: '27px', width: "27px", marginRight: "20px" }}
                 >
                     {user.username ? user.username[0].toUpperCase() : "-----"}
                 </Avatar>
-                <Typography variant="subtitle2" ml={2} gutterBottom component="div" >{user.username}</Typography>
+                <span className='communityFriendName' >{user.username}</span>
 
             </div>
         </>
