@@ -17,7 +17,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 
-import { Favorite, FavoriteBorderOutlined } from '@material-ui/icons';
+
 import { Dialog, DialogActions, DialogContent, DialogTitle, Typography } from '@material-ui/core';
 
 
@@ -67,15 +67,13 @@ const Post = ({ post, isprofile }) => {
   const bind = useDoubleTap((event) => {
     if (!isLike) likeHandler()
     else {
-
       // document.getElementsByClassName("go2484888251").style.border = "1px solid #639";
-
-      event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].classList.add("transit")
-      console.dir(event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].classList)
+      event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0].classList.add("transit")
+      console.dir(event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0])
 
       const myTimeout = setTimeout(myGreeting, 500);
       function myGreeting() {
-        event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].classList.remove("transit")
+        event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0].classList.remove("transit")
       }
 
       function myStopFunction() {
@@ -141,6 +139,23 @@ const Post = ({ post, isprofile }) => {
   };
 
 
+  const mediaMatch = window.matchMedia('(max-width: 800px)');
+  const [matches, setMatches] = useState(mediaMatch.matches);
+
+  useEffect(() => {
+    const handler = e => setMatches(e.matches);
+    mediaMatch.addListener(handler);
+    return () => mediaMatch.removeListener(handler);
+  });
+
+  const styles = {
+    container: isRowBased => ({
+      position: 'relative',
+      left: '12px',
+    })
+  };
+
+
 
   return (
     <>
@@ -165,7 +180,7 @@ const Post = ({ post, isprofile }) => {
               </Link>
               <div className="Post_user">
                 <Link to={`/profile/${user?._id}`} className="d-flex" >
-                  <Typography className="postUserName">{user.username}</Typography>
+                  <Typography variant='h6' className="postUserName">{user.username}</Typography>
                 </Link>
                 <span className="postDate">{format(post.createdAt)}</span>
               </div>
@@ -221,44 +236,49 @@ const Post = ({ post, isprofile }) => {
             )}
           </div>
           <div className="postCenter">
-            {post?.description && (
-              <Typography className="postText">{post?.description} </Typography>
-            )}
             {post.img ? (
               <LazyLoadImage  {...bind} effect="blur" src={post.img} alt=".." className="postImage" loading="lazy" />
             ) : (
               ''
             )}
+            <div className="caption">
+              <>
+
+                {post?.description && (
+                  <Typography style={{ marginTop: "10px" }}>
+
+                    <span style={{
+                      color: "#262626", fontWeight: "700", fontSize: "14px", marginRight: "5px",
+                      fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif'
+                    }}>
+                      <Link to={`/profile/${user?._id}`}>
+
+                        {user.username}
+
+                      </Link>
+                    </span>
+                    <span className="postText">{post?.description} </span>
+                  </Typography>
+                )}
+              </>
+            </div>
           </div>
 
           <div className="postBottom">
             <div className="postBottomLeft">
-              {/* {isLike ? <Favorite
-                className="likeIcon"
-                style={{ fontSize: 25, color: "rgb(237, 73, 86)" }}
-                onClick={likeHandler}
-                alt=""
-              /> :
-
-                <FavoriteBorderOutlined
-                  className="likeIcon"
-                  style={{ fontSize: 25 }}
-                  onClick={likeHandler}
-                  alt=""
-                />
-
-              } */}
-
-              <Heart isClick={isLike} onClick={likeHandler} />
-
-
-
+              <div style={like == 0 ? styles.container(matches) : {}}>
+                <Heart isClick={isLike} onClick={likeHandler} />
+              </div>
               <span className="postLikeCounter">{like > 0 && `${like} people like it`}  </span>
             </div>
             {/* <div className="postBottomRight">
 							<span className="postCommentText">{post.comment} comments</span>
 						</div> */}
+
+
+
           </div>
+
         </div>
       </div>
 

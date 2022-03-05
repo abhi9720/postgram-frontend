@@ -1,6 +1,6 @@
 import React from 'react'
 import "./share.css";
-import { PermMedia, Cancel } from "@material-ui/icons";
+import { PermMedia, CancelSharp } from "@material-ui/icons";
 import { useContext, useRef, useState } from "react";
 import axiosInstance from "../../utils/axiosConfig";
 import axios from 'axios'
@@ -131,17 +131,13 @@ const Share = () => {
             </div>
 
 
-            <TextareaAutosize
-              ref={desc}
-              type="text"
-              className="shareInput"
-              placeholder={"What's is in your mind " + state.user.username + " ?"}
-            />
+
 
           </div>
 
           {file && (
             <div className="shareImgContainer">
+
               <img
                 loading="lazy"
                 className="shareImg"
@@ -149,15 +145,22 @@ const Share = () => {
                 alt=""
               />
 
-              <Cancel
+              <CancelSharp
                 className="shareCancelImg"
                 onClick={() => setFile(null)}
               />
             </div>
           )}
-          <form className="shareBottom" onSubmit={onSubmitHandler}>
+          <form className="shareBottom" onSubmit={onSubmitHandler} noValidate>
 
             <>
+              <TextareaAutosize
+                ref={desc}
+                type="text"
+                className="shareInput"
+                placeholder={"What's is in your mind " + state.user.username + " ?"}
+                required
+              />
               <div className="shareOptions">
                 <label htmlFor="file" className="shareOption">
                   <PermMedia htmlColor="tomato" className="shareIcon" />
@@ -172,17 +175,18 @@ const Share = () => {
                     style={{ display: "none" }}
                   />
                 </label>
+                <Button
+                  variant="contained"
+                  className="shareButton"
+                  color="primary"
+                  type="submit"
+                  endIcon={<SendIcon />}
+                >
+                  Post
+                </Button>
               </div>
 
-              <Button
-                variant="contained"
-                className="shareButton"
-                color="primary"
-                type="submit"
-                endIcon={<SendIcon />}
-              >
-                Post
-              </Button>
+
             </>
 
           </form>
