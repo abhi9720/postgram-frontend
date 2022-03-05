@@ -267,4 +267,9 @@
     opacity: 1;
 
   }
+
+
+  li.logout button {
+    padding-left: 0px;
+  }
 }
