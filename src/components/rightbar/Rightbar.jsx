@@ -66,9 +66,6 @@ export default function Rightbar({ user }) {
   const HomeRightbar = () => {
     return (
       <div className="homeright" >
-
-
-
         <div className="homewrapper">
 
           {
@@ -284,8 +281,8 @@ export default function Rightbar({ user }) {
           </div>
         </div>
       ) : (
-        <div className="rightbar hide-sm">
-          <div className="rightbarWrapper hide-sm">
+        <div className="rightbarHome hide-sm">
+          <div className="rightbarHomeWrapper hide-sm">
             <HomeRightbar key="HomeRightbar12" />
           </div>
 

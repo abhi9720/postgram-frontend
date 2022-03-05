@@ -44,7 +44,7 @@ const Post = ({ post, isprofile }) => {
       await axiosInstance.put(`/post/${post._id}/like`, { userId: state.user._id });
 
       if (window.screen.width > 850) {
-        setMessage("Post Liked")
+        setMessage("Post " + (!isLike ? " Liked" : " Disliked"))
         setOpensnackbar(true);
       }
 
@@ -248,13 +248,11 @@ const Post = ({ post, isprofile }) => {
                   <Typography style={{ marginTop: "10px" }}>
 
                     <span style={{
-                      color: "#262626", fontWeight: "700", fontSize: "14px", marginRight: "5px",
-                      fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif'
+                      color: "#262626", fontWeight: "700", fontSize: "12px", marginRight: "5px",
+
                     }}>
                       <Link to={`/profile/${user?._id}`}>
-
                         {user.username}
-
                       </Link>
                     </span>
                     <span className="postText">{post?.description} </span>
