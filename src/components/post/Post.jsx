@@ -24,7 +24,11 @@ import { Dialog, DialogActions, DialogContent, DialogTitle, Typography } from '@
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
-const shortenedMessageLength = 160;
+let shortenedMessageLength = 160;
+if (window.screen.width < 850) {
+  shortenedMessageLength = 90;
+
+}
 const Post = ({ post, isprofile }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLike, setisLike] = useState(false);
@@ -258,7 +262,7 @@ const Post = ({ post, isprofile }) => {
                         {user.username}
                       </Link>
                     </span>
-                    <span className="postText">
+                    <span className="postText" onClick={() => toggleSeeMore(!seeMore)}>
                       {
 
                         post?.description.length > shortenedMessageLength ? (

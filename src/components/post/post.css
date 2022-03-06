@@ -216,6 +216,8 @@
   color: #223354;
   white-space: pre-wrap;
   font-size: small;
+  display: inline-block;
+
 }
 
 
