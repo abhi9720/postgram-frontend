@@ -24,10 +24,13 @@ import { Dialog, DialogActions, DialogContent, DialogTitle, Typography } from '@
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
+const shortenedMessageLength = 160;
 const Post = ({ post, isprofile }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLike, setisLike] = useState(false);
   const [user, setUser] = useState({});
+  const [seeMore, toggleSeeMore] = useState(false);
+
   const { state } = useContext(AuthContext);
   const [opensnackbar, setOpensnackbar] = React.useState(false);
   const [message, setMessage] = React.useState("");
@@ -255,7 +258,21 @@ const Post = ({ post, isprofile }) => {
                         {user.username}
                       </Link>
                     </span>
-                    <span className="postText">{post?.description} </span>
+                    <span className="postText">
+                      {
+
+                        post?.description.length > shortenedMessageLength ? (
+                          seeMore ? post?.description :
+                            `${post?.description.slice(0, shortenedMessageLength)}...`
+                        ) : post?.description
+
+
+                      } </span>
+
+
+                    {post?.description.length > shortenedMessageLength &&
+                      <span className='seemorebtn' onClick={() => toggleSeeMore(!seeMore)}> {seeMore ? 'See less' : 'See more'}</span>
+                    }
                   </Typography>
                 )}
               </>
