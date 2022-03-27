@@ -166,6 +166,14 @@ const Post = ({ post, isprofile }) => {
     })
   };
 
+  function markDownText() {
+    return post?.description.length > shortenedMessageLength ? (
+      seeMore ? post?.description :
+        `${post?.description.slice(0, shortenedMessageLength)}...`
+    ).toString().replace('#', "##### \\#") : post?.description.toString().replace('#', "##### \\#")
+
+  }
+
 
 
   return (
@@ -266,30 +274,20 @@ const Post = ({ post, isprofile }) => {
                         {user.username}
                       </Link>
                     </span>
-                    <ReactMarkdown className="postText" onClick={() => toggleSeeMore(!seeMore)} children={
+                    <span onClick={() => toggleSeeMore(!seeMore)}>
 
 
-                      post?.description.length > shortenedMessageLength ? (
-                        seeMore ? post?.description :
-                          `${post?.description.slice(0, shortenedMessageLength)}...`
-                      ).toString().replace('#', "##### \\#") : post?.description.toString().replace('#', "##### \\#")
-
-                    } remarkPlugins={[remarkGfm]} >
-
-
-
-                    </ReactMarkdown>
-                    {/* <span>
-                      {
-n
+                      <ReactMarkdown className="postText"
+                        children={markDownText()}
+                        remarkPlugins={[remarkGfm]} >
+                      </ReactMarkdown>
+                      {post?.description.length > shortenedMessageLength &&
+                        <span className='seemorebtn' onClick={() => toggleSeeMore(!seeMore)}> {seeMore ? 'See less' : 'See more'}</span>
+                      }
+                    </span>
 
 
-                      } </span>
 
-
-                    {post?.description.length > shortenedMessageLength &&
-                      <span className='seemorebtn' onClick={() => toggleSeeMore(!seeMore)}> {seeMore ? 'See less' : 'See more'}</span>
-                    } */}
                   </Typography>
                 )}
               </>
