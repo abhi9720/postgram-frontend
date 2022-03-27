@@ -272,7 +272,7 @@ const Post = ({ post, isprofile }) => {
                       post?.description.length > shortenedMessageLength ? (
                         seeMore ? post?.description :
                           `${post?.description.slice(0, shortenedMessageLength)}...`
-                      ).toString().replace('#', "###### \\#") : post?.description.toString().replace('#', "###### \\#")
+                      ).toString().replace('#', "##### \\#") : post?.description.toString().replace('#', "##### \\#")
 
                     } remarkPlugins={[remarkGfm]} >
 
