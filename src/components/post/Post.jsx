@@ -1,7 +1,10 @@
 import React from 'react';
 import './post.css';
 import { MoreVert } from '@material-ui/icons';
-import Markdown from 'markdown-to-jsx';
+
+
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import axiosInstance from '../../utils/axiosConfig';
 import { format } from 'timeago.js';
 import { useContext, useEffect, useState } from 'react';
@@ -263,7 +266,7 @@ const Post = ({ post, isprofile }) => {
                         {user.username}
                       </Link>
                     </span>
-                    <Markdown className="postText" onClick={() => toggleSeeMore(!seeMore)}>{
+                    <ReactMarkdown className="postText" onClick={() => toggleSeeMore(!seeMore)} children={
 
 
                       post?.description.length > shortenedMessageLength ? (
@@ -271,7 +274,11 @@ const Post = ({ post, isprofile }) => {
                           `${post?.description.slice(0, shortenedMessageLength)}...`
                       ).toString().replace('#', "###### \\#") : post?.description.toString().replace('#', "###### \\#")
 
-                    }</Markdown>
+                    } remarkPlugins={[remarkGfm]} >
+
+
+
+                    </ReactMarkdown>
                     {/* <span>
                       {
 n
