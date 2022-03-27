@@ -1,6 +1,7 @@
 import React from 'react';
 import './post.css';
 import { MoreVert } from '@material-ui/icons';
+import Markdown from 'markdown-to-jsx';
 import axiosInstance from '../../utils/axiosConfig';
 import { format } from 'timeago.js';
 import { useContext, useEffect, useState } from 'react';
@@ -262,13 +263,18 @@ const Post = ({ post, isprofile }) => {
                         {user.username}
                       </Link>
                     </span>
-                    <span className="postText" onClick={() => toggleSeeMore(!seeMore)}>
-                      {
+                    <Markdown className="postText" onClick={() => toggleSeeMore(!seeMore)}>{
 
-                        post?.description.length > shortenedMessageLength ? (
-                          seeMore ? post?.description :
-                            `${post?.description.slice(0, shortenedMessageLength)}...`
-                        ) : post?.description
+
+                      post?.description.length > shortenedMessageLength ? (
+                        seeMore ? post?.description :
+                          `${post?.description.slice(0, shortenedMessageLength)}...`
+                      ).toString().replace('#', "###### \\#") : post?.description.toString().replace('#', "###### \\#")
+
+                    }</Markdown>
+                    {/* <span>
+                      {
+n
 
 
                       } </span>
@@ -276,7 +282,7 @@ const Post = ({ post, isprofile }) => {
 
                     {post?.description.length > shortenedMessageLength &&
                       <span className='seemorebtn' onClick={() => toggleSeeMore(!seeMore)}> {seeMore ? 'See less' : 'See more'}</span>
-                    }
+                    } */}
                   </Typography>
                 )}
               </>

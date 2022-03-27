@@ -15,10 +15,10 @@
   border-radius: 8px;
   font-family: 'Rubik', sans-serif !important;
   background-color: #fff;
-  color: #223354 !important;
-  max-width: 640px !important;
-  width: 90%;
+  color: #223354 !important;  
   max-width: 700px !important;
+  width: 610px;
+  
 
   border: 1px solid #dbdbdb;
   /* -webkit-box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%),
@@ -176,11 +176,10 @@
 
   .lazy-load-image-background.blur.lazy-load-image-loaded img {
     width: 100%;
-    object-fit: cover !important;
-    height: fit-content;
+    object-fit: cover !important;    
     padding: 0;
     background-position: center !important;
-    -webkit-touch-callout: none;
+   
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -225,7 +224,7 @@
   .lazy-load-image-background.blur.lazy-load-image-loaded img {
     width: 100%;
     max-height: 100vh;
-    height: fit-content;
+    height: auto;
     object-fit: contain;
     background-position: center;
   }

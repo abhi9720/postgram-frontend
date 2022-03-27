@@ -11,6 +11,7 @@
   background-color: transparent;
   padding: 0 !important;
 }
+
 .postgramlogo {
   height: 45px !important;
 
@@ -149,4 +150,81 @@
 
 .loginBox .MuiFilledInput-root.MuiFilledInput-underline {
   background-color: #fff;
+}
+
+.counter {
+  font-family: 'Montserrat Alternates', sans-serif;
+  text-align: center;
+}
+
+.counter .counter-icon {
+  color: #fff;
+  background-color: #51abe8;
+  font-size: 40px;
+  line-height: 90px;
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.counter .counter-value {
+  color: #51abe8;
+  background-color: #eee;
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  padding: 15px;
+  margin: -25px 0 0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: block;
+}
+
+.counter h3 {
+  color: #fff;
+  background-color: #51abe8;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  padding: 8px 12px;
+  margin: 0;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2) inset;
+  display: inline-block;
+}
+
+.counter.green .counter-icon,
+.counter.green h3 {
+  background-color: #3BB44A;
+}
+
+.counter.green .counter-value {
+  color: #3BB44A;
+}
+
+.counter.red .counter-icon,
+.counter.red h3 {
+  background-color: #F2474F;
+}
+
+.counter.red .counter-value {
+  color: #F2474F;
+}
+
+.counter.orange .counter-icon,
+.counter.orange h3 {
+  background-color: #F89128;
+}
+
+.counter.orange .counter-value {
+  color: #F89128;
+}
+
+@media screen and (max-width:990px) {
+  .counter {
+    margin-bottom: 40px;
+  }
 }

@@ -1,20 +1,53 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./login.css";
 import React from "react";
 import { NavLink } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
-import { Checkbox, CircularProgress, FormControlLabel, TextField, Typography } from "@material-ui/core";
+import { Box, Button, Checkbox, CircularProgress, FormControlLabel, IconButton, Paper, styled, TextField, Typography } from "@material-ui/core";
 // import { useAlert } from "react-alert";
 // import { GitHub } from "@material-ui/icons";
-
+import CountUp from 'react-countup';
 import { MutatingDots } from 'react-loader-spinner'
+import axiosInstance from "../../utils/axiosConfig";
+
+
+
 
 const Login = () => {
+
+  const MyButton = styled(Typography)({
+    background: '#1b263b',
+    border: 0,
+    color: "#41ead4",
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    marginTop: "0px",
+
+    padding: '0 30px',
+    display: "flex",
+
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "10px",
+  });
+
+
   const [field, setField] = useState({
     email: "",
     password: "",
+  });
+
+  const [visit, setvisitCount] = useState(-1);
+  useEffect(() => {
+    async function getUserVisit() {
+      const visitdata = await axiosInstance.get('visitcounter')
+
+      setvisitCount(visitdata.data)
+    }
+    getUserVisit()
+
   });
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -70,11 +103,19 @@ const Login = () => {
                   <NavLink className="navbar-brand" to="/" component="div">
                     <img className="postgramlogo" src={PF + "assets/Logo/logo-removebg-preview.png"} alt="" />
                   </NavLink>
-                  {/* <IconButton component="button" size="large" color="default" href="https://github.com/abhi9720/postgram-frontend" >
+                  {/* {visit != -1 &&
+                    <MyButton >
 
-                    <GitHub fontSize="large" />
+                      <Box sx={{ color: 'text.primary', fontSize: 34, fontWeight: 'medium' }}>
+                        <CountUp suffix=" " separator=" " className="fs-2" start={0} end={visit}
+                          duration={0.75}
+                        />
+                      </Box>
+                      {" "}
+                      <Box gutterBottom sx={{ color: '#00b09b', fontSize: 14 }}>User Visit</Box>
+                    </MyButton>
+                  } */}
 
-                  </IconButton> */}
 
 
                 </div>

@@ -42,12 +42,7 @@
 
 .profileCover {
   height: calc(100vh - 260px) !important;
-  position: relative;
-
-
-
-
-
+  position: relative;  
 }
 
 .profileCoverImg {
@@ -288,8 +283,7 @@
   .profileUserImg {
     width: 150px;
     height: 150px;
-    top: 170px;
-    top: 40%;
+    bottom: 20px;
   }
 
   .profileUserImg img {
@@ -331,6 +325,7 @@
 
   .profileInfoName {
     margin-top: 0px;
+    
 
   }
 
@@ -366,7 +361,7 @@
   padding: 3px 8px;
 
   background-color: #F0F7FF;
-  border: 1px solid;
+  
 
   border-color: #E0E3E7;
   border-radius: 10px;
