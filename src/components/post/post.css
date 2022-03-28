@@ -31,14 +31,20 @@
 .postlikeshow{
   position: absolute;
   top: 45%;
-  left: 45%;
+  left: 42%;
   z-index: 100;
   /* background-image: url('../../../public/assets/heart (1).png');
   /* background-color: transparent;.
    */ 
 }
+@media(max-width:800px){
+  .postlikeshow{
+    left: 40%;
+
+  }
+}
 .postlikeshow img{
-  height: 60px;
+  height: 90px;
   visibility: hidden;
   opacity: 0;
   
@@ -198,10 +204,10 @@
 
   .lazy-load-image-background.blur.lazy-load-image-loaded img {
     width: 100%;
-    object-fit: cover !important;    
+    object-fit: fill !important;    
     padding: 0;
     background-position: center !important;
-   
+    min-height: 300px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -248,18 +254,18 @@
     width: 100%;
     max-height: 100vh;
     height: auto;
+    
     object-fit: contain;
     background-position: center;
   }
 }
 
 .go2484888251 {
-  transition: all 2s ease-in-out;
-  -webkit-transition: all 2s ease-in-out;
-  -moz-transition: all 2s ease-in-out;
-  -o-transition: all 2s ease-in-out;
-  transition: all 2s ease-in-out;
-
+  -webkit-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+    -o-transition: all 1s linear;
+    transition: all 1s linear;
+    
 }
 
 

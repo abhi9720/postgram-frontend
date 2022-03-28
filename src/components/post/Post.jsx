@@ -83,7 +83,7 @@ const Post = ({ post, isprofile }) => {
       event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0].classList.add("transit")
       console.dir(event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0])
       setDisplayHeart(true);
-      const myTimeout = setTimeout(myGreeting, 500);
+      const myTimeout = setTimeout(myGreeting, 700);
       function myGreeting() {
         event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0].classList.remove("transit")
         setDisplayHeart(false);
