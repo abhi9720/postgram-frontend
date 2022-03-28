@@ -18,7 +18,7 @@ import { Grow, Snackbar } from '@material-ui/core';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-
+// import heart from ''
 
 
 
@@ -74,6 +74,7 @@ const Post = ({ post, isprofile }) => {
 
   };
 
+  const [displayheart, setDisplayHeart] = useState(false);
 
   const bind = useDoubleTap((event) => {
     if (!isLike) likeHandler()
@@ -81,10 +82,11 @@ const Post = ({ post, isprofile }) => {
       // document.getElementsByClassName("go2484888251").style.border = "1px solid #639";
       event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0].classList.add("transit")
       console.dir(event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0])
-
+      setDisplayHeart(true);
       const myTimeout = setTimeout(myGreeting, 500);
       function myGreeting() {
         event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0].classList.remove("transit")
+        setDisplayHeart(false);
       }
 
       function myStopFunction() {
@@ -176,9 +178,20 @@ const Post = ({ post, isprofile }) => {
 
 
 
+
+
   return (
     <>
       <div className="post" style={isprofile ? styleprofile : {}}>
+        <div className='postlikeshow'>
+          <img src="./assets/heartwhite.png" alt=""
+            style={displayheart ? {
+              visibility: 'visible',
+              opacity: '1',
+            } : { visibility: 'hidden' }}
+
+          />
+        </div>
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">

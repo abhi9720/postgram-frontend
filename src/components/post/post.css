@@ -26,6 +26,24 @@
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%); */
   padding: 10px 5px;
   border-radius: 20px;
+  position: relative;
+}
+.postlikeshow{
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  z-index: 100;
+  /* background-image: url('../../../public/assets/heart (1).png');
+  /* background-color: transparent;.
+   */ 
+}
+.postlikeshow img{
+  height: 60px;
+  visibility: hidden;
+  opacity: 0;
+  
+  transition: visibility 0s, opacity 0.5s ease-in-out;
+  /* background-color: #fff; */
 }
 
 .postTop {
@@ -236,7 +254,7 @@
 }
 
 .go2484888251 {
-  transition: all 0.2s ease-in-out;
+  transition: all 2s ease-in-out;
   -webkit-transition: all 2s ease-in-out;
   -moz-transition: all 2s ease-in-out;
   -o-transition: all 2s ease-in-out;
@@ -247,12 +265,9 @@
 
 
 
-.transit {
+.go2484888251.transit {
 
-  -webkit-transition: all 2s ease-in-out;
-  -moz-transition: all 2s ease-in-out;
-  -o-transition: all 2s ease-in-out;
-  transition: all 2s ease-in-out;
+  
   transform: scale(1.3);
 
 }
