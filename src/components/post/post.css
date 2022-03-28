@@ -26,12 +26,17 @@
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%); */
   padding: 10px 5px;
   border-radius: 20px;
-  position: relative;
+  
 }
+.postCenterImage{
+  position: relative;
+  
+}
+
 .postlikeshow{
   position: absolute;
-  top: 45%;
-  left: 42%;
+  top: 40%;
+  left: 38%;
   z-index: 100;
   /* background-image: url('../../../public/assets/heart (1).png');
   /* background-color: transparent;.
@@ -39,7 +44,7 @@
 }
 @media(max-width:800px){
   .postlikeshow{
-    left: 40%;
+    left: 35%;
 
   }
 }

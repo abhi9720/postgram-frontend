@@ -80,12 +80,13 @@ const Post = ({ post, isprofile }) => {
     if (!isLike) likeHandler()
     else {
       // document.getElementsByClassName("go2484888251").style.border = "1px solid #639";
-      event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0].classList.add("transit")
-      console.dir(event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0])
+
+      event.target.parentNode.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0].classList.add("transit")
+      console.dir(event.target.parentNode.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0])
       setDisplayHeart(true);
       const myTimeout = setTimeout(myGreeting, 700);
       function myGreeting() {
-        event.target.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0].classList.remove("transit")
+        event.target.parentNode.parentNode.parentNode.nextSibling.childNodes[0].childNodes[0].childNodes[0].classList.remove("transit")
         setDisplayHeart(false);
       }
 
@@ -183,15 +184,7 @@ const Post = ({ post, isprofile }) => {
   return (
     <>
       <div className="post" style={isprofile ? styleprofile : {}}>
-        <div className='postlikeshow'>
-          <img src="./assets/heartwhite.png" alt=""
-            style={displayheart ? {
-              visibility: 'visible',
-              opacity: '1',
-            } : { visibility: 'hidden' }}
 
-          />
-        </div>
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">
@@ -269,7 +262,20 @@ const Post = ({ post, isprofile }) => {
           </div>
           <div className="postCenter">
             {post.img ? (
-              <LazyLoadImage  {...bind} effect="blur" src={post.img} alt=".." className="postImage" loading="lazy" />
+              <div className='postCenterImage'>
+
+                <div className='postlikeshow'>
+                  <img src="./assets/heartwhite.png" alt=""
+                    style={displayheart ? {
+                      visibility: 'visible',
+                      opacity: '1',
+                    } : { visibility: 'hidden' }}
+
+                  />
+                </div>
+                <LazyLoadImage  {...bind} effect="blur" src={post.img} alt=".." className="postImage" loading="lazy" />
+              </div>
+
             ) : (
               ''
             )}
