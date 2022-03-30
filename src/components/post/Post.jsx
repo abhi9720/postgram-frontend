@@ -66,7 +66,13 @@ const Post = ({ post, isprofile }) => {
       setOpensnackbar(true);
       console.log(err);
     } finally {
-
+      if (!isLike) {
+        setDisplayHeart(true);
+        setTimeout(myGreeting, 700);
+        function myGreeting() {
+          setDisplayHeart(false);
+        }
+      }
     }
 
 
