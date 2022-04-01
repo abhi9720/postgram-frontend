@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .removedecoration {
@@ -227,4 +228,12 @@
   .counter {
     margin-bottom: 40px;
   }
+}
+
+.visitCounter{
+  
+
+  position: relative;
+  bottom: -110px;
+  text-transform: capitalize;
 }

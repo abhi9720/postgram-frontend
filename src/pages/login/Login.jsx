@@ -42,13 +42,29 @@ const Login = () => {
   const [visit, setvisitCount] = useState(-1);
   useEffect(() => {
     async function getUserVisit() {
-      const visitdata = await axiosInstance.get('visitcounter')
 
-      setvisitCount(visitdata.data)
+      await axiosInstance.get('visitcounter').then(result => {
+        const arr = result.data;
+        let sum = 0;
+        arr.forEach(val => {
+          sum += val.value
+        })
+        setvisitCount(sum)
+      })
+
+      // const arr = visitdata.data;
+
+      // let sum = 0;
+      // for (let i = 0; i < arr.length; i++) {
+      //   sum += arr[i].value;
+      // }
+
+      // setvisitCount(0)
     }
     getUserVisit()
 
-  });
+  }, []);
+  //@ts-expect-error
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
@@ -96,25 +112,14 @@ const Login = () => {
 
           </div>
           :
-          <div className="login vh-100">
+          <div className="login vh-100 d-flex flex-column">
             <nav className="navbar fixed-top navbar-light removedecoration">
               <div className="container-fluid">
                 <div className="d-flex justify-content-between w-100 px-0 px-lg-5" >
                   <NavLink className="navbar-brand" to="/" component="div">
                     <img className="postgramlogo" src={PF + "assets/Logo/logo-removebg-preview.png"} alt="" />
                   </NavLink>
-                  {/* {visit != -1 &&
-                    <MyButton >
 
-                      <Box sx={{ color: 'text.primary', fontSize: 34, fontWeight: 'medium' }}>
-                        <CountUp suffix=" " separator=" " className="fs-2" start={0} end={visit}
-                          duration={0.75}
-                        />
-                      </Box>
-                      {" "}
-                      <Box gutterBottom sx={{ color: '#00b09b', fontSize: 14 }}>User Visit</Box>
-                    </MyButton>
-                  } */}
 
 
 
@@ -122,7 +127,7 @@ const Login = () => {
               </div>
             </nav>
 
-            <div className="loginWrapper">
+            <div className="loginWrapper" >
               <div className="loginLeft hide-sm">
                 <Typography variant="h3" gutterBottom component="div" className="loginLogo">Postgram</Typography>
                 <Typography variant="h6" gutterBottom component="div" className="loginDesc">
@@ -210,6 +215,22 @@ const Login = () => {
                 </span>
               </div>
             </div>
+
+            <div className="visitCounter">
+              {visit != -1 &&
+                <MyButton >
+
+                  <Box sx={{ color: 'text.primary', fontSize: 34, fontWeight: 'medium' }}>
+                    <CountUp suffix=" " separator=" " className="fs-2" start={0} end={visit}
+                      duration={0.75}
+                    />
+                  </Box>
+                  {" "}
+                  <Box gutterBottom sx={{ color: '#00b09b', fontSize: 14 }}>User Visit</Box>
+                </MyButton>
+              }
+            </div>
+
           </div>
 
       }
