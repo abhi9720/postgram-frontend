@@ -216,20 +216,7 @@ const Login = () => {
               </div>
             </div>
 
-            <div className="visitCounter">
-              {visit != -1 &&
-                <MyButton >
-
-                  <Box sx={{ color: 'text.primary', fontSize: 34, fontWeight: 'medium' }}>
-                    <CountUp suffix=" " separator=" " className="fs-2" start={0} end={visit}
-                      duration={0.75}
-                    />
-                  </Box>
-                  {" "}
-                  <Box gutterBottom sx={{ color: '#00b09b', fontSize: 14 }}>User Visit</Box>
-                </MyButton>
-              }
-            </div>
+          
 
           </div>
 
