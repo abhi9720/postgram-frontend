@@ -127,7 +127,7 @@ const Messenger = () => {
         setMessages(res.data);
 
       } catch (err) {
-        setDayCount(prevDay => prevDay - 1);
+        setDayCount(prevDay => Math.max(prevDay - 1, 1));
         console.log(err);
       }
     };
