@@ -39,31 +39,8 @@ const Login = () => {
     password: "",
   });
 
-  const [visit, setvisitCount] = useState(-1);
-  useEffect(() => {
-    async function getUserVisit() {
 
-      await axiosInstance.get('visitcounter').then(result => {
-        const arr = result.data;
-        let sum = 0;
-        arr.forEach(val => {
-          sum += val.value
-        })
-        setvisitCount(sum)
-      })
 
-      // const arr = visitdata.data;
-
-      // let sum = 0;
-      // for (let i = 0; i < arr.length; i++) {
-      //   sum += arr[i].value;
-      // }
-
-      // setvisitCount(0)
-    }
-    getUserVisit()
-
-  }, []);
   //@ts-expect-error
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -216,20 +193,6 @@ const Login = () => {
               </div>
             </div>
 
-            <div className="visitCounter">
-              {visit != -1 &&
-                <MyButton >
-
-                  <Box sx={{ color: 'text.primary', fontSize: 34, fontWeight: 'medium' }}>
-                    <CountUp suffix=" " separator=" " className="fs-2" start={0} end={visit}
-                      duration={0.75}
-                    />
-                  </Box>
-                  {" "}
-                  <Box gutterBottom sx={{ color: '#00b09b', fontSize: 14 }}>User Visit</Box>
-                </MyButton>
-              }
-            </div>
 
           </div>
 
