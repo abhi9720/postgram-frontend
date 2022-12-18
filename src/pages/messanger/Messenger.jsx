@@ -18,9 +18,11 @@ import { Chat, Home, Close } from "@material-ui/icons";
 import { MutatingDots } from "react-loader-spinner";
 
 const Messenger = () => {
+  const day = 1;
   const { state } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState();
+  const [daysCount, setDayCount] = useState(day);
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [otherSide, setotherSide] = useState(null);
@@ -46,6 +48,11 @@ const Messenger = () => {
       });
     });
   }, [state.user]); // i  am removing id from here
+
+
+
+
+
 
   useEffect(() => {
     arrivalMessage &&
@@ -116,15 +123,24 @@ const Messenger = () => {
   useEffect(() => {
     const getMessages = async () => {
       try {
-        const res = await axiosInstance.get("/messages/" + currentChat?._id);
+        const res = await axiosInstance.get("/messages/" + currentChat?._id + `?days=${daysCount}`);
         setMessages(res.data);
+
       } catch (err) {
+        setDayCount(prevDay => prevDay - 1);
         console.log(err);
       }
     };
 
     getMessages();
-  }, [currentChat]);
+  }, [currentChat, daysCount]);
+
+
+
+  function incrementChatDay() {
+    setDayCount(prevDay => prevDay + 1);
+  }
+
 
 
 
@@ -297,6 +313,10 @@ const Messenger = () => {
                     {/* </div> */}
 
                     <div className="chat_body">
+                      <div className="d-flex justify-content-center mb-2">
+                        <Button onClick={incrementChatDay} variant="outlined">Load Previous Chat</Button>
+                      </div>
+
                       {messages.map((m) => (
                         <div key={m._id} ref={messagesEndRef}>
                           <Message

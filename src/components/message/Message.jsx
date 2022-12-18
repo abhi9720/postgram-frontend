@@ -1,6 +1,8 @@
 import React from 'react'
 import "./message.css";
-import { format } from "timeago.js";
+// import { format } from "timeago.js";
+// import date from 'date-and-time';
+import displayTimeStamp from './CustomDateTime';
 const Message = ({ Message, own, img }) => {
   return (
     <>
@@ -14,7 +16,8 @@ const Message = ({ Message, own, img }) => {
           <p className="messageText">{Message.text} </p>
         </div>
 
-        <span className="messageBottom">{format(Message.createdAt)}</span>
+        <span className="messageBottom">{displayTimeStamp(Message.createdAt)}</span>
+
       </div>
     </>
   );
