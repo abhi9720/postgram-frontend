@@ -211,7 +211,7 @@
     object-fit: fill !important;
     padding: 0;
     background-position: center !important;
-    min-height: 300px;
+
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
