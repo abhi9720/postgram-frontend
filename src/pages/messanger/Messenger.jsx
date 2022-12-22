@@ -286,9 +286,13 @@ const Messenger = () => {
                         to={"/profile/" + otherSide?._id}
                       >
                         <Avatar src={otherSide?.profilePicture} />
+                        {onlineUsers?.includes(otherSide?._id) && (
+                          <span className="Online"> </span>
+                        )}
                         <div className="chat_headerInfo">
                           <p className="chat-room-name">
                             {otherSide?.username}
+
                           </p>
                         </div>
                       </Link>
