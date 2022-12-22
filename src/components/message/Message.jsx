@@ -1,20 +1,12 @@
 import React from 'react'
 import "./message.css";
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+
 // import { format } from "timeago.js";
 // import date from 'date-and-time';
 import displayTimeStamp from './CustomDateTime';
 const Message = ({ Message, own, img }) => {
 
-  function LinkRenderer(props) {
 
-    return (
-      <a href={props.href} target="_blank" rel="noreferrer">
-        {props.children}
-      </a>
-    );
-  }
 
   return (
     <>
@@ -26,9 +18,10 @@ const Message = ({ Message, own, img }) => {
           }
         >
 
-          <ReactMarkdown components={{ a: LinkRenderer }} children={`${Message.text + ""}`} remarkPlugins={[remarkGfm]} className="messageText">
+          <p className="messageText">
+            {Message.text}
+          </p>
 
-          </ReactMarkdown>
 
         </div>
 
