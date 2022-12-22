@@ -338,14 +338,13 @@ const Messenger = () => {
                             aria-label="maximum height"
                             placeholder="Type a message"
 
-
+                            blurOnSubmit={false}
 
                             type="text"
 
 
                             onChange={(e) => {
                               setNewMessage(e.target.value)
-
                             }}
                             onFocus={() => setshowEmojiPannel(null)}
                             value={newMessage}
