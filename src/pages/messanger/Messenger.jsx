@@ -225,6 +225,7 @@ const Messenger = () => {
                   role="button"
                 >
                   <Home
+                    style={{ color: "white" }}
                     variant="extended"
                     onClick={() =>
                       window.location.href = "/"
@@ -236,7 +237,7 @@ const Messenger = () => {
                 onClick={(e) => {
                   sidebarHandler(e);
                 }}
-
+                color="primary"
                 variant="contained"
                 startIcon={<Chat />}
               >

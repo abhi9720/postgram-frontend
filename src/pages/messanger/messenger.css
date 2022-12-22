@@ -192,7 +192,8 @@
   padding: 10px 6%;
 
   overflow-y: auto;
-  background-color: #e5ddd5af;
+  background-color: #e4dcd4;
+  background-image: url('./bg-chat.png');
 
 }
 
@@ -213,7 +214,7 @@
   width: 99%;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
-  /* border-radius: 8px; */
+  border-radius: 8px;
   background-color: white;
 }
 
@@ -308,6 +309,7 @@
   display: none;
   z-index: 100000;
   box-sizing: border-box;
+
 }
 
 @media (max-width: 830px) {
