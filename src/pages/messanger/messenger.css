@@ -193,7 +193,7 @@
 
   overflow-y: auto;
   background-color: #f6f6f6;
-  background-image: url("./bg-chat.png");
+  background-image: url("./bg-chat-dark.png");
 }
 
 .messageSender {
