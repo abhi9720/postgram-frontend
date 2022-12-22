@@ -5,33 +5,17 @@ import { NavLink } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
-import { Box, Button, Checkbox, CircularProgress, FormControlLabel, IconButton, Paper, styled, TextField, Typography } from "@material-ui/core";
+import { Checkbox, CircularProgress, FormControlLabel, IconButton, Paper, styled, TextField, Typography } from "@material-ui/core";
 // import { useAlert } from "react-alert";
 // import { GitHub } from "@material-ui/icons";
-import CountUp from 'react-countup';
+
 import { MutatingDots } from 'react-loader-spinner'
-import axiosInstance from "../../utils/axiosConfig";
+
 
 
 
 
 const Login = () => {
-
-  const MyButton = styled(Typography)({
-    background: '#1b263b',
-    border: 0,
-    color: "#41ead4",
-    borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    marginTop: "0px",
-
-    padding: '0 30px',
-    display: "flex",
-
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "10px",
-  });
 
 
   const [field, setField] = useState({
@@ -131,26 +115,12 @@ const Login = () => {
                     label="Password"
                     variant="filled"
                     required
+                    autoComplete="on"
                     name="password"
                     type={values.showPassword ? "text" : "password"}
                     onChange={inputEvent}
                     value={field.password}
-                  // InputProps={{
-                  //   endAdornment: (
-                  //     <InputAdornment position="end">
-                  //       <IconButton
-                  //         onClick={handleClickShowPassword}
-                  //       // onMouseDown={handleMouseDownPassword}
-                  //       >
-                  //         {values.showPassword ? (
-                  //           <Visibility />
-                  //         ) : (
-                  //           <VisibilityOff />
-                  //         )}
-                  //       </IconButton>
-                  //     </InputAdornment>
-                  //   ),
-                  // }}
+
                   />
 
                   <div className="w-100">

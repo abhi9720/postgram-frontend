@@ -189,7 +189,7 @@ const Post = ({ post, isprofile }) => {
 
   return (
     <>
-      <div className="post" style={isprofile ? styleprofile : {}}>
+      <div className="post" key={post._id} style={isprofile ? styleprofile : {}}>
 
         <div className="postWrapper">
           <div className="postTop">
@@ -289,7 +289,7 @@ const Post = ({ post, isprofile }) => {
               <>
 
                 {post?.description && (
-                  <Typography style={{ marginTop: "10px" }}>
+                  <div style={{ marginTop: "10px" }}>
 
                     <span style={{
                       color: "#262626", fontWeight: "700", fontSize: "12px", marginRight: "5px",
@@ -313,7 +313,7 @@ const Post = ({ post, isprofile }) => {
 
 
 
-                  </Typography>
+                  </div>
                 )}
               </>
             </div>

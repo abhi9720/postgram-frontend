@@ -123,6 +123,7 @@ const Messenger = () => {
   useEffect(() => {
     const getMessages = async () => {
       try {
+        if (!currentChat?._id) return;
         const res = await axiosInstance.get("/messages/" + currentChat?._id + `?days=${daysCount}`);
         setMessages(res.data);
 
@@ -232,7 +233,7 @@ const Messenger = () => {
                 onClick={(e) => {
                   sidebarHandler(e);
                 }}
-                backgroundColor="#f50057"
+
                 variant="contained"
                 startIcon={<Chat />}
               >
@@ -243,15 +244,7 @@ const Messenger = () => {
 
             <div className={hide ? "sidebar_flex0" : "sidebar_flex1"}>
               <div className="chatMenuWrapper">
-                {/* <div className="chatMenuInput">
-              <Search />
-              <input
-                type="text"
-                placeholder="Search for a friend .  .  ."
-                onChange={(e) => SetSearch(e.target.value)}
-                value={search}
-              />
-            </div> */}
+
 
                 <div className="user">
                   {conversations.map((data) => {
