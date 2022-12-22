@@ -9,12 +9,12 @@ import { AuthContext } from "../../context/AuthContext";
 
 import Conversation from "../../components/conversation/Conversation";
 import axiosInstance from "../../utils/axiosConfig";
-import { Avatar, Button, Card, CardContent, CircularProgress, IconButton } from "@material-ui/core";
+import { Avatar, Button, Card, CardContent, CircularProgress, IconButton, TextareaAutosize } from "@material-ui/core";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import Message from "../../components/message/Message";
 
 import { Link, NavLink } from "react-router-dom";
-import { Chat, Home, Close } from "@material-ui/icons";
+import { Chat, Home, Close, SendOutlined } from "@material-ui/icons";
 import { MutatingDots } from "react-loader-spinner";
 
 const Messenger = () => {
@@ -177,7 +177,7 @@ const Messenger = () => {
     }
   };
 
-  useEffect(() => { }, [hide]);
+
 
 
 
@@ -336,11 +336,20 @@ const Messenger = () => {
                         <IconButton onClick={() => setshowEmojiPannel(!showEmojiPannel)}>
                           <InsertEmoticonIcon />
                         </IconButton>
-                        <form onSubmit={submitHandler}>
-                          <input
+                        <form>
+
+
+
+                          <TextareaAutosize
+                            maxRows={2}
+                            aria-label="maximum height"
+                            placeholder="Type a message"
+
+
+
                             type="text"
 
-                            placeholder="Type a message"
+
                             onChange={(e) => {
                               setNewMessage(e.target.value)
 
@@ -348,13 +357,18 @@ const Messenger = () => {
                             onFocus={() => setshowEmojiPannel(null)}
                             value={newMessage}
                           />
-                          <button type="submit">Send a Message</button>
+
+                          {/* <button type="submit">Send a Message</button> */}
                         </form>
+
                         <small className="loader">
                           {send ? (
                             <CircularProgress color="primary" size="24px" />
                           ) : (
-                            " "
+                            <IconButton color="primary" aria-label="Send Message" onClick={submitHandler}>
+                              <SendOutlined />
+                            </IconButton>
+
                           )}
                         </small>
                       </div>

@@ -5,12 +5,14 @@ import BackToTop from 'react-custom-back-to-top-button';
 import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar.jsx";
 import "./home.css";
+import SuggesTop from '../../components/rightbar/SuggesTop.jsx';
 
 const Home = () => {
   return (
     <div className='main'>
       <Topbar />
       <div className="homeContainer container" >
+
         <Feed />
         <Rightbar />
 

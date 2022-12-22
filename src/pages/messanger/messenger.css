@@ -1,6 +1,6 @@
 /* width */
 .chat_body::-webkit-scrollbar {
-  width: 0px;
+  width: 7px;
 }
 
 /* Track */
@@ -20,7 +20,7 @@
 
 /* width */
 .chat_body::-webkit-scrollbar {
-  width: 0px;
+  width: 7px;
 }
 
 /* Track */
@@ -42,7 +42,7 @@
   height: calc(100vh - 58px);
   display: flex;
   justify-content: center;
-  background-color: #f3f1ee;
+  background-color: #fff;
 }
 
 .navbar_css {
@@ -105,7 +105,7 @@
   flex: 1;
   padding: 10px;
   overflow-y: auto;
-  /* border-right: 2px solid rgba(141, 140, 140, 0.24); */
+  border-right: 2px solid rgba(141, 140, 140, 0.24);
 }
 
 /* // middle of .messenger chat box  */
@@ -192,8 +192,8 @@
   padding: 10px 6%;
 
   overflow-y: auto;
-  background-color: #f6f6f6;
-  background-image: url("./bg-chat-dark.png");
+  background-color: #e5ddd5af;
+
 }
 
 .messageSender {
@@ -208,12 +208,12 @@
   flex: 1;
   height: 72px;
   border: 1px solid lightgray;
-  padding-left: 10px;
+  margin: 0 !important;
 
-  width: 98%;
-  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
-    0 1px 5px 0 rgb(0 0 0 / 12%);
-  border-radius: 8px;
+  width: 99%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+  /* border-radius: 8px; */
   background-color: white;
 }
 
@@ -222,19 +222,63 @@
   display: flex;
 }
 
-.chat_footer>form>input {
+.chat_footer>form>textarea {
   flex: 1;
-  border-radius: 30px;
+  border-radius: 10px;
+
   border: none;
   margin: 10px 0px;
   outline: none;
   font-size: 16px;
+  resize: none;
   padding-left: 5px;
+  scrollbar-width: thin;
 
 }
 
 .chat_footer>form>button {
   display: none;
+}
+
+
+/* width */
+.chat_footer>form>textarea::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.chat_footer>form>textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+.chat_footer>form>textarea::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.342);
+}
+
+/* Handle on hover */
+.chat_footer>form>textarea::-webkit-scrollbar-thumb:hover {
+  background: rgba(85, 85, 85, 0.801);
+}
+
+/* width */
+.chat_footer>form>textarea::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.chat_footer>form>textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+.chat_footer>form>textarea::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.342);
+}
+
+/* Handle on hover */
+.chat_footer>form>textarea::-webkit-scrollbar-thumb:hover {
+  background: rgba(85, 85, 85, 0.801);
 }
 
 /*  online  */

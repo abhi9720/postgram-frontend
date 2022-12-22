@@ -6,6 +6,16 @@ import remarkGfm from 'remark-gfm'
 // import date from 'date-and-time';
 import displayTimeStamp from './CustomDateTime';
 const Message = ({ Message, own, img }) => {
+
+  function LinkRenderer(props) {
+
+    return (
+      <a href={props.href} target="_blank" rel="noreferrer">
+        {props.children}
+      </a>
+    );
+  }
+
   return (
     <>
       <div className={own ? "message own" : "message"}>
@@ -16,7 +26,7 @@ const Message = ({ Message, own, img }) => {
           }
         >
 
-          <ReactMarkdown children={`${Message.text + ""}`} remarkPlugins={[remarkGfm]} className="messageText">
+          <ReactMarkdown components={{ a: LinkRenderer }} children={`${Message.text + ""}`} remarkPlugins={[remarkGfm]} className="messageText">
 
           </ReactMarkdown>
 

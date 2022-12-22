@@ -30,11 +30,17 @@
   color: #011919;
   font-weight: 530;
   box-shadow: 0 1px 0.5px rgba(11, 20, 26, .13);
+
   /* margin-bottom: 0px; */
 }
 
 .messageText>p {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+
+
   margin-bottom: 0;
+
 }
 
 .messageBottom {

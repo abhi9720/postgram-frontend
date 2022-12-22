@@ -3,7 +3,7 @@ import "./rightbar.css";
 // import { Users } from '../../dummyData';
 // import Online from '../online/Online';
 import { useState } from "react";
-import { NavLink } from 'react-router-dom';
+
 import ContentLoader from 'react-content-loader'
 // import { AuthContext } from "../../context/AuthContext";
 import Friends from "../friends/Friends";
@@ -36,7 +36,9 @@ export default function Rightbar({ user }) {
         setfetching(false)
       }
     };
-    getSuggestion();
+    if (window.screen.width > 800) {
+      getSuggestion();
+    }
   }, []);
 
   const MyLoader = () => (
@@ -281,8 +283,8 @@ export default function Rightbar({ user }) {
           </div>
         </div>
       ) : (
-        <div className="rightbarHome hide-sm">
-          <div className="rightbarHomeWrapper hide-sm">
+        <div className="rightbarHome">
+          <div className="rightbarHomeWrapper">
             <HomeRightbar key="HomeRightbar12" />
           </div>
 

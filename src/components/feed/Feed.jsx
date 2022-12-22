@@ -10,6 +10,7 @@ import axiosInstance from '../../utils/axiosConfig'
 import { AuthContext } from "../../context/AuthContext";
 
 import { Box, Typography } from '@material-ui/core';
+import SuggesTop from '../rightbar/SuggesTop';
 
 
 
@@ -123,7 +124,7 @@ const Feed = ({ userid, profile }) => {
 
           <div className="postList" style={profile ? { flexDirection: "row" } : { flexDirection: "column" }}>
 
-
+            {/* <SuggesTop /> */}
 
             {feedState?.posts?.map((p, i) => (
               <Post key={p._id} post={p} isprofile={profile || false} />

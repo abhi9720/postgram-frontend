@@ -6,7 +6,7 @@
   border: none;
   overflow: hidden;
   display: inline-block;
-  color: #1e2022;
+
   overflow: hidden;
   border-radius: 4px;
   font-family: 'Rubik', sans-serif !important;
@@ -196,7 +196,8 @@
 @media(max-width:800px) {
   .post {
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
+    border: 0;
     border-radius: 2px;
     padding: 0px;
 
