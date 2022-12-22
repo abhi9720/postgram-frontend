@@ -309,13 +309,13 @@ const Messenger = () => {
                       {otherSide?.username}
                     </span>
                     <p className="chat-room-last-seen">last seen 20:22 PM </p>
-                  </div>
+                  </div
                   <div className="chat_headerRight"></div> */}
                     {/* </div> */}
 
                     <div className="chat_body">
-                      <div className="d-flex justify-content-center mb-2">
-                        <Button onClick={incrementChatDay} variant="outlined">Load Previous Chat</Button>
+                      <div className="d-flex justify-content-center mb-2" >
+                        <Button onClick={incrementChatDay} className="bg-light" variant="text">Load Previous Chat</Button>
                       </div>
 
                       {messages.map((m) => (
@@ -334,7 +334,7 @@ const Messenger = () => {
                     </div>
                     <div className="messageSender">
                       <div className="chat_footer">
-                        <IconButton onClick={() => setshowEmojiPannel(!showEmojiPannel)}>
+                        <IconButton className="emojibtn" onClick={() => setshowEmojiPannel(!showEmojiPannel)}>
                           <InsertEmoticonIcon />
                         </IconButton>
                         <form>
@@ -361,17 +361,18 @@ const Messenger = () => {
                           {/* <button type="submit">Send a Message</button> */}
                         </form>
 
-                        <small className="loader">
-                          {send ? (
-                            <CircularProgress color="primary" size="24px" />
-                          ) : (
-                            <IconButton className="SendMessagebtn" n color="primary" aria-label="Send Message" onClick={submitHandler}>
-                              <SendOutlined />
-                            </IconButton>
 
-                          )}
-                        </small>
                       </div>
+                      <small className="loader">
+                        {send ? (
+                          <CircularProgress color="primary" size="24px" />
+                        ) : (
+                          <IconButton className="SendMessagebtn" aria-label="Send Message" onClick={submitHandler}>
+                            <SendOutlined color="white" />
+                          </IconButton>
+
+                        )}
+                      </small>
                     </div>
                   </>
                 ) : (
