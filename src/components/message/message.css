@@ -61,10 +61,11 @@
   color: #011919;
   box-shadow: 0 1px 0.5px rgba(11, 20, 26, .13);
 
+  font-weight: 540;
   margin-right: 10px;
   padding: 7px 15px;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 15px;
   font-family: "Mulish", sans-serif;
   max-width: 420px;
   margin-bottom: 0px;
