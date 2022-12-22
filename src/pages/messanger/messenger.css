@@ -120,6 +120,7 @@
   display: flex;
   flex-direction: column;
   background-color: #fff;
+
 }
 
 .no_conversation {
@@ -192,6 +193,7 @@
 
   overflow-y: auto;
   background-color: #f6f6f6;
+  background-image: url("./bg-chat.png");
 }
 
 .messageSender {

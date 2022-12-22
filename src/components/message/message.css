@@ -21,13 +21,20 @@
 .messageText {
   padding: 7px 15px;
   border-radius: 10px;
-  background-color: #ffc772;
+  background-color: #fff;
+
   margin-left: 10px;
-  font-size: 14px;
+  font-size: 15px;
   font-family: "Mulish", sans-serif;
   max-width: 420px;
-  color: #075353;
-  margin-bottom: 0px;
+  color: #011919;
+  font-weight: 530;
+  box-shadow: 0 1px 0.5px rgba(11, 20, 26, .13);
+  /* margin-bottom: 0px; */
+}
+
+.messageText>p {
+  margin-bottom: 0;
 }
 
 .messageBottom {
@@ -44,8 +51,10 @@
 }
 
 .message.own .messageText {
-  background-color: #45b596;
-  color: rgb(256, 256, 256);
+  background-color: #d9fdd3;
+  color: #011919;
+  box-shadow: 0 1px 0.5px rgba(11, 20, 26, .13);
+
   margin-right: 10px;
   padding: 7px 15px;
   border-radius: 10px;

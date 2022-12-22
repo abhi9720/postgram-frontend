@@ -258,7 +258,6 @@
     width: 100%;
     max-height: 100vh;
     height: auto;
-
     object-fit: contain;
     background-position: center;
   }
