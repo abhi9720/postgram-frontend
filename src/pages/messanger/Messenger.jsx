@@ -75,6 +75,9 @@ const Messenger = () => {
     if (!newMessage.length) {
       return;
     }
+    const inputField = document.querySelector(".chatBoxWritting");
+
+    inputField.focus();
     // const receiverId = currentChat.members.find((member) => member !== state.user._id);
 
     socket.current.emit("sendMessage", {
@@ -337,8 +340,8 @@ const Messenger = () => {
                             maxRows={2}
                             aria-label="maximum height"
                             placeholder="Type a message"
+                            className="chatBoxWritting"
 
-                            blurOnSubmit={false}
 
                             type="text"
 
