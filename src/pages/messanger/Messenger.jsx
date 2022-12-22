@@ -364,7 +364,7 @@ const Messenger = () => {
                           {send ? (
                             <CircularProgress color="primary" size="24px" />
                           ) : (
-                            <IconButton color="primary" aria-label="Send Message" onClick={submitHandler}>
+                            <IconButton className="SendMessagebtn" n color="primary" aria-label="Send Message" onClick={submitHandler}>
                               <SendOutlined />
                             </IconButton>
 

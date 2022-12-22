@@ -431,3 +431,9 @@ div.MuiCard-root {
   border: 2px solid white;
   z-index: 100;
 }
+
+.SendMessagebtn {
+  background: rgba(231, 235, 240, 0.7) !important;
+  /* background-color: #007FFF !; */
+  border-color: rgb(205, 210, 215);
+}
