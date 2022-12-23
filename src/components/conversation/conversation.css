@@ -35,8 +35,8 @@
 .conversationName {
   font-weight: 500;
   font-size: 18px;
-  --tw-text-opacity: 1 !important;
-  color: rgb(7 83 83/var(--tw-text-opacity)) !important;
+
+  color: #13294b !important;
 }
 
 .rightbarOnline {
