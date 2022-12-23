@@ -75,3 +75,7 @@
     max-width: 80vw
   }
 }
+
+.emojionly {
+  font-size: 40px !important;
+}

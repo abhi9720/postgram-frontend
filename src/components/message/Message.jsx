@@ -6,7 +6,19 @@ import "./message.css";
 import displayTimeStamp from './CustomDateTime';
 const Message = ({ Message, own, img }) => {
 
+  function displayMessage(text) {
+    const regex = /\p{Extended_Pictographic}/ug
+    let onlyEmoji = regex.test(text);
+    console.log(text.split(""))
+    if (onlyEmoji && text.length < 8) {
 
+
+      return <p className='messageText emojionly'>{text}</p>
+    }
+    else return <p className='messageText'>{text}</p>
+
+
+  }
 
   return (
     <>
@@ -18,9 +30,9 @@ const Message = ({ Message, own, img }) => {
           }
         >
 
-          <p className="messageText">
-            {Message.text}
-          </p>
+
+          {displayMessage(Message.text)}
+
 
 
         </div>
