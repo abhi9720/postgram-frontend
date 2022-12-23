@@ -63,11 +63,12 @@
 }
 
 .chatMenuWrapper {
-  margin-top: 10px;
+  margin-top: 0px;
   height: 98%;
   display: flex;
   flex-direction: column;
   color: #007fff;
+
 }
 
 .chatMenuInput {
@@ -106,7 +107,7 @@
  */
 .user {
   flex: 1;
-  padding: 10px;
+  padding: 10px 0;
   overflow-y: auto;
   border-right: 2px solid rgba(141, 140, 140, 0.24);
 }
@@ -172,6 +173,7 @@
   background-color: #008069;
   color: white;
   padding: 6px;
+  z-index: 1000;
 }
 
 .chat_header a {
@@ -325,16 +327,33 @@
 
 .chat_icon {
   position: absolute;
-  right: 2%;
-  top: 0.75%;
+
+  top: -0.5%;
   box-shadow: none !important;
   display: none;
   z-index: 100000;
   box-sizing: border-box;
+  background-color: #008069;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
 
 }
 
-@media (max-width: 830px) {
+.chat_icon>button {
+  padding-right: 0;
+  padding-left: 1px;
+}
+
+.IconsShownOnSmallScreen {
+  display: none;
+}
+
+@media (max-width: 800px) {
+
+  .IconsShownOnSmallScreen {
+    display: block;
+  }
 
   .messageSender {
     padding: 0 1px;
@@ -405,7 +424,9 @@
 
 
   .chat_icon {
-    display: block;
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
   }
 
   .messenger {
@@ -457,7 +478,7 @@ div.MuiCard-root {
   .sidebar_flex1 {
     flex: 1;
     display: block;
-    background-color: #e3e1d5cc;
+    background-color: #fff;
     color: #007fff;
   }
 

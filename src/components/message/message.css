@@ -22,11 +22,9 @@
   padding: 7px 15px;
   border-radius: 10px;
   background-color: #fff;
-
   margin-left: 10px;
   font-size: 15px;
   font-family: "Mulish", sans-serif;
-  max-width: 420px;
   color: #011919;
   font-weight: 530;
   box-shadow: 0 1px 0.5px rgba(11, 20, 26, .13);
@@ -34,14 +32,7 @@
   margin-bottom: 0px;
 }
 
-.messageText>p {
-  overflow-wrap: break-word;
-  white-space: pre-wrap;
 
-
-
-
-}
 
 .messageBottom {
   margin-top: 5px;
@@ -67,6 +58,20 @@
   border-radius: 10px;
   font-size: 15px;
   font-family: "Mulish", sans-serif;
-  max-width: 420px;
+
   margin-bottom: 0px;
+}
+
+
+.messageText {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+
+  max-width: 45vw;
+}
+
+@media(max-width:800px) {
+  .messageText {
+    max-width: 80vw
+  }
 }

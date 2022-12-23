@@ -113,6 +113,7 @@ const Messenger = () => {
         setLoading(true)
         const res = await axiosInstance.get(`/conversation/${state.user._id}`);
         setConversations(res.data);
+
       } catch (err) {
         console.log(err);
       }
@@ -127,6 +128,7 @@ const Messenger = () => {
     const getMessages = async () => {
       try {
         if (!currentChat?._id) return;
+        setMessages([]);
         const res = await axiosInstance.get("/messages/" + currentChat?._id + `?days=${daysCount}`);
         setMessages(res.data);
 
@@ -222,35 +224,32 @@ const Messenger = () => {
               <Button   >
                 <NavLink
                   to="/"
-                  role="button"
-                >
+                  role="button">
                   <Home
                     style={{ color: "white" }}
-                    variant="extended"
+                    variant="contained"
                     onClick={() =>
                       window.location.href = "/"
                     } />
                 </NavLink>
               </Button>
 
-              <Button
+              <IconButton
                 onClick={(e) => {
                   sidebarHandler(e);
                 }}
-                color="primary"
-                variant="contained"
-                startIcon={<Chat />}
-              >
-                Chat
+                style={{ color: "white" }}
+                variant="contained">
+                <Chat />
 
-              </Button>
+              </IconButton>
             </div>
 
             <div className={hide ? "sidebar_flex0" : "sidebar_flex1"}>
               <div className="chatMenuWrapper">
 
 
-                <div className="user">
+                <div className="user mt-5">
                   {conversations.map((data) => {
                     return (
                       <div
@@ -297,6 +296,32 @@ const Messenger = () => {
                           </p>
                         </div>
                       </Link>
+
+
+                      <div className="IconsShownOnSmallScreen">
+                        <Button   >
+                          <NavLink
+                            to="/"
+                            role="button">
+                            <Home
+                              style={{ color: "white" }}
+                              variant="contained"
+                              onClick={() =>
+                                window.location.href = "/"
+                              } />
+                          </NavLink>
+                        </Button>
+
+                        <IconButton
+                          onClick={(e) => {
+                            sidebarHandler(e);
+                          }}
+                          style={{ color: "white" }}
+                          variant="contained">
+                          <Chat />
+
+                        </IconButton>
+                      </div>
 
                     </div>
 
@@ -363,16 +388,18 @@ const Messenger = () => {
 
 
                       </div>
-                      <small className="loader">
-                        {send ? (
-                          <CircularProgress color="primary" size="24px" />
-                        ) : (
-                          <IconButton className="SendMessagebtn" aria-label="Send Message" onClick={submitHandler}>
-                            <SendOutlined color="white" />
-                          </IconButton>
 
-                        )}
-                      </small>
+                      {send ? (
+                        <IconButton className="SendMessagebtn" aria-label="Send Message">
+                          <CircularProgress color="primary" size="24px" />
+                        </IconButton>
+                      ) : (
+                        <IconButton className="SendMessagebtn" aria-label="Send Message" onClick={submitHandler}>
+                          <SendOutlined color="white" />
+                        </IconButton>
+
+                      )}
+
                     </div>
                   </>
                 ) : (
