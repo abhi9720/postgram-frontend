@@ -249,7 +249,7 @@ const Messenger = () => {
               <div className="chatMenuWrapper">
 
 
-                <div className="user mt-5">
+                <div className="user">
                   {conversations.map((data) => {
                     return (
                       <div
@@ -292,7 +292,6 @@ const Messenger = () => {
                         <div className="chat_headerInfo">
                           <p className="chat-room-name">
                             {otherSide?.username}
-
                           </p>
                         </div>
                       </Link>

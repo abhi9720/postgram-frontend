@@ -9,11 +9,11 @@ const Message = ({ Message, own, img }) => {
   function displayMessage(text) {
     const regex = /\p{Extended_Pictographic}/ug
     let onlyEmoji = regex.test(text);
-    console.log(text.split(""))
-    if (onlyEmoji && text.length < 8) {
+
+    if (onlyEmoji && text.length <= 3) {
 
 
-      return <p className='messageText emojionly'>{text}</p>
+      return <div className='messageText emojiBox'><p className='emojionly'>{text}</p></div>
     }
     else return <p className='messageText'>{text}</p>
 

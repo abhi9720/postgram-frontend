@@ -428,7 +428,14 @@
   .chat_icon {
     display: flex;
     width: 100%;
-    flex-direction: row-reverse;
+    height: 60px;
+    justify-content: flex-end;
+    padding: 0px 20px;
+    /* flex-direction: row-reverse; */
+  }
+
+  .user {
+    margin-top: 4rem;
   }
 
   .messenger {
