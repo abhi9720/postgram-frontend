@@ -303,7 +303,7 @@ const Messenger = () => {
                           {onlineUsers?.includes(otherSide?._id) ? (
                             <p className="useronline">Online</p>
                           ) :
-                            <p className="useronline">{"last seen : " + displayTimeStamp(otherSide?.lastSeen)}</p>
+                            <p className="useronline">{otherSide?.lastSeen && "last seen : " + displayTimeStamp(otherSide?.lastSeen)}</p>
                           }
                         </div>
                       </Link>
