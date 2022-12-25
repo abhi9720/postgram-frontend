@@ -159,6 +159,13 @@
   margin: 0px;
 }
 
+.useronline {
+  font-size: 9px;
+  display: flex;
+
+  margin: 0;
+}
+
 .chat-room-last-seen {
   margin: 0;
   font-size: x-small;
@@ -329,7 +336,6 @@
 
 .chat_icon {
   position: absolute;
-
   top: -0.5%;
   box-shadow: none !important;
   display: none;
@@ -429,7 +435,8 @@
     display: flex;
     width: 100%;
     height: 60px;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     padding: 0px 20px;
     /* flex-direction: row-reverse; */
   }
@@ -447,7 +454,7 @@
   } */
 }
 
-.sidebar_flex0 {
+.sidebar_flex {
   flex: 0.30;
 }
 
@@ -479,22 +486,40 @@ div.MuiCard-root {
 
 
 @media (max-width: 850px) {
-  .sidebar_flex0 {
-    flex: 0;
-    display: none;
-  }
+
 
   .sidebar_flex1 {
     flex: 1;
     display: block;
     background-color: #fff;
     color: #007fff;
+
+  }
+
+  /* /// */
+  /* .sidebar_flex {
+    flex: 0.30;
+  }
+
+  .chatbox_flex {
+    flex: 0.69;
+  } */
+
+
+
+  .sidebar_flex {
+    flex: 1;
+    display: block;
   }
 
   .chatbox_flex {
     flex: 1;
     display: block;
   }
+
+
+  /*  */
+
 
   .chatbox_flexsmall {
     flex: 0;

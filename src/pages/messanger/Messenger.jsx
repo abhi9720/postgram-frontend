@@ -34,7 +34,8 @@ const Messenger = () => {
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
   // const [search, SetSearch] = useState("");
-  const [hide, showSidebar] = useState(true);
+  const [hideSidebar, sethideSidebar] = useState(true);
+  const [screenLargeStatus, setScreenLargeStatus] = useState(window.screen.width > 850);
 
   useEffect(() => {
     socket.current = io.connect(process.env.REACT_APP_End_Point);
@@ -172,14 +173,24 @@ const Messenger = () => {
     }
   }, [state.user, currentChat]);
 
-  // useEffect(() => {
-  //   SetSearch();
-  // }, [SetSearch]);
 
+
+  useEffect(() => {
+    function handleWindowresize() {
+      setScreenLargeStatus(window.screen.width > 850)
+      return () => window.removeEventListener("resize", handleResize);
+    }
+    window.addEventListener("resize", handleWindowresize);
+
+  }, [])
   const sidebarHandler = () => {
-    showSidebar(!hide);
     if (window.screen.width > 850) {
-      showSidebar(true);
+      sethideSidebar(true);
+      setScreenLargeStatus(true)
+    }
+    else {
+      setScreenLargeStatus(false)
+      sethideSidebar(!hideSidebar);
     }
   };
 
@@ -221,31 +232,27 @@ const Messenger = () => {
 
 
             <div className="chat_icon">
-              <Button   >
-                <NavLink
-                  to="/"
-                  role="button">
-                  <Home
-                    style={{ color: "white" }}
-                    variant="contained"
-                    onClick={() =>
-                      window.location.href = "/"
-                    } />
-                </NavLink>
-              </Button>
 
-              <IconButton
-                onClick={(e) => {
-                  sidebarHandler(e);
-                }}
-                style={{ color: "white" }}
-                variant="contained">
-                <Chat />
-
-              </IconButton>
+              <div className="display-6 text-white">
+                <span>Messenger </span>
+              </div>
+              <div>
+                <Button   >
+                  <NavLink
+                    to="/"
+                    role="button">
+                    <Home
+                      style={{ color: "white" }}
+                      variant="contained"
+                      onClick={() =>
+                        window.location.href = "/"
+                      } />
+                  </NavLink>
+                </Button>
+              </div>
             </div>
 
-            <div className={hide ? "sidebar_flex0" : "sidebar_flex1"}>
+            {((hideSidebar || screenLargeStatus)) && <div className={"sidebar_flex"}>
               <div className="chatMenuWrapper">
 
 
@@ -272,10 +279,9 @@ const Messenger = () => {
                   })}
                 </div>
               </div>
-            </div>
+            </div>}
 
-            <div
-              className={hide ? "chat chatbox_flex" : "chat chatbox_flexsmall"}>
+            {((!hideSidebar || screenLargeStatus)) && <div className={"chat chatbox_flex"}>
               <div className="chatBoxWrapper">
                 {currentChat ? (
                   <>
@@ -286,13 +292,16 @@ const Messenger = () => {
                         to={"/profile/" + otherSide?._id}
                       >
                         <Avatar src={otherSide?.profilePicture} />
-                        {onlineUsers?.includes(otherSide?._id) && (
-                          <span className="Online"> </span>
-                        )}
+
                         <div className="chat_headerInfo">
                           <p className="chat-room-name">
                             {otherSide?.username}
                           </p>
+
+
+                          {onlineUsers?.includes(otherSide?._id) && (
+                            <p className="useronline">Online</p>
+                          )}
                         </div>
                       </Link>
 
@@ -394,7 +403,7 @@ const Messenger = () => {
                         </IconButton>
                       ) : (
                         <IconButton className="SendMessagebtn" aria-label="Send Message" onClick={submitHandler}>
-                          <SendOutlined color="white" />
+                          <SendOutlined />
                         </IconButton>
 
                       )}
@@ -413,7 +422,9 @@ const Messenger = () => {
                   </>
                 )}
               </div>
-            </div>
+            </div>}
+
+
             {
               showEmojiPannel &&
 

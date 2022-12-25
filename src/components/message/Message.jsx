@@ -6,13 +6,17 @@ import "./message.css";
 import displayTimeStamp from './CustomDateTime';
 const Message = ({ Message, own, img }) => {
 
+  function fancyCount(str) {
+    return Array.from(str.split(/[\ufe00-\ufe0f]/).join("")).length;
+  }
+
+
   function displayMessage(text) {
     const regex = /\p{Extended_Pictographic}/ug
     let onlyEmoji = regex.test(text);
 
-    if (onlyEmoji && text.length <= 3) {
 
-
+    if (onlyEmoji && fancyCount(text) == 1) {
       return <div className='messageText emojiBox'><p className='emojionly'>{text}</p></div>
     }
     else return <p className='messageText'>{text}</p>
@@ -31,7 +35,7 @@ const Message = ({ Message, own, img }) => {
         >
 
 
-          {displayMessage(Message.text)}
+          {displayMessage(Message.text.trim())}
 
 
 
