@@ -16,6 +16,7 @@ import Message from "../../components/message/Message";
 import { Link, NavLink } from "react-router-dom";
 import { Chat, Home, Close, SendOutlined } from "@material-ui/icons";
 import { MutatingDots } from "react-loader-spinner";
+import displayTimeStamp from "../../components/message/CustomDateTime";
 
 const Messenger = () => {
   const day = 1;
@@ -299,9 +300,11 @@ const Messenger = () => {
                           </p>
 
 
-                          {onlineUsers?.includes(otherSide?._id) && (
+                          {onlineUsers?.includes(otherSide?._id) ? (
                             <p className="useronline">Online</p>
-                          )}
+                          ) :
+                            <p className="useronline">{"last seen : " + displayTimeStamp(otherSide?.lastSeen)}</p>
+                          }
                         </div>
                       </Link>
 
