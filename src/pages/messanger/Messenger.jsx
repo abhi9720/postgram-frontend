@@ -152,11 +152,11 @@ const Messenger = () => {
 
 
 
-  const scrollToBottom = () => messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+
 
 
   useEffect(() => {
-    scrollToBottom()
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages]);
 
   useEffect(() => {
@@ -253,7 +253,8 @@ const Messenger = () => {
               </div>
             </div>
 
-            {((hideSidebar || screenLargeStatus)) && <div className={"sidebar_flex"}>
+            <div className={"sidebar_flex"} style={(hideSidebar || screenLargeStatus)
+              ? { display: "block" } : { display: "none" }} >
               <div className="chatMenuWrapper">
 
 
@@ -280,9 +281,14 @@ const Messenger = () => {
                   })}
                 </div>
               </div>
-            </div>}
+            </div>
 
-            {((!hideSidebar || screenLargeStatus)) && <div className={"chat chatbox_flex"}>
+            <div className={"chat chatbox_flex"}
+
+              style={(!hideSidebar || screenLargeStatus)
+                ? { display: "block" } : { display: "none" }}
+
+            >
               <div className="chatBoxWrapper">
                 {currentChat ? (
                   <>
@@ -425,7 +431,7 @@ const Messenger = () => {
                   </>
                 )}
               </div>
-            </div>}
+            </div>
 
 
             {
