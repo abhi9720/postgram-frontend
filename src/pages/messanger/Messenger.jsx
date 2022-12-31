@@ -24,7 +24,7 @@ const Messenger = () => {
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState();
   const [daysCount, setDayCount] = useState(day);
-  const [conversations, setConversations] = useState([]);
+  const [friendList, setfriendList] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [otherSide, setotherSide] = useState(null);
   const [send, setSend] = useState(false);
@@ -38,6 +38,15 @@ const Messenger = () => {
   const [hideSidebar, sethideSidebar] = useState(true);
   const [screenLargeStatus, setScreenLargeStatus] = useState(window.screen.width > 850);
 
+
+
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("CurrentChat"));
+    if (items) {
+      setCurrentChat(items);
+    }
+  }, []);
   useEffect(() => {
     socket.current = io.connect(process.env.REACT_APP_End_Point);
 
@@ -114,7 +123,7 @@ const Messenger = () => {
       try {
         setLoading(true)
         const res = await axiosInstance.get(`/conversation/${state.user._id}`);
-        setConversations(res.data);
+        setfriendList(res.data);
 
       } catch (err) {
         console.log(err);
@@ -165,14 +174,21 @@ const Messenger = () => {
       try {
         const res = await axiosInstance("/user?userId=" + friendId);
         setotherSide(res.data);
+        setshowEmojiPannel(null)
+        setNewMessage("")
+
       } catch (err) {
         console.log(err);
       }
     };
+
     if (currentChat) {
+      localStorage.setItem("CurrentChat", JSON.stringify(currentChat))
       getUser();
     }
+
   }, [state.user, currentChat]);
+
 
 
 
@@ -193,6 +209,8 @@ const Messenger = () => {
       setScreenLargeStatus(false)
       sethideSidebar(!hideSidebar);
     }
+    setshowEmojiPannel(null)
+    setNewMessage("")
   };
 
 
@@ -259,7 +277,7 @@ const Messenger = () => {
 
 
                 <div className="user">
-                  {conversations.map((data) => {
+                  {friendList.map((data) => {
                     return (
                       <div
                         key={data._id}
@@ -371,28 +389,41 @@ const Messenger = () => {
                                 : otherSide?.profilePicture
                             }
                           />
+
+
+
                         </div>
+
                       ))}
+
+
+                      {/* <div className="emojipannelclose" style={{ display: showEmojiPannel ? "block" : "none" }}>
+                        <IconButton onClick={() => setshowEmojiPannel(!showEmojiPannel)} aria-label="close" component="span">
+                          <Close size="small" />
+                        </IconButton>
+                        <Picker
+                          onEmojiClick={onEmojiClick} />
+                      </div> */}
+
                     </div>
+
                     <div className="messageSender">
                       <div className="chat_footer">
                         <IconButton className="emojibtn" onClick={() => setshowEmojiPannel(!showEmojiPannel)}>
                           <InsertEmoticonIcon />
                         </IconButton>
+
+
                         <form>
 
 
 
                           <TextareaAutosize
-                            maxRows={2}
+                            maxRows={window.screen.width > 850 ? 2 : 4}
                             aria-label="maximum height"
                             placeholder="Type a message"
                             className="chatBoxWritting"
-
-
                             type="text"
-
-
                             onChange={(e) => {
                               setNewMessage(e.target.value)
                             }}
@@ -434,24 +465,27 @@ const Messenger = () => {
             </div>
 
 
-            {
-              showEmojiPannel &&
 
-              <Card className="p-0 m-0">
+            <Card className="p-0 m-0" style={{ display: showEmojiPannel ? "block" : "none" }}>
 
-                <CardContent className="p-0 m-0">
-                  <div className="emojipannelclose">
-                    <IconButton onClick={() => setshowEmojiPannel(!showEmojiPannel)} aria-label="close" component="span">
-                      <Close size="small" />
-                    </IconButton>
-                  </div>
+              <CardContent className="p-0 m-0">
+                <div className="emojipannelclose">
+                  <IconButton onClick={() => setshowEmojiPannel(!showEmojiPannel)} aria-label="close" component="span">
+                    <Close size="small" />
+                  </IconButton>
+                </div>
 
-                  <Picker
-                    onEmojiClick={onEmojiClick} />
-                </CardContent>
-              </Card>
+                <Picker
+                  onEmojiClick={onEmojiClick} />
+              </CardContent>
+            </Card>
 
-            }
+
+
+
+
+
+
           </div>
         </>
 
