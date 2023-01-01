@@ -48,7 +48,8 @@ const Messenger = () => {
     }
   }, []);
 
-  const [hideSidebar, sethideSidebar] = useState(currentChat !== null);
+  const [hideSidebar, sethideSidebar] = useState(sessionStorage.getItem("CurrentChat") === null);
+
 
   useEffect(() => {
     socket.current = io.connect(process.env.REACT_APP_End_Point);
