@@ -16,11 +16,10 @@ const Message = ({ Message, own, img }) => {
     let onlyEmoji = regex.test(text);
 
 
-    if (onlyEmoji) {
-      if (fancyCount(text) == 1)
-        return <div className='messageText emojiBox'><p className='emojionly'>{text}</p></div>
-      else
-        return <p className='messageText' style={{ fontSize: '25px' }} >{text}</p>
+    if (onlyEmoji && (fancyCount(text) == 1)) {
+
+      return <div className='messageText emojiBox'><p className='emojionly'>{text}</p></div>
+
     }
     else return <p className='messageText'>{text}</p>
 
