@@ -206,6 +206,11 @@ const Messenger = () => {
     }
     window.addEventListener("resize", handleWindowresize);
 
+    return () => {
+      window.removeEventListener("resize", handleWindowresize);
+
+    };
+
   }, [])
   const sidebarHandler = () => {
     if (window.screen.width > 850) {
