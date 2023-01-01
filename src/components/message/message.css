@@ -70,7 +70,8 @@
 
 @media(max-width:800px) {
   .messageText {
-    max-width: 80vw
+    max-width: 80vw !important;
+    font-size: 19px !important;
   }
 }
 

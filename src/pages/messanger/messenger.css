@@ -219,7 +219,7 @@
 
 .messageSender {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   background-color: #fff;
   gap: 5px !important;
@@ -363,8 +363,10 @@
   .messageSender {
     padding: 0 1px;
     box-shadow: none;
+    align-items: flex-end;
     background-color: transparent;
   }
+
 
   .chat_footer {
     box-sizing: border-box;

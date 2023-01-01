@@ -35,18 +35,21 @@ const Messenger = () => {
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
   // const [search, SetSearch] = useState("");
-  const [hideSidebar, sethideSidebar] = useState(true);
+
   const [screenLargeStatus, setScreenLargeStatus] = useState(window.screen.width > 850);
 
 
 
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("CurrentChat"));
+    const items = JSON.parse(sessionStorage.getItem("CurrentChat"));
     if (items) {
       setCurrentChat(items);
     }
   }, []);
+
+  const [hideSidebar, sethideSidebar] = useState(currentChat !== null);
+
   useEffect(() => {
     socket.current = io.connect(process.env.REACT_APP_End_Point);
 
@@ -183,13 +186,16 @@ const Messenger = () => {
     };
 
     if (currentChat) {
-      localStorage.setItem("CurrentChat", JSON.stringify(currentChat))
+      sessionStorage.setItem("CurrentChat", JSON.stringify(currentChat))
       getUser();
     }
 
   }, [state.user, currentChat]);
 
-
+  // window.unload = function () {
+  //   sessionStorage.removeItem('CurrentChat');
+  //   return '';
+  // };
 
 
   useEffect(() => {
@@ -218,15 +224,20 @@ const Messenger = () => {
 
 
 
-  const [chosenEmoji, setChosenEmoji] = useState(null);
+
   const [showEmojiPannel, setshowEmojiPannel] = useState(null);
 
 
   const onEmojiClick = (event, emojiObject) => {
-    setChosenEmoji(emojiObject);
+    console.log(event)
 
-    setNewMessage((newMessage || '') + chosenEmoji.emoji)
+    setNewMessage((newMessage || '') + emojiObject.emoji)
   };
+
+
+  function toglleEmojiPannel() {
+    setshowEmojiPannel(!showEmojiPannel)
+  }
 
   return (
     <>
@@ -470,7 +481,7 @@ const Messenger = () => {
 
               <CardContent className="p-0 m-0">
                 <div className="emojipannelclose">
-                  <IconButton onClick={() => setshowEmojiPannel(!showEmojiPannel)} aria-label="close" component="span">
+                  <IconButton onClick={toglleEmojiPannel} aria-label="close" component="span">
                     <Close size="small" />
                   </IconButton>
                 </div>
