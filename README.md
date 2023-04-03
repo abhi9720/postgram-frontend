@@ -9,8 +9,7 @@
 
 
 
-This is an **Social Media** - web app with lot of functionality like  sharing post , adding new friend, follow other users , do realtime chat  with your friends.
-Looks Excited right , just click on link below and create your account and join these amazing peoples.
+Postgram is a social media application that uses Socket.io to allow users to create and manage their profiles, upload and delete posts, follow other users, and send friend requests. The app has a creative profile page where users can manage their followers and friends, as well as a real-time chat feature where users can communicate. On the backend, Node.js, Express, and MongoDB are used, and on the frontend, React.js and Socket.io are used. For image uploading, Cloudinary is used, and the UI is built with Bootstrap and Material UI. The app is mobile-friendly and supports infinite scrolling. The project is open source and can be found on GitHub.
 
 
 ---
